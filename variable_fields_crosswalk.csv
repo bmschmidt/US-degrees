@@ -1,0 +1,19 @@
+new,label,old
+CHISPM,Hispanic or Latino_men,CRACE09
+CHISPW,Hispanic or Latino_women,CRACE10
+CAIANM,American Indian or Alaska Native_men,CRACE05
+CAIANW,American Indian or Alaska Native_women,CRACE06
+CASIAM,Asian_men,CRACE07
+CASIAW,Asian_women,CRACE08
+CBKAAM,Black or African American_men,CRACE03
+CBKAAW,Black or African American_women,CRACE04
+CNHPIM,Native Hawaiian or Other Pacific Islander_men,NA
+CNHPIW,Native Hawaiian or Other Pacific Islander_women,NA
+CWHITM,White_men,CRACE11
+CWHITW,White_women,CRACE12
+CTOTALM,All_men,CRACE15
+CTOTALW,All_women,CRACE16
+C2MORM,Two or more races_men,NA
+C2MORW,Two or more races_women,NA
+CNRALM,Nonresident alien_men,NA
+CNRALW,Nonresident alien_women,NA

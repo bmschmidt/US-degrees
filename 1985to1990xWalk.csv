@@ -1,0 +1,434 @@
+1.0101,"Agric Bus & Mgmt, Genl",1.0101,"Agricultural Business & Management, General"
+1.0103,Agricultural Economics,1.0103,Agricultural Economics
+1.0199,"Agric Bus & Mgmt, Other",1.0199,"Agricultural Business & Management, Other"
+1.0201,"Agricul Mechanics, Genl",1.0201,"Agricultural Mechanization, General"
+1.0301,Agricultural Technology,1.0301,"Agricultural Production Workers & Managers, General"
+1.0507,Horse Handling & Care,1.0507,"Equestrian/Equine Studies, Horse Management & Training"
+1.0701,International Agricul,1.0701,International Agriculture
+2.0101,"Agricultural Sci, Genl",2.0101,"Agriculture/Agricultural Sciences, General"
+2.0201,"Animal Sciences, Genl",2.0201,"Animal Sciences, General"
+2.0206,Dairy,2.0206,Dairy Science
+2.0209,Poultry,2.0209,Poultry Science
+2.0299,"Animal Sciences, Other",2.0299,"Animal Sciences, Other"
+2.0301,Food Science,2.0301,Food Sciences & Technology
+2.0401,"Plant Sciences, General",2.0401,"Plant Sciences, General"
+2.0402,Agronomy,2.0402,Agronomy & Crop Science
+2.0403,Horticulture Science,2.0403,Horticulture Science
+3.0101,Renewable Nat Resources,3.0101,"Natural Resources Conservation, General"
+3.0201,"Conservation & Reg, Gen",3.0201,Natural Resources Management & Policy
+3.0299,"Nat Res Mgmt, Other",3.0299,"Natural Resources Management & Protective Services, Other"
+3.0401,Forestry Prod & Process,3.0401,Forest Harvesting & Production Technology/Technician
+3.0404,Forest Prod Proces Tech,3.0404,Forest Products Technology/Technician
+3.0501,Forestry*,3.0501,"Forestry, General"
+4.0201,Architecture,4.0201,Architecture
+4.0301,"City, Comm & Reg Plan",4.0301,"City/Urban, Community & Regional Planning"
+4.0401,Environmental Design,4.0401,Architectural Environmental Design
+4.0501,Interior Design,4.0501,Interior Architecture
+4.0601,Landscape Architecture,4.0601,Landscape Architecture
+4.0701,Urban Design,4.0701,Architectural Urban Design & Planning
+4.9999,"Arch & Envir Des, Other",4.9999,"Architecture & Related Programs, Other"
+5.0101,African Studies,5.0101,African Studies
+5.0102,American Studies,5.0102,American Studies/Civilization
+5.0103,"Asian Studies, General",5.0103,Asian Studies
+5.0104,East Asian Studies,5.0104,East Asian Studies
+5.0106,"European Studies, Genl",5.0106,European Studies
+5.0107,Latin American Studies,5.0107,Latin American Studies
+5.0110,Russian & Slavic Studs,5.0110,Russian & Slavic Area Studies
+5.0114,Western European Studs,5.0114,Western European Studies
+5.0199,"Area Studies, Other",5.0199,"Area Studies, Other"
+5.0201,Afro-Amer (Black) Stud,5.0201,Afro-American (Black) Studies
+5.9999,"Area & Ethnic St, Other",5.9999,"Area, Ethnic & Cultural Studies, Other"
+6.0101,"Business & Mgmt, Genl",52.0101,"Business, General"
+6.0201,Accounting,52.0301,Accounting
+6.0301,Banking & Finance,52.0801,"Finance, General"
+6.0401,Business Administration,52.0201,"Business Administration & Management, General"
+6.0402,Contract Mgt/Purchasing,52.0202,"Purchasing, Procurement & Contracts Management"
+6.0403,Product Management,52.0205,Operations Management & Supervision
+6.0499,Business Administration,52.0299,"Business Administration & Management, Other"
+6.0501,Business Economics,52.0601,Business/Managerial Economics
+6.0601,Human Resources Develop,52.1001,Human Resources Management
+6.0701,Hotel/Motel Management,52.0902,Hotel/Motel & Restaurant Management
+6.0705,Transportation Mgmt,52.0903,Travel-Tourism Management
+6.0799,"Institutional Mgmt, Oth",52.0999,"Hospitality Services Management, Other"
+6.0801,Insurance and Risk Mgmt,52.0805,Insurance & Risk Management
+6.0901,International Business,52.1101,International Business
+6.1201,Management Information,52.1201,"Management Info Systems & Bus Data Processing, General"
+6.1302,Operations Res (Quant),27.0302,Operations Research
+6.1303,"Management Science, Gen",52.1301,Management Science
+6.1399,"Management Science, Oth",52.1399,"Business Quantitative Methods & Management Science, Other"
+6.1401,Marketing Management,52.1401,Business Marketing & Marketing Management
+6.1402,Marketing Research,52.1402,Marketing Research
+6.1501,Organizational Behavior,52.1003,Organizational Behavior Studies
+6.1601,Personnel Management,52.1001,Human Resources Management
+6.1701,Real Estate,52.1501,Real Estate
+6.1801,Enterprise Mgmt & Oper,52.0701,"Enterprise Management & Operation, General"
+6.1901,Taxation,52.1601,Taxation
+6.2001,Trade & Industrial Mgmt,52.0205,Operations Management & Supervision
+6.9999,"Business & Mgmt, Other",52.9999,"Business Management & Administrative Services, Other"
+7.0101,"Acct, Bookkeep, Rel Pro",52.0302,Accounting Technician
+7.0102,Accounting & Computing,52.0302,Accounting Technician
+7.0103,Bookkeeping,52.0302,Accounting Technician
+7.0301,"Bus, Data Proc, Rel Pro",52.1201,"Management Info Systems & Bus Data Processing, General"
+7.0303,Bus Data Entry Equip Op,52.0407,Information Processing/Data Entry Technician
+7.0401,Office Superv & Mgmt,52.0204,Office Supervision & Management
+7.0599,Personnel & Train Prog,52.1099,"Human Resources Management, Other"
+7.0601,Secrt & Related Prog,52.0401,"Administrative Assistant/Secretarial Science, General"
+7.0603,Executive Secretarial,52.0402,Executive Assistant/Secretary
+7.0604,Legal Secretarial,52.0403,Legal Administrative Assistant/Secretary
+7.0605,Medical Secretarial,52.0404,Medical Administrative Assistant/Secretary
+7.0606,Secretarial,52.0401,"Administrative Assistant/Secretarial Science, General"
+7.0699,"Secrt & Rel Prog, Other",52.0499,"Administrative & Secretarial Services, Other"
+7.0701,"Typing, Gen Office, Gen",52.0408,General Office/Clerical & Typing Services
+7.9999,"Business (Adm Sup), Oth",52.9999,"Business Management & Administrative Services, Other"
+8.0101,Apparel & Accessor Mktg,8.0101,"Apparel & Accessories Marketing Operations, General"
+8.0102,Fashion Merchandising,8.0102,Fashion Merchandising
+8.0201,Bus/Personal Ser Mktg,8.0299,"Business & Personal Services Marketing Operations, Other"
+8.0601,"Food Marketing, General",8.0601,Food Products Retailing & Wholesaling Operations
+8.0705,Retailing,8.0705,General Retailing Operations
+8.0901,Hospitality & Rec Mktg,8.0901,"Hospitality & Recreation Marketing Operations, General"
+8.1101,"Trans & Trav Mktg, Gen",8.1199,"Tourism & Travel Services Marketing Operations, Other"
+8.1104,Tourism,8.1104,Tourism Promotion Operations
+8.9999,"""Marketing & Dist",8.9999,"Marketing Operations/Marketing & Distribution, Other"
+9.0101,"Communications, General",9.0101,"Communications, General"
+9.0401,Journalism (Mass Comm),9.0401,Journalism
+9.0501,Public Relations,9.0501,Public Relations & Organizational Communications
+9.0601,Radio/TV News Brdcs,9.0402,Broadcast Journalism
+9.0801,Telecommunications,9.9999,"Communications, Other"
+9.9999,"Communications, Other",9.9999,"Communications, Other"
+10.0104,Radio & TV Prod & Brdcs,10.0104,Radio & Television Broadcasting Technology/Technician
+11.0101,Computer & Info Sci Gen,11.0101,"Computer & Information Sciences, General"
+11.0201,Computer Programming,11.0201,Computer Programming
+11.0301,Data Processing,11.0301,Data Processing Technology/Technician
+11.0401,Information Sci & Syst,11.0401,Information Sciences & Systems
+11.0501,Systems Analysis,11.0501,Computer Systems Analysis
+11.9999,Computer & Information,11.9999,"Computer & Information Sciences, Other"
+12.0301,Funeral Services,12.0301,Funeral Services & Mortuary Science
+13.0101,"Education, General",13.0101,"Education, General"
+13.0301,Curriculum and Instr,13.0301,Curriculum & Instruction
+13.0401,Educational Admin,13.0401,"Education Administration & Supervision, General"
+13.0402,Admin of Special Educ,13.0402,Administration of Special Education
+13.0404,Educational Supervision,13.0404,Educational Supervision
+13.0406,Higher Education Admin,13.0406,Higher Education Administration
+13.0407,Comm College Education,13.0407,Community & Junior College Administration
+13.0499,"Ed Admin & Sup, Other",13.0499,"Education Administration & Supervision, Other"
+13.0501,Educational Media,13.0501,Educational/Instructional Media Design
+13.0603,Educational Statistics,13.0603,Educational Statistics & Research Methods
+13.0701,Ed Policy Studies,13.0701,International & Comparative Education
+13.0801,School Psychology,13.0802,Educational Psychology
+13.1001,"Special Education, Genl",13.1001,"Special Education, General"
+13.1003,Ed of Hearing Impaired,13.1003,Education of the Deaf & Hearing Impaired
+13.1004,Education of the Gifted,13.1004,Education of the Gifted & Talented
+13.1005,Ed of Emotional Handic,13.1005,Education of the Emotionally Handicapped
+13.1006,Ed of Mental Handicap,13.1006,Education of the Mentally Handicapped
+13.1007,Ed of Multiple Handicap,13.1007,Education of the Multiple Handicapped
+13.1008,Ed of Physically Handic,13.1008,Education of the Physically Handicapped
+13.1011,Specific Learning Disab,13.1011,Education of the Specific Learning Disabled
+13.1012,Speech Correction,13.1012,Education of the Speech Impaired
+13.1099,"Special Educ., Other",13.1099,"Special Education, Other"
+13.1101,Stud Couns & Personnel,13.1101,Counselor Education/Student Counseling & Guidance Services
+13.1201,Adult and Continuing Ed,13.1201,Adult & Continuing Teacher Education
+13.1202,Elementary Education,13.1202,Elementary Teacher Education
+13.1203,Junior High/Mid Sch Ed,13.1203,Junior High/Intermediate/Middle School Teacher Education
+13.1204,Pre-Elementary Educatio,13.1204,Pre-Elementary/Early Childhood/Kindergarten Teacher Educ
+13.1205,Secondary Education,13.1205,Secondary Teacher Education
+13.1299,"Teacher Education, Genl",13.1299,"General Teacher Education, Other"
+13.1301,Agricultural Education,13.1301,Agricultural Teacher Education (Vocational)
+13.1302,Art Education,13.1302,Art Teacher Education
+13.1303,Business Education,13.1303,Business Teacher Education (Vocational)
+13.1305,English Education,13.1305,English Teacher Education
+13.1306,Foreign Languages Educ,13.1306,Foreign Languages Teacher Education
+13.1307,Health Education,13.1307,Health Teacher Education
+13.1308,Home Economics Educ,13.1308,Home Economics Teacher Education (Vocational)
+13.1309,Industrial Arts Educ,13.1309,Technology Teacher Educ/Industrial Arts Teacher Educ
+13.1310,Market & Distrib Educ,13.1310,Marketing Operations & Marketing and Distrib Teacher Ed
+13.1311,Mathematics Education,13.1311,Mathematics Teacher Education
+13.1312,Music Education,13.1312,Music Teacher Education
+13.1314,Physical Education,13.1314,Physical Education Teaching & Coaching
+13.1315,Reading Education,13.1315,Reading Teacher Education
+13.1316,Science Education,13.1316,"Science Teacher Education, General"
+13.1317,"Social Science, Educ",13.1317,Social Science Teacher Education
+13.1318,Social Studies Educatio,13.1318,Social Studies Teacher Education
+13.1320,Trade & Industrial Educ,13.1320,Trade & Industrial Teacher Education (Vocational)
+13.1321,Computer Education,13.1321,Computer Teacher Education
+13.1399,"Teacher Education, Spec",13.1399,"Teacher Ed, Specific Academic & Vocational Programs, Other"
+13.1401,Tchg Eng as Second Lang,13.1401,Teaching English as a Second Language/Foreign Language
+13.9999,"Education, Other",13.9999,"Education, Other"
+14.0101,"Engineering, General",14.0101,"Engineering, General"
+14.0201,"Aerosp, Aeron, & Astro",14.0201,"Aerospace, Aeronautical & Astronautical Engineering"
+14.0301,Agricultural Engineer,14.0301,Agricultural Engineering
+14.0501,Bioengineering & Biomed,14.0501,Bioengineering & Biomedical Engineering
+14.0701,Chemical Engineering,14.0701,Chemical Engineering
+14.0801,Civil Engineering,14.0801,"Civil Engineering, General"
+14.0901,Computer Engineering,14.0901,Computer Engineering
+14.1001,"Electrical, Electronics",14.1001,"Electrical, Electronics & Communications Engineering"
+14.1101,Engineering Mechanics,14.1101,Engineering Mechanics
+14.1201,Engineering Physics,14.1201,Engineering Physics
+14.1301,Agricultural Engnrng,14.1301,Engineering Science
+14.1401,Environment Health Eng,14.1401,Environmental/Environmental Health Engineering
+14.1701,Industrial Engineering,14.1701,Industrial/Manufacturing Engineering
+14.1801,Materials Engineering,14.1801,Materials Engineering
+14.1901,Mechanical Engineering,14.1901,Mechanical Engineering
+14.2101,Mining & Mineral Engine,14.2101,Mining & Mineral Engineering
+14.2301,Nuclear Engineering,14.2301,Nuclear Engineering
+14.2701,Systems Engineering,14.2701,Systems Engineering
+14.2801,Textile Engineering,14.2801,Textile Sciences & Engineering
+14.9999,"Engineering, Other",14.9999,"Engineering, Other"
+15.0101,Arch Design & Const Tec,15.0101,Architectural Engineering Technology/Technician
+15.0201,Civil Technology,15.0201,Civil Engineering/Civil Technology/Technician
+15.0202,Drafting & Design Techn,48.0101,"Drafting, General"
+15.0299,"Civil Technologies, Oth",15.0201,Civil Engineering/Civil Technology/Technician
+15.0301,Computer Technology,15.0301,Computer Engineering Technology/Technician
+15.0303,Electronic Technology,15.0303,"Electrical, Electronic & Comm Engineering Tech/Technician"
+15.0399,Electrical & Electronic,15.0399,"Electrical & Electronic Engr-Related Tech/Technician,Other"
+15.0401,Biomedical Equip Tech,15.0401,Biomedical Engineering-Related Technology/Technician
+15.0402,Computer Servicing Tech,15.0402,Computer Maintenance Technology/Technician
+15.0599,Environ Control Tech,15.0599,"Environmental Control Technologies/Technicians, Other"
+15.0603,Industrial Technology,15.0603,Industrial/Manufacturing Technology/Technician
+15.0699,"Indust Prod Tech, Other",15.0699,"Industrial Production Technologies/Technicians, Other"
+15.0701,Occ Safety & Hlth Tech,15.0701,Occupational Safety & Health Technology/Technician
+15.0899,Mechanical & Rel Tech,15.0899,"Mechanical Engineering-Related Techl/Technicians, Other"
+15.0901,Coal Mining Technology,15.0901,Mining Technology/Technician
+15.9999,Eng & Eng-Related Tech,15.9999,"Engineering-Related Technologies/Technicians, Other"
+16.0101,"Foreign Languages, Mult",16.0101,"Foreign Languages & Literatures, General"
+16.0402,Russian,16.0402,Russian Language & Literature
+16.0403,Slavic Lan (Not Russian,16.0403,Slavic Languages & Literatures (Other than Russian)
+16.0501,German,16.0501,German Language & Literature
+16.0601,Greek (Classical),16.1202,Greek Language & Literature (Ancient & Medieval)
+16.0901,French,16.0901,French Language & Literature
+16.0902,Italian,16.0902,Italian Language & Literature
+16.0903,Latin,16.1203,Latin Language & Literature (Ancient & Medieval)
+16.0905,Spanish,16.0905,Spanish Language & Literature
+16.9999,"Foreign Languages, Oth",16.9999,"Foreign Languages & Literatures, Other"
+17.0101,Dental Assisting,51.0601,Dental Assistant
+17.0102,Dental Hygiene,51.0602,Dental Hygienist
+17.0103,Dental Lab Technology,51.0603,Dental Laboratory Technician
+17.0206,Emerg Med Tech--Paramed,51.0904,Emergency Medical Technology/Technician
+17.0207,Med Radiation Dosimetry,51.0905,Nuclear Medical Technology/Technician
+17.0208,Nuclear Medical Technol,51.0905,Nuclear Medical Technology/Technician
+17.0209,Radiologic (Med) Tech,51.0907,Medical Radiologic Technology/Technician
+17.0210,Respiratory Ther Tech,51.0908,Respiratory Therapy Technician
+17.0211,Surgical Technology,51.0909,Surgical/Operating Room Technician
+17.0299,"Diag & Treat Serv, Oth",51.0999,"Health & Medical Diagnostic & Treatment Services, Other"
+17.0301,Blood Bank Technology,51.1001,Blood Bank Technology/Technician
+17.0303,Clinical Animal Technol,51.1099,"Health & Medical Laboratory Tech/Technicians, Other"
+17.0309,Medical Lab Technology,51.1004,Medical Laboratory Technician
+17.0310,Medical Technology,51.1005,Medical Technology
+17.0399,"Medical Lab Tech, Other",51.1099,"Health & Medical Laboratory Tech/Technicians, Other"
+17.0402,Community Health Work,51.0301,Community Health Liaison
+17.0406,Ment Hlth/Hum Svcs Tech,51.1502,Psychiatric/Mental Health Services Technician
+17.0407,Rehabilitation Counsel,51.2310,Vocational Rehabilitation Counseling
+17.0499,Mental Health/Human Ser,51.0301,Community Health Liaison
+17.0503,Medical Assisting,51.0801,Medical Assistant
+17.0505,Medical Office Mgmt,51.0705,Medical Office Management
+17.0506,Medical Records Technol,51.0707,Medical Records Technology/Technician
+17.0508,Physician Assistant,51.0807,Physician Assistant
+17.0605,Practical Nursing,51.1613,Practical Nurse (L.P.N.)
+17.0699,"Nursing-Related Ser, Ot",51.1699,"Nursing, Other"
+17.0705,Optometric Technology,51.1802,Optical Technician/Assistant
+17.0801,Art Therapy,51.2301,Art Therapy
+17.0806,Music Therapy,51.2305,Music Therapy
+17.0807,Occupational Therapy,51.2306,Occupational Therapy
+17.0808,"Occupational Ther, Oth",51.0803,Occupational Therapy Assistant
+17.0813,Physical Therapy,51.2308,Physical Therapy
+17.0815,Physical Therapy Asst,51.0806,Physical Therapy Assistant
+17.0816,Recreational Therapy,51.2309,Recreational Therapy
+17.0818,Respiratory Therapy,51.0908,Respiratory Therapy Technician
+17.0899,Rehabilitation Services,51.2399,"Rehabilitation/Therapeutic Services, Other"
+17.9999,"Allied Health, Other",51.9999,"Health Professions & Related Sciences, Other"
+18.0101,Audiology,51.0202,Audiology/Hearing Sciences
+18.0102,Speech Pathology,51.0203,Speech-Language Pathology
+18.0103,Speech-Language Path,51.0204,Speech Pathology & Audiology
+18.0401,"Dentistry, General",51.0401,"Dentistry (D.D.S., D.M.D.)"
+18.0701,Health Services Adminis,51.0701,Health Systems/Health Services Administration
+18.0703,Medical Records Adminis,51.0706,Medical Records Administration
+18.0799,Health Services Adminis,51.0799,"Health & Medical Administrative Services, Other"
+18.0901,Medical Technology,51.1005,Medical Technology
+18.1001,"Medicine, General",51.1201,Medicine (M.D.)
+18.1101,"Nursing, General",51.1601,Nursing (R.N.Training)
+18.1102,Anesthetist,51.1604,Nursing Anesthetist (Post-R.N.)
+18.1105,Nursing Administration,51.1602,Nursing Administration (Post-R.N.)
+18.1107,Public Health,51.1611,"Nursing, Public Health (Post-R.N)"
+18.1199,"Nursing, Other",51.1699,"Nursing, Other"
+18.1401,Pharmacy,51.2001,"Pharmacy (B.Pharm., Pharm.D.)"
+18.1701,Pre-Dentistry,51.1101,Pre-Dentistry Studies
+18.1801,Pre-Medicine,51.1102,Pre-Medicine Studies
+18.2001,Pre-Veterinary Med,51.1104,Pre-Veterinary Studies
+18.2202,Public Health Lab Sci,51.2203,Epidemiology
+18.2203,Public Health Education,51.2207,Public Health Education & Promotion
+18.2204,"Public Hlth, Prac & Mgm",51.2201,"Public Health, General"
+18.2299,"Public Health, Other",51.2299,"Public Health, Other"
+18.2401,Veterinary Medicine,51.2401,Veterinary Medicine (D.V.M.)
+18.9999,"Health Sciences, Other",51.9999,"Health Professions & Related Sciences, Other"
+19.0101,"Home Economics, General",19.0101,"Home Economics, General"
+19.0201,Business Home Economics,19.0201,Business Home Economics
+19.0301,Family/Comm Services,19.0301,Family & Community Studies
+19.0401,Family/Consumer Res Mgm,19.0401,Family Resource Management Studies
+19.0402,Consumer Science,19.0402,Consumer Economics & Science
+19.0501,Food Sci & Human Nutr,19.0501,"Foods & Nutrition Studies, General"
+19.0503,Dietetics/Human Nutrit,19.0503,Dietetics/Human Nutritional Services
+19.0599,Foods & Nutrition,19.0599,"Foods & Nutrition Studies, Other"
+19.0601,Human Env & Housing,19.0601,"Housing Studies, General"
+19.0603,Housing,19.0603,Interior Environments
+19.0701,Individual & Family Dev,19.0701,"Individual & Family Development Studies, General"
+19.0705,Gerontological Services,19.0705,Gerontological Services
+19.0901,"Text & Clothing, Genl",19.0901,Clothing/Apparel & Textile Studies
+19.0902,Fashion Design,50.0407,Fashion Design & Illustration
+19.9999,Hotel/Rest./Inst. Mgmt.,19.9999,"Home Economics, Other"
+20.0301,"Clothing, Apparel & Tex",20.0301,"Clothing, Apparel & Textile Workers & Managers, General"
+20.0406,Food Service,20.0409,Institutional Food Services Administrator
+22.0101,Law,22.0101,"Law (L.L.B., J.D.)"
+22.0102,Pre-Law,22.0102,Pre-Law Studies
+22.0103,Legal Asssiting,22.0103,Paralegal/Legal Assistant
+22.0199,"Law, Other",22.0199,"Law & Legal Studies, Other"
+23.0101,"English, General",23.0101,"English Language & Literature, General"
+23.0201,Classics,16.1201,Classics & Classical Languages & Literatures
+23.0301,Comparative Literature,23.0301,Comparative Literature
+23.0501,Creative Writing,23.0501,English Creative Writing
+23.0601,"Linguistics (Incl Phon,",16.0102,Linguistics
+23.0801,"Literature, English",23.0801,English Literature (British & Commonwealth)
+23.1001,"Speech, Debate & Foren",23.1001,Speech & Rhetorical Studies
+23.1101,Tech & Scientific Comm,23.1101,English Technical & Business Writing
+23.9999,"Letters, Other",23.9999,"English Language & Literature/Letters, Other"
+24.0101,Liberal Arts & Sciences,24.0101,Liberal Arts & Sciences/Liberal Studies
+24.0102,General Studies,24.0102,General Studies
+24.0199,Liberal/General Studies,24.0199,"Liberal Arts & Sci, General Studies & Humanities, Other"
+25.0201,Archival Science,45.0805,Public/Applied History & Archival Administration
+25.0301,Library Assisting,25.0301,Library Assistant
+25.0401,Library Science,25.0101,Library Science/Librarianship
+26.0101,"Biology, General",26.0101,"Biology, General"
+26.0201,Biochemistry & Biophysi,26.0202,Biochemistry
+26.0301,"Botany, General",26.0301,"Botany, General"
+26.0304,"Genetics, Plant/Animal",26.0613,"Genetics, Plant & Animal"
+26.0305,Plant Pathology,26.0305,Plant Pathology
+26.0501,Microbiology,26.0501,Microbiology/Bacteriology
+26.0601,Anatomy,26.0601,Anatomy
+26.0602,Biometrics & Biostatist,26.0615,Biostatistics
+26.0603,Ecology,26.0603,Ecology
+26.0607,Marine Biology,26.0607,Marine/Aquatic Biology
+26.0608,Neurosciences,26.0608,Neuroscience
+26.0699,Biomedical Sciences,26.0699,"Miscellaneous Biological Specializations, Other"
+26.0701,"Zoology, General",26.0701,"Zoology, General"
+26.0702,Entomology,26.0702,Entomology
+26.0703,"Genetics, Human & Anima",26.0613,"Genetics, Plant & Animal"
+26.0704,"Pathology, Human & Anim",26.0704,"Pathology, Human & Animal"
+26.0705,"Pharmacol, Human & Anim",26.0705,"Pharmacology, Human & Animal"
+26.0706,"Physiology, Human & Ani",26.0706,"Physiology, Human & Animal"
+26.9999,"Life Sciences, Other",26.9999,"Biological Sciences/Life Sciences, Other"
+27.0101,"Mathematics, General",27.0101,Mathematics
+27.0301,Applied Mathematics,27.0301,"Applied Mathematics, General"
+27.0501,Statistics,27.0501,Mathematical Statistics
+27.9999,"Mathematics, Other",27.9999,"Mathematics, Other"
+29.9999,"Military Tech, Other",29.0101,Military Technologies
+30.0101,Biol & Physical Science,30.0101,Biological & Physical Sciences
+30.0201,Clinical Pastoral Care,39.0701,Pastoral Counseling & Specialized Ministries
+30.0301,Engineering & Other Dis,30.9999,"Multi/Interdisciplinary Studies, Other"
+30.0401,Humanities & Social Sci,24.0103,Humanities/Humanistic Studies
+30.0501,Peace and Conflict Stud,30.0501,Peace & Conflict Studies
+30.0701,"Women""s Studies",5.0207,Women's Studies
+30.0801,Math & Computer Science,30.0801,Mathematics & Computer Science
+30.9999,Multi/Interdisciplinary,30.9999,"Multi/Interdisciplinary Studies, Other"
+31.0101,"Parks & Recreation, Gen",31.0101,"Parks, Recreation & Leisure Studies"
+31.0201,Outdoor Recreation,31.0101,"Parks, Recreation & Leisure Studies"
+31.0301,Parks & Rec Management,31.0301,"Parks, Recreation & Leisure Facilities Management"
+31.9999,"Parks & Recreation, Oth",31.9999,"Parks, Recreation, Leisure & Fitness Studies, Other"
+34.0199,"Health Rel Activit, Oth",34.0199,"Health-Related Knowledge & Skills, Other"
+36.0108,Sports/Physical Educ,31.0501,"Health & Physical Education, General"
+38.0101,Philosophy,38.0101,Philosophy
+38.0201,Religion,38.0201,Religion/Religious Studies
+38.9999,"Philosophy & Religion,",38.9999,"Philosophy & Religion, Other"
+39.0201,Bible Studies,39.0201,Bible/Biblical Studies
+39.0301,Missionary Studies,39.0301,Missions/Missionary Studies & Misology
+39.0401,Religious Education,39.0401,Religious Education
+39.0501,Religious Music,39.0501,Religious/Sacred Music
+39.0601,Theological Studies,39.0601,Theology/Theological Studies
+39.9999,"Theology, Other",39.9999,"Theological Studies & Religious Vocations, Other"
+40.0101,"Physical Sciences, Gen.",40.0101,"Physical Sciences, General"
+40.0201,Astronomy,40.0201,Astronomy
+40.0501,"Chemistry, General",40.0501,"Chemistry, General"
+40.0505,Pharmaceutical Chemistr,40.0505,Medicinal/Pharmaceutical Chemistry
+40.0601,Geology,40.0601,Geology
+40.0603,Geophysics & Seismology,40.0603,Geophysics & Seismology
+40.0699,"Geology, Other*",40.0699,"Geological & Related Sciences, Other"
+40.0702,Oceanography,40.0702,Oceanography
+40.0703,Earth Science,40.0703,Earth & Planetary Sciences
+40.0801,"Physics, General",40.0801,"Physics, General"
+40.0899,"Physics, Other",40.0899,"Physics, Other"
+40.9999,"Physical Sciences, Oth",40.9999,"Physical Sciences, Other"
+41.0101,Biological Tech/Technic,41.0101,Biological Technology/Technician
+41.0299,"Nuclear Tech, Other",41.0299,"Nuclear & Industrial Radiologic Tech/Technicians, Other"
+41.9999,"Science Tech, Other",41.9999,"Science Technologies/Technicians, Other"
+42.0101,"Psychology, General",42.0101,"Psychology, General"
+42.0201,Clinical Psychology,42.0201,Clinical Psychology
+42.0301,Cognitive Science*,42.0301,Cognitive Psychology & Psycholinguistics
+42.0401,Community Psychology,42.0401,Community Psychology
+42.0601,Counseling Psychology,42.0601,Counseling Psychology
+42.0901,Industrial & Organizati,42.0901,Industrial & Organizational Psychology
+42.1101,Physiolog Psy/Psychobio,42.1101,Physiological Psychology/Psychobiology
+42.9999,"Psychology, Other",42.9999,"Psychology, Other"
+43.0103,Criminal Justice Admini,43.0103,Criminal Justice/Law Enforcement Administration
+43.0104,Criminal Justice Studie,43.0104,Criminal Justice Studies
+43.0106,Forensic Studies,43.0106,Forensic Technology/Technician
+43.0107,Law Enforcement,43.0107,Law Enforcement/Police Science
+43.0108,Law Enforcement Admin,43.0103,Criminal Justice/Law Enforcement Administration
+43.0199,"Criminal Justice, Other",43.0199,"Corrections & Criminal Justice, Other"
+43.0299,"Fire Protection, Other",43.0299,"Fire Protection, Other"
+43.9999,"Protective Services, Ot",43.9999,"Protective Services, Other"
+44.0101,"Public Affairs, General",44.0401,Public Administration
+44.0201,"Comm Org, Res & Serv",44.0201,"Community Organization, Resources & Services"
+44.0401,Public Administration,44.0401,Public Administration
+44.0501,Public Policy Studies,44.0501,Public Policy Analysis
+44.0701,"Social Work, General",44.0701,Social Work
+44.0702,Medical Social Work,51.1503,Clinical & Medical Social Work
+44.0799,"Social Work, Other",44.0701,Social Work
+44.9999,"Public Affairs, Other",44.9999,"Public Administration & Services, Other"
+45.0101,"Social Sciences, Genera",45.0101,"Social Sciences, General"
+45.0201,Anthropology,45.0201,Anthropology
+45.0301,Archeology,45.0301,Archeology
+45.0401,Criminology,45.0401,Criminology
+45.0601,Economics,45.0601,"Economics, General"
+45.0701,Geography,45.0701,Geography
+45.0801,History,45.0801,"History, General"
+45.0901,International Relations,45.0901,International Relations & Affairs
+45.1001,Political Science & Gov,45.1001,"Political Science & Government, General"
+45.1101,Sociology,45.1101,Sociology
+45.1201,Urban Studies,45.1201,Urban Studies/Affairs
+45.9999,"Social Sciences, Other",45.9999,"Social Sciences, Other"
+46.0499,Misc Const & Prop Maint,46.0499,"Construction & Building Finishers & Managers, Other"
+47.0104,Computer Network Tech,47.0104,Computer Installer & Repairer
+47.0301,Ind Equip Maint & Rep,47.0399,"Industrial Equipment Maintenance & Repairers, Other"
+47.0404,Musical Instr Repair,47.0404,Musical Instrument Repairer
+47.0607,"Aircraft Tech, Airframe",47.0607,Aircraft Mechanic/Technician Airframe
+47.0608,"Aircraft Tech, Pwr Plnt",47.0608,Aircraft Mechanic/Technician Powerplant
+47.0699,Vehicle & Mob Equip Mch,47.0699,"Vehicle & Mobile Equipment Mechanics & Repairers, Other"
+48.0201,Graphic & Printing Comm,48.0201,"Graphic & Printing Equipment Operator, General"
+48.0203,Commercial Art,50.0402,"Graphic Design, Commercial Art & Illustration"
+49.0101,"Air Transportation, Gen",49.0101,Aviation & Airway Science
+49.0104,Aviation Management,49.0104,Aviation Management
+49.0105,Air Traffic Control,49.0105,Air Traffic Controller
+49.0205,Truck and Bus Driving,49.0205,"Truck, Bus & Other Commercial Vehicle Operator"
+49.9999,Transp & Material Movg,49.9999,"Transportation & Materials Moving Workers, Other"
+50.0101,Visual & Performing Art,50.0101,Visual & Performing Arts
+50.0201,"Crafts, General",50.0201,"Crafts, Folk Art & Artisanry"
+50.0301,Dance,50.0301,Dance
+50.0401,"Design, General",50.0401,Design & Visual Communications
+50.0402,Graphic Design,50.0402,"Graphic Design, Commercial Art & Illustration"
+50.0405,Theatre Design,50.0502,Technical Theater/Theater Design & Stagecraft
+50.0499,"Design, Other",50.0499,"Design & Applied Arts, Other"
+50.0501,Dramatic Arts,50.0501,"Drama/Theater Arts, General"
+50.0601,"Film Arts, General",50.0601,Film/Cinema Studies
+50.0603,Film Animation,50.0699,"Film/Video & Photographic Arts, Other"
+50.0605,Photography,50.0605,Photography
+50.0699,"Film Arts, Other",50.0699,"Film/Video & Photographic Arts, Other"
+50.0701,"Fine Arts, General",50.0701,"Art, General"
+50.0703,Art History & Appreciat,50.0703,"Art History, Criticism & Conservation"
+50.0704,Arts Management,50.0704,Arts Management
+50.0706,Intermedia,50.0706,Intermedia
+50.0708,Painting,50.0708,Painting
+50.0709,Sculpture,50.0709,Sculpture
+50.0799,"Fine Arts, Other",50.0799,"Fine Arts & Art Studies, Other"
+50.0901,"Music, General",50.0901,"Music, General"
+50.0902,Music History & Apprec,50.0902,Music History & Literature
+50.0903,Music Performance,50.0903,"Music, General Performance"
+50.0904,Music Theory & Comp,50.0904,Music Theory & Composition
+50.0999,"Music, Other",50.0999,"Music, Other"
+50.9999,"Visual & Perf Art, Oth",50.9999,"Visual & Performing Arts, Other"
