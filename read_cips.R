@@ -62,6 +62,8 @@ return_data = function() {
       read_completions(.$filename[1])
     )
   
+  # Use old files for pre-1999.
+  
   older = data_frame(filename = list.files()) %>% 
     filter(grepl("19...txt",filename)) %>%
     mutate(year=as.numeric(gsub(".txt","",filename))) %>%
@@ -120,7 +122,8 @@ return_cips = function() {
     slice(1)
 }
 
-cips_forward = function() {
+cips_forward = function() {}
+
   return_cips = function() {
     fix_nums = . %>% 
       gsub('["=]','',.) %>%
@@ -162,4 +165,3 @@ cips_forward = function() {
       group_by(CIPCode) %>% 
       slice(1)
   }
-}

@@ -22,24 +22,30 @@ data = data %>%
 #characteristics %>% filter(UNITID=="433387") %>% glimpse
 ```
 
+Quick check: total number of degrees by year. This may not match up exactly with dept of ed figures because of missing schools, no-majors, or other things. But I just want to not double count. This is Associate's, Bachelor's, and Masters.
+
+```{r}
+
+data %>% group_by(year, AWLEVEL) %>% filter(AWLEVEL %in% c(3,5,7)) %>% tally(degrees) %>% ggplot() + geom_line(aes(x=year, y=n, color=factor(AWLEVEL)))
+```
+
+
 ```{r}
 undergrad_majors = data %>% filter(AWLEVEL==5, MAJORNUM==1)
 
-undergrad_majors %>% group_by(year) %>% tally(degrees) %>% ggplot() + geom_line(aes(x=year, y = n)) + scale_y_log10()
-
 undergrad_majors %>% group_by(year, race) %>% tally(degrees) %>% ggplot() + geom_line(aes(x=year, y = n, color = race)) + scale_y_log10()
-
-
-into_major_nums = . %>% 
-  group_by(year,AWLEVEL,MAJORNUM,add = T) %>% 
-  filter(!is.na(degrees)) %>%
-  mutate(year_total=sum(degrees)) %>% 
-  group_by(year,CIPCODE,year_total,AWLEVEL,MAJORNUM,add=T) %>%
-  summarize(degrees = sum(degrees))
-  
 ```
 
 Understanding by institutional control
+
+A useful function applied over any previous grouping
+```{r}
+
+source("EDA_functions.R")
+
+```
+
+Some bad news: there's something weird going on with the relative numbers of public and private in 1998. I would guess some major public systems are split up or unified--eg, Wisconsin stops reporting all campuses and starts reporting each individual school, and now it shows up in my numbers. Conclusion: don't use pre-1997 data at institution level.
 
 ```{r}
 
@@ -69,10 +75,9 @@ ggplot(control) + geom_line(aes(x=year,y=percent,color=CONTROL))
 ```
 
 
-```{r, fig.width=4,fig.height=4}
+```{r, fig.width=6,fig.height=6}
 
 library(ggrepel)
-
 
 plottable = undergrad_majors %>% 
   into_major_nums %>% 
@@ -82,7 +87,7 @@ this_plot = plottable %>% filter(year >= 1985) %>%
     group_by(year,General,Type) %>%
     filter(General %in% c("Humanities")) %>% 
     filter(Type %in% c("English","History","Languages and Literature","Philosophy","Area Studies")) %>%
-    summarize(degrees = sum(degrees), percent = sum(degrees)/year_total[1])
+    summarize(degrees = sum(degrees), percent = sum(degrees)/year_total[1]) %>% filter(!(Type=="Area Studies" && year < 1997))
   
 this_plot %>% ggplot(aes(x=year,y=percent,fill=Type,label=Type,color=Type)) +
     geom_line() + 
@@ -105,6 +110,148 @@ this_plot %>%
   mutate(degrees = degrees/max(degrees)) %>% filter(year==2017))
 
 ```
+
+
+Load American Academy Taxonomy.
+
+```{r, fig.width=8, fig.height=7}
+
+
+add_amacad_groupings = . %>%
+  group_by(year, CIPCODE, add = T) %>% 
+  summarize(degrees = sum(degrees)) %>%
+  left_join(amadjusted)
+
+d3 = data %>% filter(AWLEVEL==5) %>% 
+  group_by(MAJORNUM) %>%
+   add_amacad_groupings()
+
+totals = d3 %>% 
+  group_by(year) %>% 
+  summarize(year_total = sum(degrees, na.rm=T), people_total = sum(degrees[MAJORNUM==1], na.rm=T))
+
+this_plot = d3 %>%
+  group_by(year, Discipline) %>%
+  filter(Bachelors=="Humanities") %>%
+  summarize(degrees = sum(degrees, na.rm=T)) %>%
+  ungroup %>% 
+  filter(!is.na(Discipline)) %>%
+  group_by(Discipline, year) %>%
+  summarize(degrees = sum(degrees, na.rm=T)) %>%
+  ungroup %>% 
+  inner_join(totals) %>% 
+  mutate(percent = degrees/year_total) %>%
+  group_by(Discipline) %>% 
+  filter(2007 %in% year) %>%
+  mutate(relative = percent/percent[year==2007]) %>%
+  filter(year > 1998) %>%
+  group_by(Discipline) %>%
+  mutate(size = factor(round(.5 + log(mean(percent), base = 9))))
+
+this_plot %>% ungroup %>% mutate(total = sum(degrees)) %>% group_by(size, total) %>% summarize(count=sum(degrees))
+
+this_plot %>% inner_join(totals) %>% 
+  mutate(percent = degrees/year_total) %>% ggplot() + 
+  aes(x=year,y=percent, color=Discipline) + 
+  facet_wrap(~size, scales="free_y") +
+  geom_line() + scale_y_continuous(limits = c(0,NA)) + 
+  geom_text_repel(data = this_plot %>% filter(year==2016), aes(label=Discipline)) + 
+  theme(legend.position="none") + labs(
+    title="20-year trajectories of all humanities fields,\nshare of degrees",
+    subtitle = "Categories from American Academy of Arts and Sciences Humanities Indicators\nGrouped by size. 85% of all degrees on this chart are in the top left corner.",
+    caption = "Ben Schmidt with IPEDS data and American Academy of Arts and Sciences Taxonony\nI don't think Communications is a humanities field, but the Academy does, so I'm including it.") + scale_y_continuous(labels=scales::percent)
+
+
+```
+
+
+```{r}
+long_term = read_tsv("long_term.txt")
+ltotals = totals %>% group_by(year) %>% summarize(year_total = sum(year_total)) %>% mutate(source="IPEDS") %>% bind_rows(
+  long_term %>% mutate(source="Old", year_total = total) %>% select(year=Year, year_total, people_total=total, source )
+  )
+
+pop = read_csv("pop_estimates.csv") %>% select(-junk)
+
+tot_degrees = ltotals %>% group_by(year) %>% summarize(total_degrees = max(year_total))
+
+tot_degrees %>% tail
+
+this_plot = long_term %>% mutate(source = "old") %>% select(year = Year, Discipline = variable, degrees = count, source) %>% 
+  filter(Discipline != "All Others", year < 2000) %>% 
+  bind_rows(
+    this_plot %>% 
+      #filter(grepl("(English Language and Literature|History|Languages|Philosophy)", Discipline)) %>% 
+      filter(!grepl("(Communication|Liberal Studies)", Discipline)) %>%
+      select(year, Discipline, degrees) %>% mutate(source="new") %>% filter(year >= 2000)
+  ) %>% 
+  mutate(Discipline = fct_recode(Discipline, c("English" = "English Language and Literature"), c("Languages" = "Languages and Literatures Other than English"))) %>%
+  inner_join(pop) %>%
+  inner_join(tot_degrees) %>%
+  group_by(Discipline) %>% 
+  mutate(years = sum(degrees)) %>%
+  mutate(longterm = years > 300000) %>%
+  distinct(year, Discipline, .keep_all = T)
+this_plot %>%  ggplot() + 
+  geom_area(aes(color = reorder(Discipline, years), x = year, y = degrees/total_degrees,
+                alpha = longterm,
+                fill=reorder(Discipline, years))) + labs(
+    fill = "Discipline",
+    title = "Degrees per 1000 23-year-olds in the United States",
+    subtitle = "Humanities Fields: long term data only for four largest.",
+    caption = "Ben Schmidt: Data from IPEDS/Taxonomy from American Academy.\nCounting each degree for double majors after 2000."
+) + scale_color_discrete(guide = 'none') + scale_alpha_discrete(guide='none') + scale_y_continuous(labels = scales::percent)
+
+this_plot %>% filter(Discipline=="English") %>% select(year, Discipline, degrees, all_majors = total_degrees) %>% filter(year > 2000) %>% write_csv("english.csv")
+
+this_plot %>% 
+  filter(longterm==TRUE) %>%
+  group_by(year) %>% summarize(share = sum(degrees)/collegepop[1]) %>% 
+
+
+```
+```{r}
+d = long_term %>% mutate(source = "old") %>% select(year = Year, Discipline = variable, degrees = count, source) %>% 
+  filter(Discipline != "All Others", year < 2000) %>% 
+  bind_rows(
+    this_plot %>% 
+      #filter(grepl("(English Language and Literature|History|Languages|Philosophy)", Discipline)) %>% 
+      filter(!grepl("(Communication|Liberal Studies)", Discipline)) %>%
+      select(year, Discipline, degrees) %>% mutate(source="new") %>% filter(year >= 2000)
+  ) %>% 
+  mutate(Discipline = fct_recode(Discipline, c("English" = "English Language and Literature"), c("Languages" = "Languages and Literatures Other than English"))) %>%
+  inner_join(pop) %>%
+  inner_join(tot_degrees) %>% group_by(year, total_degrees, collegepop) %>% 
+  summarize(humanities = sum(degrees)) %>% 
+  ungroup %>% arrange(year) %>% 
+  mutate(deg_share = total_degrees/collegepop) %>%
+  mutate(hum_share = humanities/total_degrees) %>%
+  mutate(hum_change = hum_share/lag(hum_share, 1) - 1) %>%
+  mutate(deg_change = deg_share/lag(deg_share, 1) - 1)
+
+d %>% filter(year >= 1960) %>% ggplot() +
+  aes(x=deg_change, y = hum_change, label=year, color=year) + 
+  geom_path() + geom_text(
+    data=d %>% filter(year %% 5 == 0, year >= 1960)
+  )
+```
+
+```{r}
+this_plot %>% filter(Discipline %in% c("English", "History", "Languages", "Philosophy")) %>% ggplot() + 
+  geom_area(aes(color = reorder(Discipline, years), x = year, y = degrees/total_degrees,
+                fill=reorder(Discipline, years))) + 
+  labs(    fill = "Discipline",
+    title = "Humanities Degrees as percentage of all US college degrees, 1948-2017",
+    caption = "Ben Schmidt: Data from IPEDS/Taxonomy from American Academy.\nCounting each degree for double majors after 2000.") + 
+  #geom_vline(xintercept=2011, alpha=1, lty=2, color="black") + 
+  scale_color_discrete(guide = 'none') + scale_y_continuous(labels = scales::percent) + 
+  annotate("text", label="I say not to worry\nbased on 2011 data", x = 2007.8, hjust=1, y = .11, lineheight=.75) + 
+  annotate("text", label = stringr::str_wrap("Shift to counting double majors artificially increases humanities share in 2001", width = 26), x = 1997.5, y = .05, hjust = 1, lineheight=.75) + 
+  annotate("segment", x = 1997.5, xend = 2000, y = .05, yend = .069) + 
+  annotate("segment", x = 2007.8, xend = 2011, y = .11, yend = .0739)
+
+```
+
 Why is English *so* bad in 2010? The answer: CIPS changed the reporting from "Speech and rhetorical studies" to "rhetoric and composition," and that lost a few thousand degrees in a batch.
 
 ``` {r}
@@ -114,16 +261,12 @@ engq %>% ungroup %>% mutate(lab = paste(CIP2010, CIPTitle)) %>% select(year, deg
 ```
 
 
-```{r}
-undergrad_majors = data %>% filter(AWLEVEL==5, MAJORNUM==1) %>% group_by(MAJORNUM)
-into_major_nums = . %>% 
-  group_by(year,AWLEVEL,add = T) %>% 
-  filter(!is.na(degrees)) %>%
-  mutate(year_total=sum(degrees)) %>% 
-  group_by(year,CIPCODE,year_total,AWLEVEL,MAJORNUM, add=T) %>%
-  summarize(degrees = sum(degrees))
 
-with_num = data %>% ungroup %>% filter(AWLEVEL==5, MAJORNUM==1) %>% into_major_nums
+Most fields are about the same as percentage of major #2 as major #1, except Languages which are often *much* higher.
+
+
+```{r}
+with_num = data %>% ungroup %>% group_by(MAJORNUM) %>% filter(AWLEVEL==5) %>% into_major_nums
 
 with_num %>% mutate(percent = degrees/year_total) %>% left_join(cips,by=c("CIPCODE"="CIPCode")) %>%
   group_by(Type, year, General, MAJORNUM) %>% summarize(percent = sum(percent)) %>% filter(General=="Humanities") %>% ggplot() + geom_line(aes(x=year,y=percent,color=Type, lty=factor(MAJORNUM)))
@@ -142,62 +285,50 @@ Other fields?
 
 
 
-```{r fig.width=8, fig.height=7}
-with_num = data %>% filter (year > 1997) %>% ungroup %>% filter(AWLEVEL==5, MAJORNUM==1) %>% into_major_nums
-
-this_plot = with_num %>% mutate(percent = degrees/year_total) %>% left_join(cips,by=c("CIPCODE"="CIPCode")) %>%
-  group_by(Type, General, MAJORNUM, year) %>% 
-  summarize(percent = sum(percent)) %>% filter(max(percent) > .005)
-  
-this_plot %>% 
-  ggplot() + 
-  aes(x=year,y=percent, color=Type, label = Type) +
-  geom_line() + 
-  scale_y_continuous(labels = scales::percent) +
-  facet_wrap(~General, scales="free_y") + theme(legend.position="none") + 
-    labs(title="Changes in Majors since 1997",subtitle="As share of BAs; all US institutions",
-         caption = "IPEDS data (preliminary for 2017)\nChart by Ben Schmidt, 2018") + 
-  geom_text_repel(data=this_plot %>% filter(year==2015))
-
-```
-
 Political Science and economics are also in trouble.
 
 ```{r fig.width=5, fig.height=8}
 
-this_plot = with_num %>% mutate(percent = degrees/year_total) %>% left_join(cips,by=c("CIPCODE"="CIPCode")) %>%
-  group_by(Type, MAJORNUM, year, General) %>% 
+annual_majors = data %>% filter(AWLEVEL==5, MAJORNUM==1) %>% into_major_nums
+
+this_plot = annual_majors %>% 
+  acadjoin() %>% cipsjoin() %>% 
+  mutate(percent = degrees/year_total) %>%
+  group_by(Type, year, General) %>% 
   summarize(percent = sum(percent)) %>%
   group_by(Type) %>%
-  filter(General %in% c("Social Science", "Humanities"), max(percent) > .01, Type != "General") %>%
+  filter(General %in% c("Social Science", "Humanities"), max(percent) > .005, Type != "General") %>%
   group_by(Type) %>% mutate(percent=percent/(percent[year==2008]))
+
 
 this_plot %>% 
   ggplot() + 
   aes(x=year,y=percent, color=Type, label = Type) +
   geom_line() + 
   scale_y_continuous(labels = scales::percent) +
- # facet_wrap(~General, scales="free_y") + 
+  facet_wrap(~General, scales="free_y") + 
   theme(legend.position="none") + 
     labs(title="Changes in Major share since 1997",subtitle="As share of BA, relative to 2008 numbers; all US institutions.",
          caption = "IPEDS data (preliminary for 2017)\nChart by Ben Schmidt, 2018.") + 
   geom_text_repel(data=this_plot %>% filter(year==2017))
 ```
+```{r fig.width = 8, fig.height = 12}
+this_plot = annual_majors %>% 
+  cipsjoin %>%
+  group_by(year) %>% mutate(year_totals = sum(degrees)) %>%
+  group_by(Type, General, year_totals) %>% mutate(degrees = sum(degrees)) %>% 
+  mutate(percent = degrees/year_totals) %>%
+  group_by(Type, General) %>%
+  filter(max(percent) > .005, Type != "General")
 
-
-```{r}
-
-this_plot = with_num %>% mutate(percent = degrees/year_total) %>% left_join(cips,by=c("CIPCODE"="CIPCode")) %>%
-  group_by(General, MAJORNUM, year) %>% 
-  summarize(percent = sum(percent)) %>% filter(max(percent) > .005)
-
-this_plot = with_num %>% mutate(percent = degrees/year_total) %>% left_join(cips,by=c("CIPCODE"="CIPCode")) %>%
-  group_by(General, MAJORNUM, year) %>% 
-  summarize(percent = sum(percent)) %>% filter(max(percent) > .005)
-
+d = this_plot %>%
+ggplot() + geom_line() + aes(x = year, y = percent, color=Type, group=General) + facet_wrap(~ General + Type, scales="free", ncol = 4, labeller = labeller(label_wrap_gen(10))) + theme(legend.position="none") + scale_y_continuous(labels=scales::percent) + expand_limits(y = 0) + labs(title="Share of various disciplines", subtitle="Percent of all college majors.") + geom_vline(xintercept =2011, col="blue", lty=2, alpha = .6)
+d
+ggsave(plot = d, device = "png", filename="~/fullshare.png", width=8, height=12)
 ```
 
-What's the universe of Humanities Degrees
+
+
 
 ```{r}
 
@@ -215,11 +346,9 @@ this_plot = data %>% filter(year==2017, AWLEVEL==5) %>% mutate(year_total = n())
 this_plot %>%
   ggplot() + geom_point(aes(x=reorder(label, count), y = count, color=Type)) + coord_flip() + scale_y_log10()
 
-this_plot %>% mutate(bin = as.integer(label) < 4) %>% group_by(bin) %>% summarize(n = sum(count))
 ```
 
 ```{r}
-plottable %>% distinct(year, year_total) %>% ggplot() + geom_line(aes(x=year, y = year_total))
 pl = plottable %>% group_by(CIPCODE, CIPTitle, year) %>% summarize(percent = sum(degrees)/year_total[1]) %>% mutate(dropping = percent  - lag(percent,1) < 0) %>% select(year, dropping, CIPTitle, CIPCODE, percent) %>% filter(!is.na(dropping)) %>% filter(grepl("History, General.", CIPTitle))
 
 streaks = function(pl) {
@@ -230,20 +359,18 @@ streaks = function(pl) {
   change = (pl$percent[ends] - pl$percent[starts])/pl$percent[starts] * 100
   data_frame(dropping = lengths$values, length = lengths$lengths, label = labs, change = change)
 }
-streaks(pl)
+
 pl = plottable %>% group_by(CIPCODE, CIPTitle, year) %>% summarize(percent = sum(degrees)/year_total[1]) %>%
   mutate(dropping = percent  - lag(percent,1) < 0) %>% filter(!is.na(dropping))
 
 dropping_summaries = pl %>% do(streaks(.)) %>% arrange(-length)
 dropping_summaries %>% filter(dropping == FALSE) %>% arrange(-length) %>% head(10) %>% select(CIPCODE, CIPTitle, label, length, change)
 
+dropping_summaries %>% filter(dropping == TRUE) %>% arrange(-length) %>% head(10) %>% select(CIPCODE, CIPTitle, label, length, change)
+
 plottable %>% filter(CIPCODE %in% c("31.0505", "54.0101", "45.0801")) %>% mutate(percent = degrees/year_total) %>% ggplot() + geom_line(aes(x=year,y=percent, color = CIPTitle))
 ```
 
-```{r}
-this_plot %>% arrange(year) %>% group_by(Type) %>% mutate(change = percent/lag(percent, 1) - 1) %>% 
-  ggplot() + geom_point(aes(x=year,y=change, color=Type))
-```
 
 ```{r}
 
@@ -274,6 +401,7 @@ tp2 %>%
     labs(title="Humanities majors continue to fall",subtitle="Decline from peak share of degrees since 1997\nall US institutions",
          caption = "IPEDS data (preliminary for 2016/2017)\nChart by Ben Schmidt, 2018") + geom_text_repel(data=tp2 %>% filter(year==2017)) 
 ```
+
 ```{r fig.width=4,fig.height=4}
 tp2 = this_plot %>% 
   group_by(Type) %>% 
@@ -283,9 +411,9 @@ tp2 = this_plot %>%
 tp2 %>%
   ggplot(aes(x=year,y=relative-1,fill=Type,label=Type,color=Type)) +
     geom_line() + 
-    scale_y_continuous("Percentage decline from peak", labels=scales::percent, limits = c(-.5, 0)) + 
+    scale_y_continuous("Percentage decline from peak", labels=scales::percent, limits = c(-.75, 0)) + 
    theme(legend.position="none") + 
-    labs(title="Humanities minors are also falling",subtitle="Decline from peak share of minors since 1997\nall US institutions",
+    labs(title="Humanities double majors are also falling",subtitle="Decline from peak share of minors since 1997\nall US institutions\n(eg, 'History and Computer Science')",
          caption = "IPEDS data (preliminary for 2017)\nChart by Ben Schmidt, 2018") + geom_text_repel(data=tp2 %>% filter(year==2017)) 
 ```
 
@@ -322,27 +450,228 @@ grid_change %>% filter(Type!="General") %>% ggplot() + geom_text_repel(aes(x=rec
 
 ```
 
+
+
+```{r cars}
+
+top30 = characteristics %>% 
+  filter(grepl("Harvard|Yale|Princeton|Dartmouth|University of Pennsylvania|Brown|University of Chicago|Stanford|Columbia University|Duke|Massachusetts Institute|University of Pennsylvania|Johns Hopkins|California Institute|Northwestern|Cornell|Rice|Notre Dame|Vanderbilt|Washington University|Georgetown|Berkeley|Southern California|Carnegie Mellon|Los Angeles|University of Virginia|Tufts|Ann Arbor|Wake Forest|Chapel Hill",INSTNM), CARNEGIE==15) %>% 
+  mutate(elite = TRUE) %>% 
+  select(UNITID, elite)
+
+# Not including the military academies.
+
+p3 = data %>% filter(AWLEVEL==5, MAJORNUM==1) %>%
+  inner_join(top30) %>% 
+ # mutate(gender="all") %>%
+#  group_by(gender) %>% 
+  into_major_nums %>%
+  acadjoin %>%
+#    mutate(Type = ifelse(Type %in% c("General","Humanities"), "General Humanities",Type)) %>%
+    group_by(Bachelors, Discipline, year) %>%
+#    filter(General %in% c("Humanities","Social Science")) %>% 
+#    filter(Type %in% c("English","History","Languages and Literature","Philosophy")) %>%
+    summarize(degrees = sum(degrees), percent = sum(degrees)/year_total[1]) %>%
+  filter(year > 1997) %>%
+  mutate(relative = 1 - percent/max(percent), peak_year = year[percent==max(percent)][1])
+
+p3 %>% filter(year==2017, Discipline != "Agriculture") %>% 
+  ungroup %>%
+  mutate(Discipline = paste0(Discipline, " (peak ", peak_year, ")")) %>% arrange(relative) %>% ungroup %>% select(relative, peak_year, Discipline, percent) %>% ggplot() + geom_point(aes(size=percent, x=reorder(Discipline, peak_year), y = -relative)) + coord_flip() + scale_y_continuous("Change from peak", labels = scales::percent) + scale_x_discrete("Discipline") + scale_size_continuous("Percentage of degrees\nin 2017", trans="sqrt", labels = scales::percent, breaks = c(.01, .1, .5, 1, 2)/100) + labs(title="Fall at elite colleges\nin share of humanities majors", caption = "Ben Schmidt, 2018: Data from IPEDS, taxonomy from American Academy")
+
+    #filter(sum(degrees) > 1000) %>%
+p3 %>% filter(year > 1997, Bachelors %in% c("Humanities", "Social & Behavioral Sciences")) %>%
+    ggplot(aes(x=year,y=relative,fill=Discipline)) +
+    geom_line() + 
+    scale_y_continuous(labels=scales::percent) + 
+expand_limits(y = 0) +     facet_wrap(~Discipline,scales="free_y") + 
+    labs(title="Various majors, as percent of all BAs\nat the top 30 universities according to US News")# + geom_point(data=data_frame(year=2000,percent=0,Type=unique(p3$Type),alpha=0))
+
+
+```
+
+```{r fig.width=5, fig.height=6}
+top30LA = characteristics %>% filter(grepl("^(Williams|Amherst|Bowdoin|Swarthmore|Wellesley|Middlebury|Pomona|Carleton|Claremont McKenna|Davidson|Washington and Lee|Colby|Colgate|Harvey Mudd|Smith|Vassar|Grinnell|Hamilton|Haverford|Wesleyan University|Bates|Colorado College|University of Richmond|Oberlin College|Scripps College|Bryn Mawr)", INSTNM), CARNEGIE==31) %>% mutate(elite = TRUE) %>% select(UNITID, elite)
+
+charelite = top30LA %>% rbind(top30) %>% right_join(characteristics)
+
+charelite = charelite %>% mutate(
+  label = 
+    case_when(
+      elite ~ case_when(
+        CARNEGIE == 15 ~ "Elite Research Universities",
+        CARNEGIE == 31 ~ "Elite Liberal Arts Colleges"
+      ),
+      HBCU == 1 ~ "HBCU",
+      CARNEGIE %in% c(15, 16) ~ "Research Universities",
+      CARNEGIE %in% c(21, 22) ~ "Masters College/University",
+      CARNEGIE %in% c(31, 32) ~ "Bachelor's Colleges",
+      TRUE ~ "Other"
+    )
+)
+```
+
 ```{r}
-0.02874805 / 0.03870427
-0.02673785 / 0.03617526
+d4 = data %>% filter(AWLEVEL==5, MAJORNUM == 1) %>% 
+  group_by(year, CIPCODE, UNITID) %>% 
+  summarize(degrees = sum(degrees)) %>%
+  inner_join(amadjusted)
+
+totals = d4 %>% 
+  group_by(year, UNITID) %>% 
+  summarize(year_total = sum(degrees, na.rm=T), people_total = sum(degrees, na.rm=T)) %>%
+  inner_join(charelite) %>%
+  group_by(label, year) %>% summarize(year_total = sum(year_total, na.rm=T))
+
+
+elite_humanities = d4 %>% 
+  filter(Bachelors=="Humanities") %>% 
+  group_by(UNITID, year, Discipline) %>% 
+  summarize(degrees = sum(degrees)) %>%
+  inner_join(charelite) %>% 
+  group_by(year, label) %>%
+ # filter(Discipline != "Communications", Discipline != "General Humanities/Liberal Studies") %>%
+  summarize(degrees = sum(degrees, na.rm = T)) %>%
+  inner_join(totals) %>%
+  filter(label != "Other", year > 1997) %>%
+  group_by(label) %>%
+  mutate(percent = (degrees/year_total)/(degrees/year_total)[year==2008])
+
+elite_humanities %>%
+  ggplot() + aes(x=year, y = percent, color=label, label = label) + geom_line() + 
+  labs(title = "Humanities degree share by institution class", 
+       subtitle = "'Elite' schools in the top 30 per US News and World Report",
+       caption = "Ben Schmidt, 2018. Data from IPEDS.\n2000 Carnegie classifications. Military academies dropped from elite.") + 
+  theme(legend.position="none") + 
+  scale_y_continuous("Percent of degrees at institution type", label = scales::percent) + geom_text_repel(data = elite_humanities %>% filter(label != "Other", year == 2017))
+
+```
+```{r}
+elite_humanities %>% filter(year==2017) %>% arrange(degrees/year_total) %>% mutate(t = degrees/year_total)
+```
+
+```{r}
+race = data %>% filter(AWLEVEL==5, MAJORNUM==1) %>% group_by(race, gender) %>% into_major_nums %>% acadjoin
+
+race %>% group_by(year, race, gender, Bachelors) %>% 
+  filter(Discipline != "Communications", race != "All", race != "Unknown", race != "Two or more races", race != "Nonresident alien") %>%
+  summarize(degrees = sum(degrees), year_total = year_total[1]) %>%
+  mutate(percent = degrees/year_total) %>% 
+  filter(Bachelors=="Humanities") %>%
+  ggplot() + geom_line(aes(x=year, y = percent, color=race, pch=race)) + facet_wrap(~gender) + labs("Share of non-Communications Humanities degrees,\nby race and gender") + scale_y_continuous(labels=scales::percent) + expand_limits(y=0)
+
+```
+```{r}
+
+race %>% group_by(year, race, gender, Bachelors) %>% 
+  filter(Discipline != "Communications", race != "All") %>% 
+  mutate(resident = race != "Nonresident alien") %>%
+  group_by(year,resident,Bachelors,gender) %>%
+  summarize(degrees = sum(degrees), year_total = year_total[1]) %>%
+  mutate(percent = degrees/year_total) %>% 
+  filter(Bachelors=="Humanities") %>%
+  ggplot() + geom_line(aes(x=year, y = percent, color=resident)) + labs("Share of non-Communications Humanities degrees,\nby US resident status") + facet_wrap(~gender) +  scale_y_continuous(labels=scales::percent) + expand_limits(y=0)
+
+```
+
+```{r}
+awlevels = data %>% group_by(AWLEVEL) %>% 
+  into_major_nums %>% mutate(level = case_when(
+  AWLEVEL==5 ~ "BA",
+  AWLEVEL %in% c(9, 17, 18, 19) ~ "PhD"
+)) %>% acadjoin()
+
+```
+
+```{r}
+library(ggrepel)
+bachlevels = awlevels %>% group_by(level, Bachelors, year) %>% filter(level=="BA") %>% summarize(count = sum(degrees, na.rm=T)) %>% select(field = Bachelors, level, year, count)
+
+dlevels = awlevels %>% group_by(level, Doctoral, year) %>% filter(level=="PhD") %>% summarize(count = sum(degrees, na.rm = T)) %>% select(field = Doctoral, level, year, count)
+
+joint = bachlevels %>% bind_rows(dlevels) %>% spread(level, count) 
+
+joint %>% filter(year > 1984, !is.na(field)) %>% ggplot() + 
+  geom_line(aes(x=year, y=`BA`/`PhD`)) + facet_wrap(~field, scales="free") + labs(title="Bachelor's degrees per PhD, various fields")
+
+joint %>% filter(field=="Humanities") %>% ggplot() + geom_point(aes(y=`PhD`, x = year))
 ```
 
 ```{r}
 
-plottable2 = data %>% group_by(gender,year,control) %>% into_major_nums %>% inner_join(cips,by=c("CIPCODE"="CIPCode")) %>% ungroup
-majors_with_control %>% sample_n(10)
-plottable2 %>% group_by(gender,General,Type,year) %>% filter(year >= 2001) %>%
-#    filter(General %in% c("Humanities")) %>% 
-    filter(Type %in% c("English","Communications")) %>%
-    summarize(degrees = sum(degrees), percent = sum(degrees)/year_total[1]) %>% 
-    mutate(reference = percent[year==2008][1],scaled = percent/reference*100) %>%
-    ggplot() +
-    aes(x=year,y=percent,lty=gender,col=Type) +
-    geom_line() + 
-    scale_y_continuous(labels=scales::percent) + 
-#    facet_wrap(~control) + 
-    #theme(legend.position="none") + 
-    labs(title="Various majors, as percent of all US BAs")
+View(characteristics)
+```
+
+```{r}
+
+school_counts = data %>% filter(AWLEVEL==5, (year > 2005 & year < 2008) | year > 2015) %>% group_by(CIPCODE, year < 2010, UNITID) %>% summarize(degrees = sum(degrees))
+
+collegecounts = school_counts %>% acadjoin %>% group_by(UNITID, Bachelors, `year < 2010`) %>% summarize(degrees = sum(degrees)) %>% group_by(UNITID, `year < 2010`) %>% mutate(school_count = sum(degrees), percent = degrees/school_count)
+
+shares = collegecounts %>% filter(Bachelors=="Humanities", min(school_count) > 500) %>% select(percent, UNITID, percent) %>% ungroup %>% spread(`year < 2010`, percent)
+
+counts = collegecounts %>% distinct(UNITID, `year < 2010`, school_count) %>% spread(`year < 2010`, school_count) %>% ungroup %>%  transmute(UNITID=UNITID, `old_count` = `TRUE`, new_count = `FALSE`)
+
+instidata = shares %>% mutate(change = `FALSE`/`TRUE`) %>% inner_join(counts) %>% inner_join(characteristics) %>% 
+  mutate(
+  college_class = 
+    case_when(
+      CARNEGIE %in% c(15, 16) ~ "Research Universities",
+      CARNEGIE %in% c(21, 22) ~ "Masters College/University",
+      CARNEGIE %in% c(31, 32) ~ "Bachelor's Colleges",
+      TRUE ~ "Other"
+    ),
+  locale = case_when(
+      LOCALE < 13 ~ "Large City",
+      LOCALE <= 23 ~ "Small city or suburb",
+      TRUE ~ "Rural or small town"
+    )
+  
+) %>% 
+  mutate(
+    LANDGRNT_f = relevel(factor(LANDGRNT), ref=2),
+    college_class_f = relevel(factor(college_class), ref="Other"),
+    locale_f = relevel(factor(locale), ref="Small city or suburb"),
+    control = relevel(factor(CONTROL, levels = c(1,2,3), labels = c("Public", "Nonprofit", "For Profit")), ref="For Profit"),
+    hbcu = relevel(factor(HBCU), ref=2))
+  
+
+
+lm(log(change) ~ college_class_f + locale_f + control + hbcu, data = instidata) %>% summary
+
+shares %>% mutate(change = `FALSE`/`TRUE`) %>% inner_join(characteristics) %>% filter(STABBR=="MA") %>% ggplot() + 
+  geom_point(aes(x=reorder(INSTNM, change), y = `change`), color='red') +
+  coord_flip() + scale_y_log10()
+
+```
+
+```{r}
+
+characteristics %>% filter(INSTNM %in% c("Pomona College", "Princeton University")) %>% inner_join(data) %>% filter(AWLEVEL==5, year > 2003) %>% acadjoin %>% group_by(INSTNM,year) %>% mutate(school_count = sum(degrees)) %>% group_by(Bachelors, school_count, add=T) %>% summarize(degrees = sum(degrees)) %>% mutate(percent = degrees/school_count) %>% filter(Bachelors=="Humanities") %>% ggplot() + geom_line(aes(x = year, y = percent)) + facet_grid(Bachelors~INSTNM, scales="free") + scale_y_continuous(labels=scales::percent)
+```
+
+```{r}
+CS = data %>% filter(AWLEVEL==5) %>% 
+  cipsjoin %>%
+  group_by(UNITID, year, Type) %>% summarize(degrees = sum(degrees)) %>%
+  group_by(UNITID, year) %>%
+  mutate(year_total = sum(degrees)) %>% 
+  filter(Type=="Computer Science") %>% 
+  inner_join(charelite) %>%
+  group_by(year, label) %>%
+  summarize(degrees = sum(degrees, na.rm = T), year_total = sum(year_total, na.rm = T))
+
+
+
+CS %>%
+  filter(label != "Other") %>%
+  ggplot() + aes(x=year, y =degrees/year_total, color=label, label = label) + geom_line() + 
+  labs(title = "CS degree share by institution class", 
+       subtitle = "'Elite' schools in the top 30 per US News and World Report",
+       caption = "Ben Schmidt, 2018. Data from IPEDS.\n2000 Carnegie classifications. Military academies dropped from elite.") + 
+  theme(legend.position="none") + 
+  scale_y_continuous("Percent of degrees at institution type", label = scales::percent) + geom_text_repel(data = CS %>% filter(label != "Other", year == 2017))
+
 ```
 
 ```{r cars}
@@ -350,15 +679,16 @@ top30 = characteristics %>% filter(grepl("Harvard|Yale|Princeton|Dartmouth|Unive
 
 top1 = characteristics %>% filter(grepl("Yale University",INSTNM),CARNEGIE==15) %>% select(UNITID,INSTNM)
 
-p3 = data %>% inner_join(top30) %>% 
-  mutate(gender="cis") %>%
+p3 = data %>% filter(AWLEVEL==5) %>%
+  inner_join(top30) %>% 
+  mutate(gender="all") %>%
   group_by(gender) %>% 
   into_major_nums %>%
   inner_join(cips,by=c("CIPCODE"="CIPCode")) %>%
     mutate(Type = ifelse(Type %in% c("General","Humanities"), "General Humanities",Type)) %>%
     group_by(year,General,Type,gender) %>%
-    filter(General %in% c("Humanities","Social Science")) %>% 
-    filter(Type %in% c("English","History","Languages and Literature","Philosophy")) %>%
+#    filter(General %in% c("Humanities","Social Science")) %>% 
+#    filter(Type %in% c("English","History","Languages and Literature","Philosophy")) %>%
     summarize(degrees = sum(degrees), percent = sum(degrees)/year_total[1])
     #filter(sum(degrees) > 1000) %>%
   
@@ -376,7 +706,8 @@ p3 %>% filter(year > 1997) %>%
 
 
 ```{r}
-data %>% into_major_nums %>% into_labeled %>%
+data %>% into_major_nums %>% 
+  into_labeled %>%
     mutate(Type = ifelse(Type %in% c("General","Humanities"), "General Humanities",Type)) %>%
     group_by(year,General,Type) %>%
     filter(General %in% c("Humanities")) %>% 
