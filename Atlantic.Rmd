@@ -1,0 +1,56 @@
+---
+title: "Atlantic"
+author: "Ben Schmidt"
+date: "August 8, 2018"
+output: html_document
+---
+
+Talk about the
+"humanities"--especially as opposed to individual academic
+disciplinies like musicology, history, or comparative
+literature--always seems to focus on their imminent extinction. Books
+detailing the crisis of the humanities appeared in 1960, 1970, [etc.].
+
+But something different has been happening with the humanities in the
+last ten years: student majors have dropped, rapidly, at a variety of institutions.
+This reflects something 
+
+The biggest impediment to understanding the current state of the
+humanities is that we already think we know what's going on.
+
+## The crisis of the humanities is recent
+
+Historically, the four largest fields in the humanities have been
+English (always the largest), history (which hardly ever identifies as
+a social science anymore), a variety of foreign languages and
+literature, and philosophy.
+
+```{r}
+
+```
+
+## It's really a crisis of the qualitative liberal arts.
+
+The term 'liberal arts' used to denote a split between abstract
+knowledge and pre-professional.
+
+
+
+What's causing 
+
+There has been a book about the humanities crisis every every decade
+
+## It's not about 
+
+## It's not just about employment
+
+## Some stories about why the humanities collapsed
+
+
+
+
+The Trump administration recently announced it would release guidelines about college majors.
+
+
+
+
