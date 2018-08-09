@@ -1,0 +1,119 @@
+---
+title: "Atlantic"
+author: "Ben Schmidt"
+date: "August 8, 2018"
+output: html_document
+---
+
+The crisis of the humanities has been around so long that it's almost definitional.
+Coverage of individual academic
+disciplines like musicology, history, or comparative literature often deals with actual research in the field: but
+talk about the humanities *always* seems to focus on their imminent extinction.
+In 2010, Wayne Bivens-Tatum provided a [useful walk through the first 50 years of the humanities crisis, until about 1980](https://blogs.princeton.edu/librarian/2010/11/the_crisis_in_the_humanities/).
+
+
+```{r}
+
+source("read_cips.R")
+source("EDA_functions.R")
+
+characteristics = read_csv("hd2017.csv")
+cips = return_cips()
+data = return_data()
+data = data %>%
+  filter(CIPCODE != "99.0000", CIPCODE != "99") %>%
+  mutate(AWLEVEL=as.numeric(AWLEVEL),MAJORNUM=as.numeric(MAJORNUM))
+
+totals = data %>%
+  filter(AWLEVEL==5) %>%
+  group_by(year) %>% 
+  summarize(year_total = sum(degrees, na.rm=T), people_total = sum(degrees[MAJORNUM==1], na.rm=T))
+
+long_term = read_tsv("long_term.txt")
+ltotals = totals %>% group_by(year) %>% summarize(year_total = sum(year_total)) %>% mutate(source="IPEDS") %>% bind_rows(
+  long_term %>6% mutate(source="Old", year_total = total) %>% select(year=Year, year_total, people_total=total, source )
+  )
+
+pop = read_csv("pop_estimates.csv") %>% select(-junk)
+
+tot_degrees = ltotals %>% group_by(year) %>% summarize(total_degrees = max(year_total))
+
+```
+
+
+You can be 
+
+[expanded college credits for high school work](https://www.chronicle.com/article/How-the-Crisis-of-the/234185)
+
+
+
+[Peter Mandler reports from Great Britain that the humanities are in considerably better shape](https://aeon.co/essays/the-humanities-are-booming-only-the-professors-can-t-see-it).
+
+But something different has been happening with the humanities in the
+last ten years: student majors have dropped, rapidly, at a variety of types of institutions. 
+This reflects something 
+
+The biggest impediment to understanding the current state of the
+humanities is that we already think we know what's going on.
+
+## The crisis of the humanities is recent
+
+Historically, the four largest fields in the humanities have been
+English (always the largest), history (which hardly ever identifies as
+a social science anymore), a variety of foreign languages and
+literature, and philosophy.
+
+
+```{r}
+
+source("read_cips.R")
+source("EDA_functions.R")
+
+characteristics = read_csv("hd2017.csv")
+cips = return_cips()
+data = return_data()
+data = data %>%
+  filter(CIPCODE != "99.0000", CIPCODE != "99") %>%
+  mutate(AWLEVEL=as.numeric(AWLEVEL),MAJORNUM=as.numeric(MAJORNUM))
+
+totals = data %>%
+  filter(AWLEVEL==5) %>%
+  group_by(year) %>% 
+  summarize(year_total = sum(degrees, na.rm=T), people_total = sum(degrees[MAJORNUM==1], na.rm=T))
+
+long_term = read_tsv("long_term.txt")
+ltotals = totals %>% group_by(year) %>% summarize(year_total = sum(year_total)) %>% mutate(source="IPEDS") %>% bind_rows(
+  long_term %>6% mutate(source="Old", year_total = total) %>% select(year=Year, year_total, people_total=total, source )
+  )
+
+pop = read_csv("pop_estimates.csv") %>% select(-junk)
+
+tot_degrees = ltotals %>% group_by(year) %>% summarize(total_degrees = max(year_total))
+
+```
+
+## It's really a crisis of the qualitative liberal arts.
+
+The term 'liberal arts' used to denote a split between abstract
+knowledge and pre-professional.
+
+
+
+What's causing 
+
+There has been a book about the humanities crisis every every decade
+
+## It's not about 
+
+## It's not just about employment
+
+## Some stories about why the humanities collapsed
+
+
+
+
+The Trump administration recently announced it would release guidelines about college majors.
+
+
+
+

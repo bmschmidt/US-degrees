@@ -6,24 +6,38 @@ output: html_document
 ```{r}
 source("read_cips.R")
 
-characteristics = read_csv("hd2015.csv")
+characteristics = read_csv("hd2017.csv")
 cips = return_cips()
 data = return_data()
+data = data %>%
+  filter(CIPCODE != "99.0000", CIPCODE != "99") %>%
+  mutate(AWLEVEL=as.numeric(AWLEVEL),MAJORNUM=as.numeric(MAJORNUM))
+
+totals = data %>%
+  filter(AWLEVEL==5) %>%
+  group_by(year) %>% 
+  summarize(year_total = sum(degrees, na.rm=T), people_total = sum(degrees[MAJORNUM==1], na.rm=T))
+
+long_term = read_tsv("long_term.txt")
+ltotals = totals %>% group_by(year) %>% summarize(year_total = sum(year_total)) %>% mutate(source="IPEDS") %>% bind_rows(
+  long_term %>6% mutate(source="Old", year_total = total) %>% select(year=Year, year_total, people_total=total, source )
+  )
+
+pop = read_csv("pop_estimates.csv") %>% select(-junk)
+
+tot_degrees = ltotals %>% group_by(year) %>% summarize(total_degrees = max(year_total))
+
 ```
 
 
 
 ```{r}
-data = data %>%
-  filter(CIPCODE != "99.0000", CIPCODE != "99") %>%
-  mutate(AWLEVEL=as.numeric(AWLEVEL),MAJORNUM=as.numeric(MAJORNUM))
 
 #data %>% filter(degrees > 1000, AWLEVEL==5) %>% arrange(-degrees)
 #characteristics %>% filter(UNITID=="433387") %>% glimpse
 ```
 
 Quick check: total number of degrees by year. This may not match up exactly with dept of ed figures because of missing schools, no-majors, or other things. But I just want to not double count. This is Associate's, Bachelor's, and Masters.
-
 ```{r}
 
 data %>% group_by(year, AWLEVEL) %>% filter(AWLEVEL %in% c(3,5,7)) %>% tally(degrees) %>% ggplot() + geom_line(aes(x=year, y=n, color=factor(AWLEVEL)))
@@ -45,7 +59,7 @@ source("EDA_functions.R")
 
 ```
 
-Some bad news: there's something weird going on with the relative numbers of public and private in 1998. I would guess some major public systems are split up or unified--eg, Wisconsin stops reporting all campuses and starts reporting each individual school, and now it shows up in my numbers. Conclusion: don't use pre-1997 data at institution level.
+Public and private looks good. More public than private.
 
 ```{r}
 
@@ -61,17 +75,16 @@ majors_with_control = data %>% mutate(AWLEVEL=as.numeric(AWLEVEL),MAJORNUM=as.nu
 
 
 control = data %>% 
-  mutate(AWLEVEL = as.numeric(AWLEVEL)) %>%
   filter(AWLEVEL==5,MAJORNUM==1) %>%
   left_join(characteristics %>% select(UNITID,CONTROL)) %>%
   group_by(CONTROL,year) %>%
-  summarize(count=n()) %>% ungroup %>%
+  summarize(count=sum(degrees)) %>% ungroup %>%
   mutate(CONTROL=factor(CONTROL,labels=c("public","not-for-profit private","for profit private", "NA"), exclude = NULL)) %>%
   group_by(year) %>% mutate(percent = count/sum(count)) %>% ungroup %>%
   arrange(-year)
 
-ggplot(control) + geom_line(aes(x=year,y=percent,color=CONTROL))
-  
+ggplot(control) + geom_line(aes(x=year,y=percent,color=CONTROL)) + xlim(1995, 2000)
+
 ```
 
 
@@ -117,18 +130,18 @@ Load American Academy Taxonomy.
 ```{r, fig.width=8, fig.height=7}
 
 
-add_amacad_groupings = . %>%
-  group_by(year, CIPCODE, add = T) %>% 
+#add_amacad_groupings = . %>%
+#  group_by(year, CIPCODE, add = T) %>% 
+#  summarize(degrees = sum(degrees)) %>%
+#  left_join(amadjusted)
+
+d3 = data %>% 
+  filter(AWLEVEL==5) %>% 
+  group_by(year, CIPCODE, MAJORNUM) %>%
   summarize(degrees = sum(degrees)) %>%
-  left_join(amadjusted)
+  acadjoin()
+#   add_amacad_groupings()
 
-d3 = data %>% filter(AWLEVEL==5) %>% 
-  group_by(MAJORNUM) %>%
-   add_amacad_groupings()
-
-totals = d3 %>% 
-  group_by(year) %>% 
-  summarize(year_total = sum(degrees, na.rm=T), people_total = sum(degrees[MAJORNUM==1], na.rm=T))
 
 this_plot = d3 %>%
   group_by(year, Discipline) %>%
@@ -166,14 +179,6 @@ this_plot %>% inner_join(totals) %>%
 
 
 ```{r}
-long_term = read_tsv("long_term.txt")
-ltotals = totals %>% group_by(year) %>% summarize(year_total = sum(year_total)) %>% mutate(source="IPEDS") %>% bind_rows(
-  long_term %>% mutate(source="Old", year_total = total) %>% select(year=Year, year_total, people_total=total, source )
-  )
-
-pop = read_csv("pop_estimates.csv") %>% select(-junk)
-
-tot_degrees = ltotals %>% group_by(year) %>% summarize(total_degrees = max(year_total))
 
 tot_degrees %>% tail
 
@@ -490,10 +495,15 @@ expand_limits(y = 0) +     facet_wrap(~Discipline,scales="free_y") +
 
 ```
 
+```{r}
+HSIs = data_frame(UNITID = c(126182, 126207, 108807, 110468, 222567, 222576, 241100, 241128, 222831, 109350, 245838, 448886, 407009, 104160, 440651, 439446, 241216, 222992, 474863, 109785, 109819, 444398, 132471, 109907, 241225, 183743, 125170, 234711, 189413, 262086, 223506, 223524, 132709, 110334, 110361, 110918, 478634, 485263, 110413, 110529, 110486, 441937, 110538, 110547, 110574, 110556, 110565, 110583, 110592, 409698, 110608, 110617, 110510, 366711, 110495, 150172, 165167, 111434, 129367, 241377, 241386, 363907, 363916, 132842, 241331, 111638, 439367, 104346, 187532, 376950, 111887, 111896, 111920, 111939, 112172, 417327, 475477, 434539, 144209, 144184, 144166, 144193, 144218, 187639, 223320, 112385, 104425, 241720, 126872, 448761, 474890, 388520, 146472, 118347, 193399, 122791, 182005, 111461, 113573, 226408, 123217, 128106, 234979, 420556, 446163, 112826, 113111, 113193, 184205, 190521, 190530, 190567, 190585, 190594, 190600, 190628, 190637, 190655, 190664, 190673, 113218, 113236, 113333, 224350, 436465, 434900, 449144, 443562, 449135, 469416, 485421, 154998, 190761, 148496, 155007, 113856, 413802, 187648, 187666, 383996, 224572, 133508, 243832, 241836, 112686, 113980, 224615, 224642, 144944, 241951, 184481, 384333, 114266, 184603, 184612, 133951, 114789, 114813, 114859, 224961, 155104, 105145, 114938, 104708, 115001, 115126, 115296, 225201, 115393, 235422, 134495, 367884, 115728, 129543, 225399, 225423, 225520, 184995, 242121, 115755, 115773, 115861, 242556, 242042, 242565, 242583, 242626, 242635, 242644, 242705, 242680, 242699, 242653, 242662, 242617, 225876, 116712, 185262, 135081, 117627, 117195, 226134, 366401, 226204, 117104, 192563, 117636, 227182, 117645, 117788, 117803, 117690, 117867, 117706, 117715, 117724, 117733, 117894, 363633, 118541, 226578, 118684, 118718, 193016, 118772, 188261, 135717, 185536, 226806, 118912, 118976, 119067, 119137, 460394, 147411, 209241, 119173, 226930, 119164, 119216, 119331, 147536, 119605, 185129, 187897, 187967, 187903, 187994, 188003, 187620, 188021, 188030, 460464, 227191, 227225, 147776, 167376, 188058, 420398, 130004, 120184, 136215, 194161, 227304, 120342, 194240, 127778, 227331, 120421, 120768, 120865, 136358, 246354, 120953, 120971, 121044, 186034, 105428, 440794, 105525, 456481, 456490, 241395, 243586, 241410, 121363, 127884, 241766, 215585, 117052, 223463, 377111, 380094, 451857, 445203, 135939, 227766, 121886, 121901, 148335, 449506, 122180, 122205, 148876, 227845, 137272, 123554, 186432, 148627, 227924, 123527, 122339, 122375, 122409, 122597, 227979, 122658, 122746, 122755, 430670, 121619, 122889, 188137, 122977, 123013, 399212, 228042, 155858, 123341, 123509, 123563, 123572, 137315, 105792, 228158, 409315, 382911, 228316, 228468, 123800, 167905, 228149, 227854, 137476, 475565, 228501, 197294, 124113, 228547, 226152, 224147, 228705, 228981, 229319, 229328, 228459, 229179, 227377, 228796, 229027, 228644, 416801, 229018, 227368, 485078, 128258, 431929, 135610, 149532, 182500, 187198, 206279, 376385, 241191, 243568, 243346, 243443, 243601, 241739, 441690, 243577, 241614, 445188, 110671, 110705, 110714, 225511, 225414, 225432, 225502, 145600, 117140, 187976, 187985, 188225, 188049, 484905, 243106, 243115, 243133, 243142, 243151, 243179, 243197, 243203, 243212, 243221, 243188, 227863, 225627, 188182, 449870, 429128, 138187, 123651, 188340, 125028, 125091, 229540, 149727, 229780, 236975, 125462, 448594, 125471, 125499, 188304, 229832, 229841, 125763, 187444, 125897, 455512, 237109, 126119), HSI = TRUE)
+```
+
 ```{r fig.width=5, fig.height=6}
 top30LA = characteristics %>% filter(grepl("^(Williams|Amherst|Bowdoin|Swarthmore|Wellesley|Middlebury|Pomona|Carleton|Claremont McKenna|Davidson|Washington and Lee|Colby|Colgate|Harvey Mudd|Smith|Vassar|Grinnell|Hamilton|Haverford|Wesleyan University|Bates|Colorado College|University of Richmond|Oberlin College|Scripps College|Bryn Mawr)", INSTNM), CARNEGIE==31) %>% mutate(elite = TRUE) %>% select(UNITID, elite)
 
-charelite = top30LA %>% rbind(top30) %>% right_join(characteristics)
+
+charelite = top30LA %>% rbind(top30) %>% right_join(characteristics) %>% left_join(HSIs)
 
 charelite = charelite %>% mutate(
   label = 
@@ -503,12 +513,24 @@ charelite = charelite %>% mutate(
         CARNEGIE == 31 ~ "Elite Liberal Arts Colleges"
       ),
       HBCU == 1 ~ "HBCU",
+      HSI == 1 ~ "HSI",
       CARNEGIE %in% c(15, 16) ~ "Research Universities",
       CARNEGIE %in% c(21, 22) ~ "Masters College/University",
       CARNEGIE %in% c(31, 32) ~ "Bachelor's Colleges",
       TRUE ~ "Other"
     )
 )
+```
+```{r}
+
+
+
+BYU = characteristics %>% filter(grepl("Texas at Austin|Howard University|Brigham.*Provo|Yale University|Naval Academy|Bob Jones|Wellesley College", INSTNM)) %>% inner_join(data) %>% filter(AWLEVEL==5, MAJORNUM==1) %>% acadjoin %>% group_by(INSTNM,  Discipline, Bachelors, year) %>% summarize(degrees=sum(degrees)) %>% filter(year >= 2003 || INSTNM != "United States Military Academy")
+
+BYU %>% group_by(Discipline) %>% tally(degrees) %>% arrange(-n)
+# 
+BYU %>% filter(year >= 1998) %>% group_by(INSTNM, year) %>% mutate(total = sum(degrees)) %>% filter(Bachelors=="Humanities", Discipline != "General Humanities/Liberal Studies") %>% group_by(Bachelors, INSTNM, year) %>% summarize(percent = sum(degrees)/total[1]) %>%
+  ggplot() + geom_line(aes(x=year, y = percent)) + labs(title = "") + facet_wrap(~INSTNM, scales="free_y") + expand_limits(y=0) + scale_y_continuous(labels = scales::percent) + labs(title="Share of humanities degrees at six extremely different institutions", subtitle ="(excluding general liberal arts--including communications)")
 ```
 
 ```{r}
@@ -546,6 +568,7 @@ elite_humanities %>%
   scale_y_continuous("Percent of degrees at institution type", label = scales::percent) + geom_text_repel(data = elite_humanities %>% filter(label != "Other", year == 2017))
 
 ```
+
 ```{r}
 elite_humanities %>% filter(year==2017) %>% arrange(degrees/year_total) %>% mutate(t = degrees/year_total)
 ```
@@ -561,6 +584,22 @@ race %>% group_by(year, race, gender, Bachelors) %>%
   ggplot() + geom_line(aes(x=year, y = percent, color=race, pch=race)) + facet_wrap(~gender) + labs("Share of non-Communications Humanities degrees,\nby race and gender") + scale_y_continuous(labels=scales::percent) + expand_limits(y=0)
 
 ```
+
+```{r}
+
+race = data %>% filter(AWLEVEL==5, MAJORNUM==1) %>% group_by(race, gender) %>% into_major_nums %>% acadjoin
+
+race %>% group_by(year, race, gender, Bachelors) %>% 
+  filter(Discipline != "Communications") %>% 
+  summarize(degrees = sum(degrees), year_total = year_total[1]) %>%
+  mutate(percent = degrees/year_total) %>% 
+  group_by(race, gender) %>% filter (sum(degrees) > 15000, race!="All", race != "Unknown", race != "American Indian or Alaska Native") %>%
+  mutate(relative = percent/percent[year==2009]) %>%
+  filter(Bachelors=="Humanities") %>%
+  ggplot() + geom_line(aes(x=year, y = relative, color=race, pch=race)) + facet_wrap(~gender) + labs("Share of non-Communications Humanities degrees,\nby race and gender") + scale_y_continuous(labels=scales::percent) + expand_limits(y=0)
+
+```
+
 ```{r}
 
 race %>% group_by(year, race, gender, Bachelors) %>% 
@@ -606,13 +645,28 @@ View(characteristics)
 
 school_counts = data %>% filter(AWLEVEL==5, (year > 2005 & year < 2008) | year > 2015) %>% group_by(CIPCODE, year < 2010, UNITID) %>% summarize(degrees = sum(degrees))
 
-collegecounts = school_counts %>% acadjoin %>% group_by(UNITID, Bachelors, `year < 2010`) %>% summarize(degrees = sum(degrees)) %>% group_by(UNITID, `year < 2010`) %>% mutate(school_count = sum(degrees), percent = degrees/school_count)
+collegecounts = school_counts %>%
+  acadjoin %>% 
+  group_by(UNITID, Bachelors, Discipline, `year < 2010`) %>% 
+  summarize(degrees = sum(degrees)) %>%
+  group_by(UNITID, `year < 2010`) %>% 
+  mutate(school_count = sum(degrees), percent = degrees/school_count)
 
-shares = collegecounts %>% filter(Bachelors=="Humanities", min(school_count) > 500) %>% select(percent, UNITID, percent) %>% ungroup %>% spread(`year < 2010`, percent)
+shares = collegecounts %>% filter(Bachelors=="Humanities", min(school_count) > 500) %>% select(percent, UNITID, percent) %>% ungroup %>% spread(`year < 2010`, percent) %>% 
+  transmute(UNITID, old_share = `TRUE`, new_share = `FALSE`)
+shares
+```
 
+
+```{r}
 counts = collegecounts %>% distinct(UNITID, `year < 2010`, school_count) %>% spread(`year < 2010`, school_count) %>% ungroup %>%  transmute(UNITID=UNITID, `old_count` = `TRUE`, new_count = `FALSE`)
 
-instidata = shares %>% mutate(change = `FALSE`/`TRUE`) %>% inner_join(counts) %>% inner_join(characteristics) %>% 
+shared = counts %>% inner_join(shares)
+```
+
+```{r}
+
+instidata = shared %>% mutate(change = `new_share`/`old_share`) %>% inner_join(characteristics) %>% 
   mutate(
   college_class = 
     case_when(
@@ -626,18 +680,27 @@ instidata = shares %>% mutate(change = `FALSE`/`TRUE`) %>% inner_join(counts) %>
       LOCALE <= 23 ~ "Small city or suburb",
       TRUE ~ "Rural or small town"
     )
-  
-) %>% 
+  )
+instidata = instidata %>% 
   mutate(
     LANDGRNT_f = relevel(factor(LANDGRNT), ref=2),
     college_class_f = relevel(factor(college_class), ref="Other"),
     locale_f = relevel(factor(locale), ref="Small city or suburb"),
     control = relevel(factor(CONTROL, levels = c(1,2,3), labels = c("Public", "Nonprofit", "For Profit")), ref="For Profit"),
     hbcu = relevel(factor(HBCU), ref=2))
-  
 
 
-lm(log(change) ~ college_class_f + locale_f + control + hbcu, data = instidata) %>% summary
+
+model = lm(log(change) ~ college_class_f + locale_f + control + hbcu, data = instidata) 
+summary(model)
+model2 = lm(log(change) ~ college_class_f, data = instidata)
+
+predictions = predict(model2, newdata=instidata)
+
+instidata %>% ungroup %>% mutate(p = predictions) %>% select(INSTNM, CARNEGIE, CONTROL, STABBR, old_count, new_count, old_share, new_share, change, p) %>% arrange(-change)  %>% filter(new_share > .02)
+%>% ggplot() + geom_boxplot(aes(x=factor(CARNEGIE), y = change)) + scale_y_log10()
+
+model %>% summary
 
 shares %>% mutate(change = `FALSE`/`TRUE`) %>% inner_join(characteristics) %>% filter(STABBR=="MA") %>% ggplot() + 
   geom_point(aes(x=reorder(INSTNM, change), y = `change`), color='red') +
