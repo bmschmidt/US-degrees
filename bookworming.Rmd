@@ -9,10 +9,18 @@ source("read_cips.R")
 characteristics = read_csv("hd2017.csv")
 cips = return_cips()
 data = return_data()
+data = data %>%
+  filter(CIPCODE != "99.0000", CIPCODE != "99") %>%
+  mutate(AWLEVEL=as.numeric(AWLEVEL),MAJORNUM=as.numeric(MAJORNUM))
+
+totals = data %>%
+  filter(AWLEVEL==5) %>%
+  group_by(year) %>% 
+  summarize(year_total = sum(degrees, na.rm=T), people_total = sum(degrees[MAJORNUM==1], na.rm=T))
 
 long_term = read_tsv("long_term.txt")
 ltotals = totals %>% group_by(year) %>% summarize(year_total = sum(year_total)) %>% mutate(source="IPEDS") %>% bind_rows(
-  long_term %>% mutate(source="Old", year_total = total) %>% select(year=Year, year_total, people_total=total, source )
+  long_term %>6% mutate(source="Old", year_total = total) %>% select(year=Year, year_total, people_total=total, source )
   )
 
 pop = read_csv("pop_estimates.csv") %>% select(-junk)
@@ -24,9 +32,6 @@ tot_degrees = ltotals %>% group_by(year) %>% summarize(total_degrees = max(year_
 
 
 ```{r}
-data = data %>%
-  filter(CIPCODE != "99.0000", CIPCODE != "99") %>%
-  mutate(AWLEVEL=as.numeric(AWLEVEL),MAJORNUM=as.numeric(MAJORNUM))
 
 #data %>% filter(degrees > 1000, AWLEVEL==5) %>% arrange(-degrees)
 #characteristics %>% filter(UNITID=="433387") %>% glimpse
@@ -137,9 +142,6 @@ d3 = data %>%
   acadjoin()
 #   add_amacad_groupings()
 
-totals = d3 %>% 
-  group_by(year) %>% 
-  summarize(year_total = sum(degrees, na.rm=T), people_total = sum(degrees[MAJORNUM==1], na.rm=T))
 
 this_plot = d3 %>%
   group_by(year, Discipline) %>%
