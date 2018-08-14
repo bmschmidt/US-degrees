@@ -142,7 +142,7 @@ d3 = data %>%
   acadjoin()
 #   add_amacad_groupings()
 
-
+library(ggrepel)
 this_plot = d3 %>%
   group_by(year, Discipline) %>%
   filter(Bachelors=="Humanities") %>%
@@ -180,7 +180,6 @@ this_plot %>% inner_join(totals) %>%
 
 ```{r}
 
-tot_degrees %>% tail
 
 this_plot = long_term %>% mutate(source = "old") %>% select(year = Year, Discipline = variable, degrees = count, source) %>% 
   filter(Discipline != "All Others", year < 2000) %>% 
@@ -215,6 +214,8 @@ this_plot %>%
 
 
 ```
+
+
 ```{r}
 d = long_term %>% mutate(source = "old") %>% select(year = Year, Discipline = variable, degrees = count, source) %>% 
   filter(Discipline != "All Others", year < 2000) %>% 
@@ -502,8 +503,13 @@ HSIs = data_frame(UNITID = c(126182, 126207, 108807, 110468, 222567, 222576, 241
 ```{r fig.width=5, fig.height=6}
 top30LA = characteristics %>% filter(grepl("^(Williams|Amherst|Bowdoin|Swarthmore|Wellesley|Middlebury|Pomona|Carleton|Claremont McKenna|Davidson|Washington and Lee|Colby|Colgate|Harvey Mudd|Smith|Vassar|Grinnell|Hamilton|Haverford|Wesleyan University|Bates|Colorado College|University of Richmond|Oberlin College|Scripps College|Bryn Mawr)", INSTNM), CARNEGIE==31) %>% mutate(elite = TRUE) %>% select(UNITID, elite)
 
+top30 = characteristics %>% 
+  filter(grepl("Harvard|Yale|Princeton|Dartmouth|University of Pennsylvania|Brown|University of Chicago|Stanford|Columbia University|Duke|Massachusetts Institute|University of Pennsylvania|Johns Hopkins|California Institute|Northwestern|Cornell|Rice|Notre Dame|Vanderbilt|Washington University|Georgetown|Berkeley|Southern California|Carnegie Mellon|Los Angeles|University of Virginia|Tufts|Ann Arbor|Wake Forest|Chapel Hill",INSTNM), CARNEGIE==15) %>% 
+  mutate(elite = TRUE) %>% 
+  select(UNITID, elite)
 
-charelite = top30LA %>% rbind(top30) %>% right_join(characteristics) %>% left_join(HSIs)
+
+charelite = top30LA %>% rbind(top30) %>% right_join(characteristics)# %>% left_join(HSIs)
 
 charelite = charelite %>% mutate(
   label = 
@@ -521,10 +527,9 @@ charelite = charelite %>% mutate(
     )
 )
 ```
+
+
 ```{r}
-
-
-
 BYU = characteristics %>% filter(grepl("Texas at Austin|Howard University|Brigham.*Provo|Yale University|Naval Academy|Bob Jones|Wellesley College", INSTNM)) %>% inner_join(data) %>% filter(AWLEVEL==5, MAJORNUM==1) %>% acadjoin %>% group_by(INSTNM,  Discipline, Bachelors, year) %>% summarize(degrees=sum(degrees)) %>% filter(year >= 2003 || INSTNM != "United States Military Academy")
 
 BYU %>% group_by(Discipline) %>% tally(degrees) %>% arrange(-n)
@@ -532,6 +537,19 @@ BYU %>% group_by(Discipline) %>% tally(degrees) %>% arrange(-n)
 BYU %>% filter(year >= 1998) %>% group_by(INSTNM, year) %>% mutate(total = sum(degrees)) %>% filter(Bachelors=="Humanities", Discipline != "General Humanities/Liberal Studies") %>% group_by(Bachelors, INSTNM, year) %>% summarize(percent = sum(degrees)/total[1]) %>%
   ggplot() + geom_line(aes(x=year, y = percent)) + labs(title = "") + facet_wrap(~INSTNM, scales="free_y") + expand_limits(y=0) + scale_y_continuous(labels = scales::percent) + labs(title="Share of humanities degrees at six extremely different institutions", subtitle ="(excluding general liberal arts--including communications)")
 ```
+
+
+```{r}
+BYU = characteristics %>% filter(grepl("Medicine", INSTNM)) %>% inner_join(data) %>% filter(AWLEVEL==5, MAJORNUM==1) %>% acadjoin %>% group_by(INSTNM,  Discipline, Bachelors, year) %>% summarize(degrees=sum(degrees)) %>% filter(year >= 2003 || INSTNM != "United States Military Academy")
+
+BYU %>% group_by(Discipline) %>% tally(degrees) %>% arrange(-n)
+# 
+BYU %>% filter(year >= 1998) %>% group_by(INSTNM, year) %>% mutate(total = sum(degrees)) %>% 
+  #filter(Bachelors=="Humanities", Discipline != "General Humanities/Liberal Studies") %>%
+  group_by(Bachelors, INSTNM, year) %>% summarize(percent = sum(degrees)/total[1]) %>%
+  ggplot() + geom_line(aes(x=year, y = percent)) + labs(title = "") + facet_wrap(~INSTNM, scales="free_y") + expand_limits(y=0) + scale_y_continuous(labels = scales::percent) + labs(title="Share of humanities degrees at six extremely different institutions", subtitle ="(excluding general liberal arts--including communications)")
+```
+
 
 ```{r}
 d4 = data %>% filter(AWLEVEL==5, MAJORNUM == 1) %>% 
@@ -647,7 +665,7 @@ school_counts = data %>% filter(AWLEVEL==5, (year > 2005 & year < 2008) | year >
 
 collegecounts = school_counts %>%
   acadjoin %>% 
-  group_by(UNITID, Bachelors, Discipline, `year < 2010`) %>% 
+  group_by(UNITID, Bachelors, `year < 2010`) %>% 
   summarize(degrees = sum(degrees)) %>%
   group_by(UNITID, `year < 2010`) %>% 
   mutate(school_count = sum(degrees), percent = degrees/school_count)
@@ -692,13 +710,11 @@ instidata = instidata %>%
 
 
 model = lm(log(change) ~ college_class_f + locale_f + control + hbcu, data = instidata) 
-summary(model)
 model2 = lm(log(change) ~ college_class_f, data = instidata)
 
 predictions = predict(model2, newdata=instidata)
 
-instidata %>% ungroup %>% mutate(p = predictions) %>% select(INSTNM, CARNEGIE, CONTROL, STABBR, old_count, new_count, old_share, new_share, change, p) %>% arrange(-change)  %>% filter(new_share > .02)
-%>% ggplot() + geom_boxplot(aes(x=factor(CARNEGIE), y = change)) + scale_y_log10()
+instidata %>% ungroup %>% mutate(p = predictions) %>% select(INSTNM, CARNEGIE, CONTROL, STABBR, old_count, new_count, old_share, new_share, change, p) %>% arrange(-change)  %>% filter(new_share > .02) %>% filter(grepl("Ozarks|Princeton", INSTNM))
 
 model %>% summary
 
@@ -710,7 +726,7 @@ shares %>% mutate(change = `FALSE`/`TRUE`) %>% inner_join(characteristics) %>% f
 
 ```{r}
 
-characteristics %>% filter(INSTNM %in% c("Pomona College", "Princeton University")) %>% inner_join(data) %>% filter(AWLEVEL==5, year > 2003) %>% acadjoin %>% group_by(INSTNM,year) %>% mutate(school_count = sum(degrees)) %>% group_by(Bachelors, school_count, add=T) %>% summarize(degrees = sum(degrees)) %>% mutate(percent = degrees/school_count) %>% filter(Bachelors=="Humanities") %>% ggplot() + geom_line(aes(x = year, y = percent)) + facet_grid(Bachelors~INSTNM, scales="free") + scale_y_continuous(labels=scales::percent)
+characteristics %>% filter(INSTNM %in% c("Pomona College", "Princeton University", "Bob Jones University", "Brigham Young University")) %>% inner_join(data) %>% filter(AWLEVEL==5, MAJORNUM==1, year > 2003) %>% acadjoin %>% group_by(INSTNM,year) %>% mutate(school_count = sum(degrees)) %>% group_by(Bachelors, school_count, add=T) %>% summarize(degrees = sum(degrees)) %>% mutate(percent = degrees/school_count) %>% filter(Bachelors=="Humanities") %>% ggplot() + geom_line(aes(x = year, y = percent)) + facet_grid(Bachelors~INSTNM, scales="free") + scale_y_continuous(labels=scales::percent)
 ```
 
 ```{r}
