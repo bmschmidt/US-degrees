@@ -6,6 +6,10 @@ output:
   word_document: default
   html_document: default
 ---
+
+> Note: This is a pre-print version of the Atlantic Article, with the final state of  the
+> code I sent to them. 
+
 People have been proclaiming the imminent extinction of the humanities
 for decades. [A bestselling volume in
 1964](https://catalog.hathitrust.org/Record/001450049) warned that a
@@ -388,9 +392,10 @@ fig4
 ```
 
 At these elite colleges, essentially every field of the humanities has
-fallen in share---even fields like classics and area studies, which grew
-through the 2000s. The only bright spot is linguistics, the rare field
-that directly bridges the humanities and the sciences.
+fallen in share. History and English are both at about half their pre-recession peaks. 
+Even fields like classics and area studies, which grew
+through the 2000s have declined at least 20 percent from their peak; religion is down by almost two-thirds. 
+The only bright spot is linguistics, the rare field that directly bridges the humanities and the sciences directly.
 
 ```{r}
 
@@ -416,6 +421,7 @@ fig5
 
 ```
 
+
 The timing and placement of the drops at a variety of institutions foils
 many common explanations for why the humanities are falling. Do you
 think students are put off by liberal pieties in the classroom? It's
@@ -437,20 +443,24 @@ entirely STEM majors, including nursing, engineering, computer science,
 and biology. Quantitative social sciences like economics and psychology
 have held steady, while fields in closer proximity to the humanities
 like political science, sociology, and anthropology have shown declines,
-especially since 2011.
+especially since 2011. 
 
 ```{r, fig.width=12, fig.height=12}
 source("EDA_functions.R")
 
-majornums = data %>% filter(MAJORNUM==1, AWLEVEL==5) %>% group_by(year, CIPCODE) %>% summarize(degrees = sum(degrees)) %>% acadjoin %>% filter(year > 1998)
+majornums = data %>% filter(AWLEVEL==5) %>% group_by(year, CIPCODE) %>% summarize(degrees = sum(degrees)) %>% acadjoin %>% filter(year > 1998)
+majornums$Bachelors[is.na(majornums$Bachelors)] = "Other/Unknown"
+majornums$Discipline[is.na(majornums$Discipline)] = "General"
 
-fig6 = majornums %>% group_by(Bachelors) %>% group_by(Bachelors, Discipline, year) %>% summarize(degrees=sum(degrees)) %>% group_by(year) %>% mutate(percent = degrees/sum(degrees)) %>% 
-  group_by(Discipline, Bachelors) %>% filter(year > 1998, sum(degrees) > 10000) %>% 
-  ggplot() + geom_line(aes(x=year, y = percent, color = Bachelors)) + facet_wrap(~Bachelors + Discipline, scales="free_y" ) + expand_limits(y=0) + scale_y_continuous(labels = scales::percent) + theme_bw()+ theme(legend.position = "none") + labs(title="Degree Share of common majors", subtitle="Data from NCES IPEDS: Taxonomy building on American Academy of Arts and Science.\nBen Schmidt, 2018")
-
+?fct_recode
+fig6 = majornums %>% group_by(Bachelors) %>% group_by(Bachelors, Discipline, year) %>% 
+  summarize(degrees=sum(degrees)) %>% group_by(year) %>% mutate(percent = degrees/sum(degrees)) %>% 
+  mutate(Bachelors = factor(Bachelors) %>% forcats::fct_recode(Misc = "Other/Unknown")) %>%
+  mutate(label = paste(Bachelors, Discipline, sep=": ")) %>%
+  group_by(label) %>% filter(year > 1998, (sum(degrees) > 150000 || (Bachelors=="Humanities" && sum(degrees) > 10000))) %>% 
+  ggplot() + geom_line(aes(x=year, y = percent, color = Bachelors)) + facet_wrap(~label, scales="free_y", labeller = labeller(label = label_wrap_gen(28)), ncol = 5) + expand_limits(y=0) + scale_y_continuous(labels = scales::percent) + theme_bw() + theme(legend.position = "none") + labs(title="Degree Share of common majors", subtitle="Data from NCES IPEDS: Taxonomy building on American Academy of Arts and Sciences.\nBen Schmidt, 2018")+ scale_x_continuous(breaks=seq(1996, 2017, by=4))
 fig6$data %>% write_csv(path = "outputs/fig6.csv")
-
-fig6
+fig6 %>% ggsave(plot = ., filename = "panels.png", width=12, height = 12)
 ```
 
 This may seem like a roundabout way to present the conventional wisdom
