@@ -1,0 +1,818 @@
+Bachelors,Discipline,year,degrees,percent,label
+Business & Management,Business,1999,245539,0.20071477442997476,Business & Management: Business
+Business & Management,Business,2e3,261863,0.2079546961597991,Business & Management: Business
+Business & Management,Business,2001,279890,0.21216115727850957,Business & Management: Business
+Business & Management,Business,2002,297332,0.2162373656934487,Business & Management: Business
+Business & Management,Business,2003,311309,0.21698134906501376,Business & Management: Business
+Business & Management,Business,2004,328671,0.22026156274188521,Business & Management: Business
+Business & Management,Business,2005,333500,0.21692044515847875,Business & Management: Business
+Business & Management,Business,2006,339134,0.21425678796137826,Business & Management: Business
+Business & Management,Business,2007,348746,0.21448264961527982,Business & Management: Business
+Business & Management,Business,2008,356461,0.21434494370198884,Business & Management: Business
+Business & Management,Business,2009,369577,0.21703706009235219,Business & Management: Business
+Business & Management,Business,2010,381870,0.21737039147390297,Business & Management: Business
+Business & Management,Business,2011,389356,0.21303769508092135,Business & Management: Business
+Business & Management,Business,2012,392571,0.2055822371366762,Business & Management: Business
+Business & Management,Business,2013,386222,0.19700590524974,Business & Management: Business
+Business & Management,Business,2014,382182,0.19211584195892992,Business & Management: Business
+Business & Management,Business,2015,387439,0.19227837358994337,Business & Management: Business
+Business & Management,Business,2016,396203,0.19408025417364907,Business & Management: Business
+Business & Management,Business,2017,406705,0.19554497575310575,Business & Management: Business
+Education,Education,1999,115895,0.09473785745874148,Education: Education
+Education,Education,2e3,117390,0.0932235626346556,Education: Education
+Education,Education,2001,118284,0.08966118949419852,Education: Education
+Education,Education,2002,120074,0.08732489422018201,Education: Education
+Education,Education,2003,112837,0.0786470178647227,Education: Education
+Education,Education,2004,115060,0.07710840143815947,Education: Education
+Education,Education,2005,114478,0.07446062584963217,Education: Education
+Education,Education,2006,117832,0.07444345255581901,Education: Education
+Education,Education,2007,117505,0.07226687544242359,Education: Education
+Education,Education,2008,115050,0.0691811608364276,Education: Education
+Education,Education,2009,114463,0.06721931562123971,Education: Education
+Education,Education,2010,112615,0.06410340334625286,Education: Education
+Education,Education,2011,113896,0.062318652644203804,Education: Education
+Education,Education,2012,115563,0.06051822490766183,Education: Education
+Education,Education,2013,114100,0.05820065607084871,Education: Education
+Education,Education,2014,108426,0.05450375025573924,Education: Education
+Education,Education,2015,103277,0.051254348656817154,Education: Education
+Education,Education,2016,100444,0.049202547810637494,Education: Education
+Education,Education,2017,98644,0.04742832910386979,Education: Education
+Engineering,Computer and Electrical Engineering,1999,16541,0.013521367619181525,Engineering: Computer and Electrical Engineering
+Engineering,Computer and Electrical Engineering,2e3,17712,0.014065727416177017,Engineering: Computer and Electrical Engineering
+Engineering,Computer and Electrical Engineering,2001,18606,0.014103649620650787,Engineering: Computer and Electrical Engineering
+Engineering,Computer and Electrical Engineering,2002,19143,0.013921918567358,Engineering: Computer and Electrical Engineering
+Engineering,Computer and Electrical Engineering,2003,21117,0.014718479543495035,Engineering: Computer and Electrical Engineering
+Engineering,Computer and Electrical Engineering,2004,21944,0.014705951339813762,Engineering: Computer and Electrical Engineering
+Engineering,Computer and Electrical Engineering,2005,21848,0.014210728293320672,Engineering: Computer and Electrical Engineering
+Engineering,Computer and Electrical Engineering,2006,20203,0.012763774458425652,Engineering: Computer and Electrical Engineering
+Engineering,Computer and Electrical Engineering,2007,18827,0.011578813360746426,Engineering: Computer and Electrical Engineering
+Engineering,Computer and Electrical Engineering,2008,17591,0.010577712301378512,Engineering: Computer and Electrical Engineering
+Engineering,Computer and Electrical Engineering,2009,16501,0.009690344714589662,Engineering: Computer and Electrical Engineering
+Engineering,Computer and Electrical Engineering,2010,16387,0.00932790898756867,Engineering: Computer and Electrical Engineering
+Engineering,Computer and Electrical Engineering,2011,16597,0.009081115034205332,Engineering: Computer and Electrical Engineering
+Engineering,Computer and Electrical Engineering,2012,17520,0.009174902870142132,Engineering: Computer and Electrical Engineering
+Engineering,Computer and Electrical Engineering,2013,18571,0.009472781629200101,Engineering: Computer and Electrical Engineering
+Engineering,Computer and Electrical Engineering,2014,20185,0.010146627182706145,Engineering: Computer and Electrical Engineering
+Engineering,Computer and Electrical Engineering,2015,21576,0.010707745447868228,Engineering: Computer and Electrical Engineering
+Engineering,Computer and Electrical Engineering,2016,23694,0.011606518735068743,Engineering: Computer and Electrical Engineering
+Engineering,Computer and Electrical Engineering,2017,26016,0.012508570313108517,Engineering: Computer and Electrical Engineering
+Engineering,Computer Science,1999,31257,0.025550897023925816,Engineering: Computer Science
+Engineering,Computer Science,2e3,38543,0.030608363358271835,Engineering: Computer Science
+Engineering,Computer Science,2001,46444,0.0352053049006506,Engineering: Computer Science
+Engineering,Computer Science,2002,52609,0.038260367440324766,Engineering: Computer Science
+Engineering,Computer Science,2003,59717,0.04162255258317436,Engineering: Computer Science
+Engineering,Computer Science,2004,61710,0.0413554619567949,Engineering: Computer Science
+Engineering,Computer Science,2005,56473,0.036732078858874875,Engineering: Computer Science
+Engineering,Computer Science,2006,49103,0.031022106480823382,Engineering: Computer Science
+Engineering,Computer Science,2007,43617,0.026824937714754176,Engineering: Computer Science
+Engineering,Computer Science,2008,39888,0.02398520767877813,Engineering: Computer Science
+Engineering,Computer Science,2009,39551,0.023226642252392928,Engineering: Computer Science
+Engineering,Computer Science,2010,41097,0.02339348725588025,Engineering: Computer Science
+Engineering,Computer Science,2011,44677,0.024445199516972445,Engineering: Computer Science
+Engineering,Computer Science,2012,49311,0.025823266862418877,Engineering: Computer Science
+Engineering,Computer Science,2013,53162,0.02711711900121349,Engineering: Computer Science
+Engineering,Computer Science,2014,58007,0.02915904894660567,Engineering: Computer Science
+Engineering,Computer Science,2015,62422,0.03097881379063916,Engineering: Computer Science
+Engineering,Computer Science,2016,67786,0.033205008819759005,Engineering: Computer Science
+Engineering,Computer Science,2017,75664,0.03637947663634082,Engineering: Computer Science
+Engineering,Engineering,1999,42366,0.03463190016046457,Engineering: Engineering
+Engineering,Engineering,2e3,41429,0.032900238320054065,Engineering: Engineering
+Engineering,Engineering,2001,40685,0.030839889541877743,Engineering: Engineering
+Engineering,Engineering,2002,41503,0.030183429258792197,Engineering: Engineering
+Engineering,Engineering,2003,40681,0.028354523195005043,Engineering: Engineering
+Engineering,Engineering,2004,42828,0.02870153499733612,Engineering: Engineering
+Engineering,Engineering,2005,44333,0.028835784393435798,Engineering: Engineering
+Engineering,Engineering,2006,48004,0.03032778444301663,Engineering: Engineering
+Engineering,Engineering,2007,49486,0.03043443766770583,Engineering: Engineering
+Engineering,Engineering,2008,52176,0.03137415252326333,Engineering: Engineering
+Engineering,Engineering,2009,53917,0.03166319107790624,Engineering: Engineering
+Engineering,Engineering,2010,57660,0.03282158004657408,Engineering: Engineering
+Engineering,Engineering,2011,61151,0.0334590146084648,Engineering: Engineering
+Engineering,Engineering,2012,65416,0.03425716016856266,Engineering: Engineering
+Engineering,Engineering,2013,68936,0.03516319392550418,Engineering: Engineering
+Engineering,Engineering,2014,73630,0.037012442876524825,Engineering: Engineering
+Engineering,Engineering,2015,77984,0.03870192904183147,Engineering: Engineering
+Engineering,Engineering,2016,84847,0.04156234891172354,Engineering: Engineering
+Engineering,Engineering,2017,91292,0.043893465599027626,Engineering: Engineering
+Fine & Performing Arts,Arts,1999,39279,0.03210844560267403,Fine & Performing Arts: Arts
+Fine & Performing Arts,Arts,2e3,44147,0.03505869852314627,Fine & Performing Arts: Arts
+Fine & Performing Arts,Arts,2001,47146,0.035737432280726754,Fine & Performing Arts: Arts
+Fine & Performing Arts,Arts,2002,52122,0.03790619231927251,Fine & Performing Arts: Arts
+Fine & Performing Arts,Arts,2003,54773,0.038176600844620615,Fine & Performing Arts: Arts
+Fine & Performing Arts,Arts,2004,59585,0.039931375801257885,Fine & Performing Arts: Arts
+Fine & Performing Arts,Arts,2005,62651,0.04075047319227542,Fine & Performing Arts: Arts
+Fine & Performing Arts,Arts,2006,64270,0.040604256023512184,Fine & Performing Arts: Arts
+Fine & Performing Arts,Arts,2007,65330,0.040178673015220906,Fine & Performing Arts: Arts
+Fine & Performing Arts,Arts,2008,66554,0.04001984335773665,Fine & Performing Arts: Arts
+Fine & Performing Arts,Arts,2009,66794,0.039225312700218284,Fine & Performing Arts: Arts
+Fine & Performing Arts,Arts,2010,69182,0.0393802037943477,Fine & Performing Arts: Arts
+Fine & Performing Arts,Arts,2011,71106,0.03890593273616945,Fine & Performing Arts: Arts
+Fine & Performing Arts,Arts,2012,72736,0.038090509997868616,Fine & Performing Arts: Arts
+Fine & Performing Arts,Arts,2013,74065,0.0377794179832376,Fine & Performing Arts: Arts
+Fine & Performing Arts,Arts,2014,72562,0.03647557897604772,Fine & Performing Arts: Arts
+Fine & Performing Arts,Arts,2015,71422,0.035445337197703215,Fine & Performing Arts: Arts
+Fine & Performing Arts,Arts,2016,69099,0.03384818258101271,Fine & Performing Arts: Arts
+Fine & Performing Arts,Arts,2017,67299,0.03235755971332603,Fine & Performing Arts: Arts
+Fine & Performing Arts,Music,1999,9090,0.0074305804762928515,Fine & Performing Arts: Music
+Fine & Performing Arts,Music,2e3,9665,0.007675319302018454,Fine & Performing Arts: Music
+Fine & Performing Arts,Music,2001,10544,0.00799252292809534,Fine & Performing Arts: Music
+Fine & Performing Arts,Music,2002,11186,0.0081351188995699,Fine & Performing Arts: Music
+Fine & Performing Arts,Music,2003,11437,0.007971551382249028,Fine & Performing Arts: Music
+Fine & Performing Arts,Music,2004,11989,0.008034526549992125,Fine & Performing Arts: Music
+Fine & Performing Arts,Music,2005,12352,0.008034186922331423,Fine & Performing Arts: Music
+Fine & Performing Arts,Music,2006,12751,0.008055778256664134,Fine & Performing Arts: Music
+Fine & Performing Arts,Music,2007,13042,0.008020974337433201,Fine & Performing Arts: Music
+Fine & Performing Arts,Music,2008,13322,0.008010703386900377,Fine & Performing Arts: Music
+Fine & Performing Arts,Music,2009,13715,0.008054243849499862,Fine & Performing Arts: Music
+Fine & Performing Arts,Music,2010,14116,0.008035196391561564,Fine & Performing Arts: Music
+Fine & Performing Arts,Music,2011,14418,0.00788886645557465,Fine & Performing Arts: Music
+Fine & Performing Arts,Music,2012,14484,0.007585005317987365,Fine & Performing Arts: Music
+Fine & Performing Arts,Music,2013,14937,0.007619134090536961,Fine & Performing Arts: Music
+Fine & Performing Arts,Music,2014,15023,0.007551784997066853,Fine & Performing Arts: Music
+Fine & Performing Arts,Music,2015,14933,0.007410954893076392,Fine & Performing Arts: Music
+Fine & Performing Arts,Music,2016,14377,0.007042581238038462,Fine & Performing Arts: Music
+Fine & Performing Arts,Music,2017,14889,0.007158675560880716,Fine & Performing Arts: Music
+Health & Medical,Health and Medical,1999,47304,0.0386684465182131,Health & Medical: Health and Medical
+Health & Medical,Health and Medical,2e3,45347,0.03601166108521788,Health & Medical: Health and Medical
+Health & Medical,Health and Medical,2001,42577,0.03227405621296617,Health & Medical: Health and Medical
+Health & Medical,Health and Medical,2002,39690,0.028864908736271167,Health & Medical: Health and Medical
+Health & Medical,Health and Medical,2003,35486,0.024733625282022293,Health & Medical: Health and Medical
+Health & Medical,Health and Medical,2004,32687,0.021905460784018067,Health & Medical: Health and Medical
+Health & Medical,Health and Medical,2005,34165,0.022222149951542508,Health & Medical: Health and Medical
+Health & Medical,Health and Medical,2006,38234,0.024155331022296014,Health & Medical: Health and Medical
+Health & Medical,Health and Medical,2007,41588,0.025577080259559272,Health & Medical: Health and Medical
+Health & Medical,Health and Medical,2008,43982,0.026446986665864914,Health & Medical: Health and Medical
+Health & Medical,Health and Medical,2009,46641,0.027390301668576235,Health & Medical: Health and Medical
+Health & Medical,Health and Medical,2010,47761,0.027186810346937648,Health & Medical: Health and Medical
+Health & Medical,Health and Medical,2011,52790,0.02888425996599985,Health & Medical: Health and Medical
+Health & Medical,Health and Medical,2012,61330,0.03211739686220417,Health & Medical: Health and Medical
+Health & Medical,Health and Medical,2013,68261,0.03481888680150924,Health & Medical: Health and Medical
+Health & Medical,Health and Medical,2014,74198,0.037297965999624996,Health & Medical: Health and Medical
+Health & Medical,Health and Medical,2015,79140,0.039275629159449925,Health & Medical: Health and Medical
+Health & Medical,Health and Medical,2016,83268,0.040788874906377316,Health & Medical: Health and Medical
+Health & Medical,Health and Medical,2017,85795,0.04125049162104648,Health & Medical: Health and Medical
+Health & Medical,Nursing,1999,38860,0.03176593589755118,Health & Medical: Nursing
+Health & Medical,Nursing,2e3,36843,0.029258333062003716,Health & Medical: Nursing
+Health & Medical,Nursing,2001,34787,0.02636910992978496,Health & Medical: Nursing
+Health & Medical,Nursing,2002,34808,0.025314430418043005,Health & Medical: Nursing
+Health & Medical,Nursing,2003,35538,0.024769869110987667,Health & Medical: Nursing
+Health & Medical,Nursing,2004,40698,0.0272740980508449,Health & Medical: Nursing
+Health & Medical,Nursing,2005,45879,0.02984135863096206,Health & Medical: Nursing
+Health & Medical,Nursing,2006,53024,0.033499300939640736,Health & Medical: Nursing
+Health & Medical,Nursing,2007,59132,0.03636683442118541,Health & Medical: Nursing
+Health & Medical,Nursing,2008,65196,0.03920325912117978,Health & Medical: Nursing
+Health & Medical,Nursing,2009,70784,0.04156847223062327,Health & Medical: Nursing
+Health & Medical,Nursing,2010,78577,0.044728083512307525,Health & Medical: Nursing
+Health & Medical,Nursing,2011,87157,0.047688301683209866,Health & Medical: Nursing
+Health & Medical,Nursing,2012,99202,0.051950269093826475,Health & Medical: Nursing
+Health & Medical,Nursing,2013,109531,0.05587007940487406,Health & Medical: Nursing
+Health & Medical,Nursing,2014,119797,0.06021974221484509,Health & Medical: Nursing
+Health & Medical,Nursing,2015,131440,0.06523109295827771,Health & Medical: Nursing
+Health & Medical,Nursing,2016,138799,0.06799076533758786,Health & Medical: Nursing
+Health & Medical,Nursing,2017,144990,0.06971162398899154,Health & Medical: Nursing
+Humanities,Area Studies,1999,3529,0.0028847655116432864,Humanities: Area Studies
+Humanities,Area Studies,2e3,3638,0.002889064834013775,Humanities: Area Studies
+Humanities,Area Studies,2001,4059,0.003076787800183895,Humanities: Area Studies
+Humanities,Area Studies,2002,4304,0.0031301226304084433,Humanities: Area Studies
+Humanities,Area Studies,2003,4532,0.003158789093674267,Humanities: Area Studies
+Humanities,Area Studies,2004,4737,0.0031745393500135707,Humanities: Area Studies
+Humanities,Area Studies,2005,5118,0.0033289320489388137,Humanities: Area Studies
+Humanities,Area Studies,2006,5318,0.003359785802599001,Humanities: Area Studies
+Humanities,Area Studies,2007,5614,0.0034526721308349943,Humanities: Area Studies
+Humanities,Area Studies,2008,5885,0.003538732129703402,Humanities: Area Studies
+Humanities,Area Studies,2009,6056,0.003556434615572086,Humanities: Area Studies
+Humanities,Area Studies,2010,6415,0.003651585778681456,Humanities: Area Studies
+Humanities,Area Studies,2011,6514,0.0035641611937587236,Humanities: Area Studies
+Humanities,Area Studies,2012,6622,0.0034678200231781507,Humanities: Area Studies
+Humanities,Area Studies,2013,6364,0.0032461785734871273,Humanities: Area Studies
+Humanities,Area Studies,2014,5912,0.0029718533517046684,Humanities: Area Studies
+Humanities,Area Studies,2015,5568,0.002763289147836962,Humanities: Area Studies
+Humanities,Area Studies,2016,5322,0.002606984582933901,Humanities: Area Studies
+Humanities,Area Studies,2017,4958,0.002383821172063039,Humanities: Area Studies
+Humanities,Communication,1999,27910,0.022814906610927776,Humanities: Communication
+Humanities,Communication,2e3,31281,0.024841351586801785,Humanities: Communication
+Humanities,Communication,2001,33331,0.025265438326664055,Humanities: Communication
+Humanities,Communication,2002,36593,0.026612587689250965,Humanities: Communication
+Humanities,Communication,2003,39183,0.027310422122118004,Humanities: Communication
+Humanities,Communication,2004,41179,0.027596444140639397,Humanities: Communication
+Humanities,Communication,2005,42576,0.027692968135134607,Humanities: Communication
+Humanities,Communication,2006,42538,0.026874495763624728,Humanities: Communication
+Humanities,Communication,2007,43132,0.026526657347198963,Humanities: Communication
+Humanities,Communication,2008,43915,0.026406698636520797,Humanities: Communication
+Humanities,Communication,2009,44908,0.02637258350662339,Humanities: Communication
+Humanities,Communication,2010,44032,0.025064166018223207,Humanities: Communication
+Humanities,Communication,2011,44357,0.024270110235117548,Humanities: Communication
+Humanities,Communication,2012,43238,0.02264294807643867,Humanities: Communication
+Humanities,Communication,2013,43991,0.022439132876535546,Humanities: Communication
+Humanities,Communication,2014,44916,0.022578444713323223,Humanities: Communication
+Humanities,Communication,2015,46754,0.023203092819319204,Humanities: Communication
+Humanities,Communication,2016,46996,0.023021016057790607,Humanities: Communication
+Humanities,Communication,2017,46846,0.022523696374841695,Humanities: Communication
+Humanities,Comparative Literature,1999,746,6.09814415326124e-4,Humanities: Comparative Literature
+Humanities,Comparative Literature,2e3,832,6.607207097029853e-4,Humanities: Comparative Literature
+Humanities,Comparative Literature,2001,925,7.011649951145856e-4,Humanities: Comparative Literature
+Humanities,Comparative Literature,2002,870,6.327153086559818e-4,Humanities: Comparative Literature
+Humanities,Comparative Literature,2003,830,5.785072700241928e-4,Humanities: Comparative Literature
+Humanities,Comparative Literature,2004,887,5.944303152759209e-4,Humanities: Comparative Literature
+Humanities,Comparative Literature,2005,901,5.860429417924719e-4,Humanities: Comparative Literature
+Humanities,Comparative Literature,2006,887,5.603854845628646e-4,Humanities: Comparative Literature
+Humanities,Comparative Literature,2007,951,5.848755248350694e-4,Humanities: Comparative Literature
+Humanities,Comparative Literature,2008,888,5.339667172772508e-4,Humanities: Comparative Literature
+Humanities,Comparative Literature,2009,914,5.367538372907673e-4,Humanities: Comparative Literature
+Humanities,Comparative Literature,2010,789,4.4911943560088365e-4,Humanities: Comparative Literature
+Humanities,Comparative Literature,2011,905,4.951743752458774e-4,Humanities: Comparative Literature
+Humanities,Comparative Literature,2012,862,0.00045141360011772364,Humanities: Comparative Literature
+Humanities,Comparative Literature,2013,1052,5.366090288039688e-4,Humanities: Comparative Literature
+Humanities,Comparative Literature,2014,910,4.5744021482598923e-4,Humanities: Comparative Literature
+Humanities,Comparative Literature,2015,887,4.4020069578509075e-4,Humanities: Comparative Literature
+Humanities,Comparative Literature,2016,802,3.9286013444437965e-4,Humanities: Comparative Literature
+Humanities,Comparative Literature,2017,839,4.033936997500786e-4,Humanities: Comparative Literature
+Humanities,"Cultural, Ethnic, and Gender Studies",1999,2391,0.001954512422312014,"Humanities: Cultural, Ethnic, and Gender Studies"
+Humanities,"Cultural, Ethnic, and Gender Studies",2e3,2485,0.001973426638956633,"Humanities: Cultural, Ethnic, and Gender Studies"
+Humanities,"Cultural, Ethnic, and Gender Studies",2001,3139,0.002379412886123983,"Humanities: Cultural, Ethnic, and Gender Studies"
+Humanities,"Cultural, Ethnic, and Gender Studies",2002,3432,0.002495952803801528,"Humanities: Cultural, Ethnic, and Gender Studies"
+Humanities,"Cultural, Ethnic, and Gender Studies",2003,3741,0.0026074646953741024,"Humanities: Cultural, Ethnic, and Gender Studies"
+Humanities,"Cultural, Ethnic, and Gender Studies",2004,4320,0.0028950833844328954,"Humanities: Cultural, Ethnic, and Gender Studies"
+Humanities,"Cultural, Ethnic, and Gender Studies",2005,4571,0.002973143492711863,"Humanities: Cultural, Ethnic, and Gender Studies"
+Humanities,"Cultural, Ethnic, and Gender Studies",2006,4814,0.0030413706005474974,"Humanities: Cultural, Ethnic, and Gender Studies"
+Humanities,"Cultural, Ethnic, and Gender Studies",2007,4891,0.0030080191293042316,"Humanities: Cultural, Ethnic, and Gender Studies"
+Humanities,"Cultural, Ethnic, and Gender Studies",2008,4943,0.0029722944634025346,"Humanities: Cultural, Ethnic, and Gender Studies"
+Humanities,"Cultural, Ethnic, and Gender Studies",2009,5044,0.0029621294915696175,"Humanities: Cultural, Ethnic, and Gender Studies"
+Humanities,"Cultural, Ethnic, and Gender Studies",2010,4736,0.0026958550659135425,"Humanities: Cultural, Ethnic, and Gender Studies"
+Humanities,"Cultural, Ethnic, and Gender Studies",2011,5422,0.0029666690194288916,"Humanities: Cultural, Ethnic, and Gender Studies"
+Humanities,"Cultural, Ethnic, and Gender Studies",2012,5435,0.002846209880092608,"Humanities: Cultural, Ethnic, and Gender Studies"
+Humanities,"Cultural, Ethnic, and Gender Studies",2013,5385,0.0027468057225374263,"Humanities: Cultural, Ethnic, and Gender Studies"
+Humanities,"Cultural, Ethnic, and Gender Studies",2014,5175,0.0026013770458510927,"Humanities: Cultural, Ethnic, and Gender Studies"
+Humanities,"Cultural, Ethnic, and Gender Studies",2015,5033,0.002497779145305932,"Humanities: Cultural, Ethnic, and Gender Studies"
+Humanities,"Cultural, Ethnic, and Gender Studies",2016,5317,0.002604535330225395,"Humanities: Cultural, Ethnic, and Gender Studies"
+Humanities,"Cultural, Ethnic, and Gender Studies",2017,5547,0.002667014126953142,"Humanities: Cultural, Ethnic, and Gender Studies"
+Humanities,English Language and Literature,1999,49717,0.04064094274365805,Humanities: English Language and Literature
+Humanities,English Language and Literature,2e3,49912,0.03963688949843198,Humanities: English Language and Literature
+Humanities,English Language and Literature,2001,53142,0.04028249748149114,Humanities: English Language and Literature
+Humanities,English Language and Literature,2002,55148,0.04010687797903458,Humanities: English Language and Literature
+Humanities,English Language and Literature,2003,56428,0.03933013040111464,Humanities: English Language and Literature
+Humanities,English Language and Literature,2004,56917,0.03814339374809424,Humanities: English Language and Literature
+Humanities,English Language and Literature,2005,57357,0.037307064386671265,Humanities: English Language and Literature
+Humanities,English Language and Literature,2006,58263,0.03680917642287055,Humanities: English Language and Literature
+Humanities,English Language and Literature,2007,58354,0.03588835581096282,Humanities: English Language and Literature
+Humanities,English Language and Literature,2008,58301,0.035057199981960586,Humanities: English Language and Literature
+Humanities,English Language and Literature,2009,58619,0.03442447832401257,Humanities: English Language and Literature
+Humanities,English Language and Literature,2010,56296,0.03204515557235405,Humanities: English Language and Literature
+Humanities,English Language and Literature,2011,56036,0.03066032186881545,Humanities: English Language and Literature
+Humanities,English Language and Literature,2012,57196,0.029952496835653503,Humanities: English Language and Literature
+Humanities,English Language and Literature,2013,55657,0.028389780148424425,Humanities: English Language and Literature
+Humanities,English Language and Literature,2014,53674,0.026980929769857304,Humanities: English Language and Literature
+Humanities,English Language and Literature,2015,48872,0.024254214661114944,Humanities: English Language and Literature
+Humanities,English Language and Literature,2016,45580,0.022327387690741676,Humanities: English Language and Literature
+Humanities,English Language and Literature,2017,44019,0.02116446635196509,Humanities: English Language and Literature
+Humanities,History,1999,24875,0.020333959224178733,Humanities: History
+Humanities,History,2e3,25394,0.020166276084372128,Humanities: History
+Humanities,History,2001,27300,0.020693842558516955,Humanities: History
+Humanities,History,2002,28554,0.0207661527854746,Humanities: History
+Humanities,History,2003,30377,0.021172669086174583,Humanities: History
+Humanities,History,2004,32691,0.02190814141678143,Humanities: History
+Humanities,History,2005,34891,0.022694366572787054,Humanities: History
+Humanities,History,2006,36751,0.023218406925783357,Humanities: History
+Humanities,History,2007,38027,0.023387025849530164,Humanities: History
+Humanities,History,2008,38078,0.022896829572616167,Humanities: History
+Humanities,History,2009,38482,0.022598863420813246,Humanities: History
+Humanities,History,2010,38803,0.022087682458328376,Humanities: History
+Humanities,History,2011,38814,0.021237235580987272,Humanities: History
+Humanities,History,2012,38812,0.02032513300205231,Humanities: History
+Humanities,History,2013,37881,0.019322515798596146,Humanities: History
+Humanities,History,2014,34453,0.017318887605933853,Humanities: History
+Humanities,History,2015,31237,0.015502310185162209,Humanities: History
+Humanities,History,2016,28399,0.01391126553377299,Humanities: History
+Humanities,History,2017,26879,0.012923503284365152,Humanities: History
+Humanities,Humanities/Humanistic Studies,1999,2633,0.002152334256774376,Humanities: Humanities/Humanistic Studies
+Humanities,Humanities/Humanistic Studies,2e3,2650,0.00210445899124148,Humanities: Humanities/Humanistic Studies
+Humanities,Humanities/Humanistic Studies,2001,3053,0.0023142234919835995,Humanities: Humanities/Humanistic Studies
+Humanities,Humanities/Humanistic Studies,2002,3284,0.0023883184754324646,Humanities: Humanities/Humanistic Studies
+Humanities,Humanities/Humanistic Studies,2003,3156,0.0021997216195136773,Humanities: Humanities/Humanistic Studies
+Humanities,Humanities/Humanistic Studies,2004,3041,0.0020379510583473227,Humanities: Humanities/Humanistic Studies
+Humanities,Humanities/Humanistic Studies,2005,3238,0.002106112148195365,Humanities: Humanities/Humanistic Studies
+Humanities,Humanities/Humanistic Studies,2006,3251,0.002053904408471108,Humanities: Humanities/Humanistic Studies
+Humanities,Humanities/Humanistic Studies,2007,2987,0.0018370380574998448,Humanities: Humanities/Humanistic Studies
+Humanities,Humanities/Humanistic Studies,2008,2922,0.0017570391305001428,Humanities: Humanities/Humanistic Studies
+Humanities,Humanities/Humanistic Studies,2009,2558,0.001502206034780944,Humanities: Humanities/Humanistic Studies
+Humanities,Humanities/Humanistic Studies,2010,2653,0.001510156986881045,Humanities: Humanities/Humanistic Studies
+Humanities,Humanities/Humanistic Studies,2011,2750,0.0015046735159405112,Humanities: Humanities/Humanistic Studies
+Humanities,Humanities/Humanistic Studies,2012,2768,0.0014495508644151497,Humanities: Humanities/Humanistic Studies
+Humanities,Humanities/Humanistic Studies,2013,2856,0.0014568016979697102,Humanities: Humanities/Humanistic Studies
+Humanities,Humanities/Humanistic Studies,2014,2710,0.001362267013382891,Humanities: Humanities/Humanistic Studies
+Humanities,Humanities/Humanistic Studies,2015,2382,0.0011821398617362865,Humanities: Humanities/Humanistic Studies
+Humanities,Humanities/Humanistic Studies,2016,2161,0.0010585670206163399,Humanities: Humanities/Humanistic Studies
+Humanities,Humanities/Humanistic Studies,2017,2085,0.0010024742121321978,Humanities: Humanities/Humanistic Studies
+Humanities,Languages and Literatures Other than English,1999,13646,0.011154862616005748,Humanities: Languages and Literatures Other than English
+Humanities,Languages and Literatures Other than English,2e3,13559,0.01076768281594084,Humanities: Languages and Literatures Other than English
+Humanities,Languages and Literatures Other than English,2001,17873,0.013548023738035661,Humanities: Languages and Literatures Other than English
+Humanities,Languages and Literatures Other than English,2002,18623,0.013543743900115344,Humanities: Languages and Literatures Other than English
+Humanities,Languages and Literatures Other than English,2003,19344,0.013482704375118055,Humanities: Languages and Literatures Other than English
+Humanities,Languages and Literatures Other than English,2004,20046,0.013433991093597645,Humanities: Languages and Literatures Other than English
+Humanities,Languages and Literatures Other than English,2005,21323,0.01386924933167689,Humanities: Languages and Literatures Other than English
+Humanities,Languages and Literatures Other than English,2006,22273,0.014071551181137185,Humanities: Languages and Literatures Other than English
+Humanities,Languages and Literatures Other than English,2007,23127,0.014223360949380284,Humanities: Languages and Literatures Other than English
+Humanities,Languages and Literatures Other than English,2008,24053,0.014463402534537966,Humanities: Languages and Literatures Other than English
+Humanities,Languages and Literatures Other than English,2009,24270,0.014252752331561183,Humanities: Languages and Literatures Other than English
+Humanities,Languages and Literatures Other than English,2010,24926,0.014188531117601554,Humanities: Languages and Literatures Other than English
+Humanities,Languages and Literatures Other than English,2011,25007,0.013682680222954314,Humanities: Languages and Literatures Other than English
+Humanities,Languages and Literatures Other than English,2012,24767,0.012970023937489167,Humanities: Languages and Literatures Other than English
+Humanities,Languages and Literatures Other than English,2013,24401,0.012446575011260117,Humanities: Languages and Literatures Other than English
+Humanities,Languages and Literatures Other than English,2014,23014,0.011568713301104743,Humanities: Languages and Literatures Other than English
+Humanities,Languages and Literatures Other than English,2015,22135,0.010985166179484761,Humanities: Languages and Literatures Other than English
+Humanities,Languages and Literatures Other than English,2016,20867,0.01022171125367939,Humanities: Languages and Literatures Other than English
+Humanities,Languages and Literatures Other than English,2017,20265,0.009743472378349634,Humanities: Languages and Literatures Other than English
+Humanities,Linguistics,1999,724,5.91830612193182e-4,Humanities: Linguistics
+Humanities,Linguistics,2e3,727,5.773364855217192e-4,Humanities: Linguistics
+Humanities,Linguistics,2001,828,6.276374226539209e-4,Humanities: Linguistics
+Humanities,Linguistics,2002,954,6.9380506259518e-4,Humanities: Linguistics
+Humanities,Linguistics,2003,1011,7.046636746921191e-4,Humanities: Linguistics
+Humanities,Linguistics,2004,1143,7.659908121312036e-4,Humanities: Linguistics
+Humanities,Linguistics,2005,1167,7.590589490253215e-4,Humanities: Linguistics
+Humanities,Linguistics,2006,1328,8.389987863579302e-4,Humanities: Linguistics
+Humanities,Linguistics,2007,1463,8.997611912026357e-4,Humanities: Linguistics
+Humanities,Linguistics,2008,1641,9.8675606199546e-4,Humanities: Linguistics
+Humanities,Linguistics,2009,1598,9.384383282173372e-4,Humanities: Linguistics
+Humanities,Linguistics,2010,1806,0.0010280224343411862,Humanities: Linguistics
+Humanities,Linguistics,2011,1951,0.0010674974653090681,Humanities: Linguistics
+Humanities,Linguistics,2012,2209,0.0011568128105105006,Humanities: Linguistics
+Humanities,Linguistics,2013,2306,0.00117625515249235,Humanities: Linguistics
+Humanities,Linguistics,2014,2402,0.00120744109451871,Humanities: Linguistics
+Humanities,Linguistics,2015,2431,0.0012064576002858575,Humanities: Linguistics
+Humanities,Linguistics,2016,2431,0.0011908266668756696,Humanities: Linguistics
+Humanities,Linguistics,2017,2399,0.0011534463476763272,Humanities: Linguistics
+Humanities,Philosophy,1999,5129,0.004192678466766341,Humanities: Philosophy
+Humanities,Philosophy,2e3,5174,0.004108856913465441,Humanities: Philosophy
+Humanities,Philosophy,2001,6278,0.004758825772247966,Humanities: Philosophy
+Humanities,Philosophy,2002,7059,0.005133721107819052,Humanities: Philosophy
+Humanities,Philosophy,2003,7691,0.005360601703320562,Humanities: Philosophy
+Humanities,Philosophy,2004,8292,0.005556951718453141,Humanities: Philosophy
+Humanities,Philosophy,2005,8798,0.005722536961032372,Humanities: Philosophy
+Humanities,Philosophy,2006,9098,0.005747899817985278,Humanities: Philosophy
+Humanities,Philosophy,2007,9114,0.005605210865769529,Humanities: Philosophy
+Humanities,Philosophy,2008,9315,0.005601238706573864,Humanities: Philosophy
+Humanities,Philosophy,2009,9500,0.0055789512628690256,Humanities: Philosophy
+Humanities,Philosophy,2010,9756,0.0055533703595972385,Humanities: Philosophy
+Humanities,Philosophy,2011,9801,0.005362656410811982,Humanities: Philosophy
+Humanities,Philosophy,2012,9884,0.005176069632904385,Humanities: Philosophy
+Humanities,Philosophy,2013,9903,0.005051368072476904,Humanities: Philosophy
+Humanities,Philosophy,2014,9296,0.004672927732991644,Humanities: Philosophy
+Humanities,Philosophy,2015,8625,0.004280418265103053,Humanities: Philosophy
+Humanities,Philosophy,2016,7904,0.003871778681606455,Humanities: Philosophy
+Humanities,Philosophy,2017,7973,0.0038334421550743464,Humanities: Philosophy
+Humanities,Religion,1999,3452,0.0028218222006779893,Humanities: Religion
+Humanities,Religion,2e3,3414,0.0027111784890937406,Humanities: Religion
+Humanities,Religion,2001,4250,0.00322156889647242,Humanities: Religion
+Humanities,Religion,2002,4500,0.003272665389599906,Humanities: Religion
+Humanities,Religion,2003,4896,0.0034124958964318647,Humanities: Religion
+Humanities,Religion,2004,5290,0.003545136829548615,Humanities: Religion
+Humanities,Religion,2005,5392,0.0035071515451109967,Humanities: Religion
+Humanities,Religion,2006,5634,0.0035594270800757373,Humanities: Religion
+Humanities,Religion,2007,5710,0.003511713193278913,Humanities: Religion
+Humanities,Religion,2008,5767,0.0034677770929480915,Humanities: Religion
+Humanities,Religion,2009,5722,0.003360290434330165,Humanities: Religion
+Humanities,Religion,2010,5864,0.003337942167761194,Humanities: Religion
+Humanities,Religion,2011,5996,0.003280735418756111,Humanities: Religion
+Humanities,Religion,2012,5815,0.0030452089149472887,Humanities: Religion
+Humanities,Religion,2013,5992,0.0030564270918188034,Humanities: Religion
+Humanities,Religion,2014,5611,0.0028205462037237646,Humanities: Religion
+Humanities,Religion,2015,5225,0.002593064977989965,Humanities: Religion
+Humanities,Religion,2016,4828,0.0023649984153334977,Humanities: Religion
+Humanities,Religion,2017,4409,0.0021198603363505324,Humanities: Religion
+Humanities,Study of the Arts,1999,5003,0.0040896803215504,Humanities: Study of the Arts
+Humanities,Study of the Arts,2e3,3818,0.003032009218324517,Humanities: Study of the Arts
+Humanities,Study of the Arts,2001,4504,0.0034141050140498305,Humanities: Study of the Arts
+Humanities,Study of the Arts,2002,4720,0.003432662364202568,Humanities: Study of the Arts
+Humanities,Study of the Arts,2003,5803,0.004044671913193242,Humanities: Study of the Arts
+Humanities,Study of the Arts,2004,5886,0.00394455111128982,Humanities: Study of the Arts
+Humanities,Study of the Arts,2005,6413,0.004171246820993476,Humanities: Study of the Arts
+Humanities,Study of the Arts,2006,6786,0.00428723325619346,Humanities: Study of the Arts
+Humanities,Study of the Arts,2007,7264,0.004467440391589847,Humanities: Study of the Arts
+Humanities,Study of the Arts,2008,7645,0.00459704454232498,Humanities: Study of the Arts
+Humanities,Study of the Arts,2009,7886,0.004631116806208962,Humanities: Study of the Arts
+Humanities,Study of the Arts,2010,8149,0.004638623929925983,Humanities: Study of the Arts
+Humanities,Study of the Arts,2011,8201,0.004487210001537503,Humanities: Study of the Arts
+Humanities,Study of the Arts,2012,8431,0.004415160165420566,Humanities: Study of the Arts
+Humanities,Study of the Arts,2013,8409,0.004289301638034766,Humanities: Study of the Arts
+Humanities,Study of the Arts,2014,8595,0.004320547963109206,Humanities: Study of the Arts
+Humanities,Study of the Arts,2015,8049,0.0039945607670509534,Humanities: Study of the Arts
+Humanities,Study of the Arts,2016,8145,0.003989832662156449,Humanities: Study of the Arts
+Humanities,Study of the Arts,2017,8137,0.0039122938437024905,Humanities: Study of the Arts
+Natural Sciences,Biology,1999,66694,0.05451871664311061,Natural Sciences: Biology
+Natural Sciences,Biology,2e3,65173,0.05175619088157773,Natural Sciences: Biology
+Natural Sciences,Biology,2001,64130,0.04861157960724148,Natural Sciences: Biology
+Natural Sciences,Biology,2002,63887,0.0464623941656376,Natural Sciences: Biology
+Natural Sciences,Biology,2003,65028,0.04532430211461832,Natural Sciences: Biology
+Natural Sciences,Biology,2004,66311,0.044438859792854106,Natural Sciences: Biology
+Natural Sciences,Biology,2005,69797,0.045398489687335356,Natural Sciences: Biology
+Natural Sciences,Biology,2006,74544,0.047095124646284306,Natural Sciences: Biology
+Natural Sciences,Biology,2007,81069,0.04985833220068795,Natural Sciences: Biology
+Natural Sciences,Biology,2008,84347,0.050719021061018325,Natural Sciences: Biology
+Natural Sciences,Biology,2009,87449,0.051355127261750885,Natural Sciences: Biology
+Natural Sciences,Biology,2010,91948,0.052339206419049496,Natural Sciences: Biology
+Natural Sciences,Biology,2011,96092,0.05257712272500204,Natural Sciences: Biology
+Natural Sciences,Biology,2012,102228,0.05353492982927454,Natural Sciences: Biology
+Natural Sciences,Biology,2013,107396,0.05478104872379377,Natural Sciences: Biology
+Natural Sciences,Biology,2014,112459,0.05653106496606145,Natural Sciences: Biology
+Natural Sciences,Biology,2015,118392,0.05875562657879196,Natural Sciences: Biology
+Natural Sciences,Biology,2016,122255,0.05988667797568284,Natural Sciences: Biology
+Natural Sciences,Biology,2017,126123,0.060640314175898886,Natural Sciences: Biology
+Natural Sciences,Chemistry,1999,13586,0.011105815880188634,Natural Sciences: Chemistry
+Natural Sciences,Chemistry,2e3,13473,0.010699387165659041,Natural Sciences: Chemistry
+Natural Sciences,Chemistry,2001,13573,0.010288554031016507,Natural Sciences: Chemistry
+Natural Sciences,Chemistry,2002,13131,0.009549637606852525,Natural Sciences: Chemistry
+Natural Sciences,Chemistry,2003,13005,0.009064442224897142,Natural Sciences: Chemistry
+Natural Sciences,Chemistry,2004,12997,0.0087100460063598,Natural Sciences: Chemistry
+Natural Sciences,Chemistry,2005,13610,0.008852435558041667,Natural Sciences: Chemistry
+Natural Sciences,Chemistry,2006,14503,0.009162650149509836,Natural Sciences: Chemistry
+Natural Sciences,Chemistry,2007,15004,0.00922762605113079,Natural Sciences: Chemistry
+Natural Sciences,Chemistry,2008,15730,0.009458667187805355,Natural Sciences: Chemistry
+Natural Sciences,Chemistry,2009,16400,0.009631031653794949,Natural Sciences: Chemistry
+Natural Sciences,Chemistry,2010,16816,0.009572107007686261,Natural Sciences: Chemistry
+Natural Sciences,Chemistry,2011,17848,0.009765604695456816,Natural Sciences: Chemistry
+Natural Sciences,Chemistry,2012,19192,0.010050498623502728,Natural Sciences: Chemistry
+Natural Sciences,Chemistry,2013,19842,0.010121099191566873,Natural Sciences: Chemistry
+Natural Sciences,Chemistry,2014,20810,0.010460803154427292,Natural Sciences: Chemistry
+Natural Sciences,Chemistry,2015,21202,0.010522136586285789,Natural Sciences: Chemistry
+Natural Sciences,Chemistry,2016,21329,0.010448022203945355,Natural Sciences: Chemistry
+Natural Sciences,Chemistry,2017,21965,0.01056083744339747,Natural Sciences: Chemistry
+Natural Sciences,Exercise Science,1999,3471,0.002837353667020076,Natural Sciences: Exercise Science
+Natural Sciences,Exercise Science,2e3,3788,0.0030081851542727266,Natural Sciences: Exercise Science
+Natural Sciences,Exercise Science,2001,4219,0.003198070393933445,Natural Sciences: Exercise Science
+Natural Sciences,Exercise Science,2002,4571,0.0033243007768580376,Natural Sciences: Exercise Science
+Natural Sciences,Exercise Science,2003,5188,0.003616018936006641,Natural Sciences: Exercise Science
+Natural Sciences,Exercise Science,2004,5459,0.003658393563800735,Natural Sciences: Exercise Science
+Natural Sciences,Exercise Science,2005,5874,0.00382066175370586,Natural Sciences: Exercise Science
+Natural Sciences,Exercise Science,2006,6781,0.004284074375220727,Natural Sciences: Exercise Science
+Natural Sciences,Exercise Science,2007,7853,0.004829681910125973,Natural Sciences: Exercise Science
+Natural Sciences,Exercise Science,2008,8781,0.005280137099562544,Natural Sciences: Exercise Science
+Natural Sciences,Exercise Science,2009,9757,0.005729876575980324,Natural Sciences: Exercise Science
+Natural Sciences,Exercise Science,2010,11799,0.006716299392464925,Natural Sciences: Exercise Science
+Natural Sciences,Exercise Science,2011,14562,0.007967656632409354,Natural Sciences: Exercise Science
+Natural Sciences,Exercise Science,2012,16871,0.008835033465877164,Natural Sciences: Exercise Science
+Natural Sciences,Exercise Science,2013,19239,0.009813518160798057,Natural Sciences: Exercise Science
+Natural Sciences,Exercise Science,2014,20896,0.010504033768136122,Natural Sciences: Exercise Science
+Natural Sciences,Exercise Science,2015,22825,0.011327599640693006,Natural Sciences: Exercise Science
+Natural Sciences,Exercise Science,2016,23904,0.011709387348826,Natural Sciences: Exercise Science
+Natural Sciences,Exercise Science,2017,25320,0.012173931439418344,Natural Sciences: Exercise Science
+Natural Sciences,Math and Statistics,1999,12059,0.009857576453643069,Natural Sciences: Math and Statistics
+Natural Sciences,Math and Statistics,2e3,11481,0.009117469312620162,Natural Sciences: Math and Statistics
+Natural Sciences,Math and Statistics,2001,12442,0.009431237696449376,Natural Sciences: Math and Statistics
+Natural Sciences,Math and Statistics,2002,13347,0.00970672554555332,Natural Sciences: Math and Statistics
+Natural Sciences,Math and Statistics,2003,14093,0.009822774646326443,Natural Sciences: Math and Statistics
+Natural Sciences,Math and Statistics,2004,15163,0.010161608647721294,Natural Sciences: Math and Statistics
+Natural Sciences,Math and Statistics,2005,16257,0.010574139960843746,Natural Sciences: Math and Statistics
+Natural Sciences,Math and Statistics,2006,16797,0.010611944739799815,Natural Sciences: Math and Statistics
+Natural Sciences,Math and Statistics,2007,17085,0.010507464081816152,Natural Sciences: Math and Statistics
+Natural Sciences,Math and Statistics,2008,17223,0.010356428796921273,Natural Sciences: Math and Statistics
+Natural Sciences,Math and Statistics,2009,17679,0.010382134671185421,Natural Sciences: Math and Statistics
+Natural Sciences,Math and Statistics,2010,18374,0.010458961355805622,Natural Sciences: Math and Statistics
+Natural Sciences,Math and Statistics,2011,19972,0.010927759803768687,Natural Sciences: Math and Statistics
+Natural Sciences,Math and Statistics,2012,21940,0.011489575854504474,Natural Sciences: Math and Statistics
+Natural Sciences,Math and Statistics,2013,23883,0.01218235117388326,Natural Sciences: Math and Statistics
+Natural Sciences,Math and Statistics,2014,24517,0.012324243677899756,Natural Sciences: Math and Statistics
+Natural Sciences,Math and Statistics,2015,25644,0.012726614027861181,Natural Sciences: Math and Statistics
+Natural Sciences,Math and Statistics,2016,26796,0.013126035115425932,Natural Sciences: Math and Statistics
+Natural Sciences,Math and Statistics,2017,28279,0.013596627455581017,Natural Sciences: Math and Statistics
+Misc,Agriculture,1999,7979,0.006522398418079281,Misc: Agriculture
+Misc,Agriculture,2e3,7880,0.006257787490936929,Misc: Agriculture
+Misc,Agriculture,2001,8006,0.0060686777847431045,Misc: Agriculture
+Misc,Agriculture,2002,7980,0.005803526624223833,Misc: Agriculture
+Misc,Agriculture,2003,7651,0.005332721834885661,Misc: Agriculture
+Misc,Agriculture,2004,7286,0.004882772578467147,Misc: Agriculture
+Misc,Agriculture,2005,7524,0.004893881347443461,Misc: Agriculture
+Misc,Agriculture,2006,7582,0.004790127107052581,Misc: Agriculture
+Misc,Agriculture,2007,8070,0.004963139311691914,Misc: Agriculture
+Misc,Agriculture,2008,8103,0.004872446295154913,Misc: Agriculture
+Misc,Agriculture,2009,8228,0.004831959051672247,Misc: Agriculture
+Misc,Agriculture,2010,8372,0.004765561362294801,Misc: Agriculture
+Misc,Agriculture,2011,8775,0.004801276400864722,Misc: Agriculture
+Misc,Agriculture,2012,9258,0.004848244907064832,Misc: Agriculture
+Misc,Agriculture,2013,9869,0.0050340251951201224,Misc: Agriculture
+Misc,Agriculture,2014,10366,0.005210796996578246,Misc: Agriculture
+Misc,Agriculture,2015,10984,0.005451143678132398,Misc: Agriculture
+Misc,Agriculture,2016,11371,0.00557009050968459,Misc: Agriculture
+Misc,Agriculture,2017,11415,0.005488366010306492,Misc: Agriculture
+Misc,Architecture,1999,8295,0.006780711226716084,Misc: Architecture
+Misc,Architecture,2e3,8495,0.006746180803998631,Misc: Architecture
+Misc,Architecture,2001,8563,0.006490892814233725,Misc: Architecture
+Misc,Architecture,2002,8901,0.006473332140628614,Misc: Architecture
+Misc,Architecture,2003,9145,0.0063740349209292085,Misc: Architecture
+Misc,Architecture,2004,8912,0.005972449796774529,Misc: Architecture
+Misc,Architecture,2005,9284,0.006038648914096902,Misc: Architecture
+Misc,Architecture,2006,9576,0.00604988883897857,Misc: Architecture
+Misc,Architecture,2007,9814,0.0060357186127564365,Misc: Architecture
+Misc,Architecture,2008,9941,0.0059776611896994935,Misc: Architecture
+Misc,Architecture,2009,10197,0.005988270108155311,Misc: Architecture
+Misc,Architecture,2010,10144,0.005774230107395899,Misc: Architecture
+Misc,Architecture,2011,9902,0.005417918965397434,Misc: Architecture
+Misc,Architecture,2012,9847,0.005156693411089588,Misc: Architecture
+Misc,Architecture,2013,9842,0.005020252910160325,Misc: Architecture
+Misc,Architecture,2014,9236,0.004642766839706414,Misc: Architecture
+Misc,Architecture,2015,9221,0.0045762013707264055,Misc: Architecture
+Misc,Architecture,2016,9002,0.004409634576394397,Misc: Architecture
+Misc,Architecture,2017,8684,0.004175293073456118,Misc: Architecture
+Misc,Communication,1999,23864,0.019507521725660355,Misc: Communication
+Misc,Communication,2e3,24991,0.019846239490609745,Misc: Communication
+Misc,Communication,2001,26775,0.020295884047776245,Misc: Communication
+Misc,Communication,2002,28675,0.020854151121506067,Misc: Communication
+Misc,Communication,2003,31430,0.021906606622723347,Misc: Communication
+Misc,Communication,2004,32783,0.0219697959703388,Misc: Communication
+Misc,Communication,2005,33360,0.021698548877022043,Misc: Communication
+Misc,Communication,2006,34726,0.02193906013182642,Misc: Communication
+Misc,Communication,2007,35108,0.02159180854459476,Misc: Communication
+Misc,Communication,2008,35952,0.021618436283278964,Misc: Communication
+Misc,Communication,2009,36545,0.021461344621215635,Misc: Communication
+Misc,Communication,2010,36354,0.020693647606887865,Misc: Communication
+Misc,Communication,2011,36182,0.019797126237730757,Misc: Communication
+Misc,Communication,2012,35984,0.018844161237396947,Misc: Communication
+Misc,Communication,2013,35872,0.01829775578066157,Misc: Communication
+Misc,Communication,2014,36713,0.01845494791967752,Misc: Communication
+Misc,Communication,2015,37480,0.018600588588528977,Misc: Communication
+Misc,Communication,2016,38089,0.018657917282857827,Misc: Communication
+Misc,Communication,2017,38697,0.018605632895385926,Misc: Communication
+Misc,Criminal Justice,1999,25387,0.02075249136981811,Misc: Criminal Justice
+Misc,Criminal Justice,2e3,25574,0.02030922046868287,Misc: Criminal Justice
+Misc,Criminal Justice,2001,26569,0.0201397327083237,Misc: Criminal Justice
+Misc,Criminal Justice,2002,27043,0.0196672644735445,Misc: Criminal Justice
+Misc,Criminal Justice,2003,27700,0.019306808891168842,Misc: Criminal Justice
+Misc,Criminal Justice,2004,29633,0.019858797669189812,Misc: Criminal Justice
+Misc,Criminal Justice,2005,32250,0.020976564786689474,Misc: Criminal Justice
+Misc,Criminal Justice,2006,36998,0.023374455645836373,Misc: Criminal Justice
+Misc,Criminal Justice,2007,40727,0.025047555730765374,Misc: Criminal Justice
+Misc,Criminal Justice,2008,41830,0.025152959215886714,Misc: Criminal Justice
+Misc,Criminal Justice,2009,43381,0.025475840498370653,Misc: Criminal Justice
+Misc,Criminal Justice,2010,45319,0.025796760078575977,Misc: Criminal Justice
+Misc,Criminal Justice,2011,49578,0.027126801299381335,Misc: Criminal Justice
+Misc,Criminal Justice,2012,55846,0.029245526580248718,Misc: Criminal Justice
+Misc,Criminal Justice,2013,62621,0.03194200949879594,Misc: Criminal Justice
+Misc,Criminal Justice,2014,64791,0.03256924061405568,Misc: Criminal Justice
+Misc,Criminal Justice,2015,65239,0.03237683561705021,Misc: Criminal Justice
+Misc,Criminal Justice,2016,63714,0.031210337413951628,Misc: Criminal Justice
+Misc,Criminal Justice,2017,62847,0.030217024848859582,Misc: Criminal Justice
+Misc,Environment and Conservation,1999,9934,0.008120504560120263,Misc: Environment and Conservation
+Misc,Environment and Conservation,2e3,9554,0.00758717026502683,Misc: Environment and Conservation
+Misc,Environment and Conservation,2001,9307,0.0070548568751691325,Misc: Environment and Conservation
+Misc,Environment and Conservation,2002,9272,0.006743145220526739,Misc: Environment and Conservation
+Misc,Environment and Conservation,2003,6834,0.0047632755221028115,Misc: Environment and Conservation
+Misc,Environment and Conservation,2004,8795,0.005894041288446138,Misc: Environment and Conservation
+Misc,Environment and Conservation,2005,9054,0.0058890486070910545,Misc: Environment and Conservation
+Misc,Environment and Conservation,2006,9249,0.0058432980233618205,Misc: Environment and Conservation
+Misc,Environment and Conservation,2007,9198,0.005656871795407958,Misc: Environment and Conservation
+Misc,Environment and Conservation,2008,9900,0.005953007320996377,Misc: Environment and Conservation
+Misc,Environment and Conservation,2009,10434,0.0061274502607132015,Misc: Environment and Conservation
+Misc,Environment and Conservation,2010,11692,0.006655392193974058,Misc: Environment and Conservation
+Misc,Environment and Conservation,2011,13615,0.007449501788920022,Misc: Environment and Conservation
+Misc,Environment and Conservation,2012,15631,0.0081856681942461,Misc: Environment and Conservation
+Misc,Environment and Conservation,2013,17534,0.008943823869818242,Misc: Environment and Conservation
+Misc,Environment and Conservation,2014,18092,0.009094514688606371,Misc: Environment and Conservation
+Misc,Environment and Conservation,2015,18227,0.009045702460061837,Misc: Environment and Conservation
+Misc,Environment and Conservation,2016,18655,0.009138161855436288,Misc: Environment and Conservation
+Misc,Environment and Conservation,2017,19128,0.009196799390726464,Misc: Environment and Conservation
+Misc,General,1999,32003,0.02616071143925194,Misc: General
+Misc,General,2e3,33876,0.026902133127281652,Misc: General
+Misc,General,2001,31807,0.02411022162119959,Misc: General
+Misc,General,2002,33043,0.024030818326344374,Misc: General
+Misc,General,2003,51821,0.03611906655412493,Misc: General
+Misc,General,2004,45102,0.030225474723308436,Misc: General
+Misc,General,2005,47167,0.030679120350194804,Misc: General
+Misc,General,2006,49060,0.030994940104457875,Misc: General
+Misc,General,2007,50971,0.031347729102385195,Misc: General
+Misc,General,2008,54339,0.03267479442582042,Misc: General
+Misc,General,2009,56108,0.03294987341653213,Misc: General
+Misc,General,2010,65384,0.03721828286099896,Misc: General
+Misc,General,2011,71216,0.03896611967680707,Misc: General
+Misc,General,2012,76975,0.04031039659983965,Misc: General
+Misc,General,2013,81412,0.04152700974618699,Misc: General
+Misc,General,2014,85145,0.04280082097951522,Misc: General
+Misc,General,2015,85520,0.042441897974679774,Misc: General
+Misc,General,2016,88946,0.04357024628215685,Misc: General
+Misc,General,2017,91562,0.044023282403476395,Misc: General
+Misc,Home Economics,1999,16249,0.013282673504871566,Misc: Home Economics
+Misc,Home Economics,2e3,16369,0.012999203482125202,Misc: Home Economics
+Misc,Home Economics,2001,16653,0.012623243960695344,Misc: Home Economics
+Misc,Home Economics,2002,17208,0.012514672449830039,Misc: Home Economics
+Misc,Home Economics,2003,18168,0.012663036243131968,Misc: Home Economics
+Misc,Home Economics,2004,19435,0.013024524438993825,Misc: Home Economics
+Misc,Home Economics,2005,20331,0.013224016703199495,Misc: Home Economics
+Misc,Home Economics,2006,21037,0.013290675804677545,Misc: Home Economics
+Misc,Home Economics,2007,21722,0.01335927040007085,Misc: Home Economics
+Misc,Home Economics,2008,22212,0.013356383698380962,Misc: Home Economics
+Misc,Home Economics,2009,22357,0.013129327724627663,Misc: Home Economics
+Misc,Home Economics,2010,22340,0.012716512283046566,Misc: Home Economics
+Misc,Home Economics,2011,23003,0.01258618359533803,Misc: Home Economics
+Misc,Home Economics,2012,23982,0.01255893382601305,Misc: Home Economics
+Misc,Home Economics,2013,24526,0.0125103355897777,Misc: Home Economics
+Misc,Home Economics,2014,25138,0.012636408923401888,Misc: Home Economics
+Misc,Home Economics,2015,25157,0.012484925483501158,Misc: Home Economics
+Misc,Home Economics,2016,25863,0.012669004560018692,Misc: Home Economics
+Misc,Home Economics,2017,25584,0.012300863425990478,Misc: Home Economics
+Misc,Liberal Arts,1999,34539,0.02823375347312198,Misc: Liberal Arts
+Misc,Liberal Arts,2e3,35662,0.02832045907383157,Misc: Liberal Arts
+Misc,Liberal Arts,2001,37820,0.028668173097549866,Misc: Liberal Arts
+Misc,Liberal Arts,2002,38948,0.028325282576474917,Misc: Liberal Arts
+Misc,Liberal Arts,2003,40296,0.02808617946131912,Misc: Liberal Arts
+Misc,Liberal Arts,2004,41906,0.02808364914538077,Misc: Liberal Arts
+Misc,Liberal Arts,2005,42971,0.027949890401514216,Misc: Liberal Arts
+Misc,Liberal Arts,2006,42618,0.02692503785918846,Misc: Liberal Arts
+Misc,Liberal Arts,2007,44057,0.027095542584288805,Misc: Liberal Arts
+Misc,Liberal Arts,2008,44961,0.02703567294538567,Misc: Liberal Arts
+Misc,Liberal Arts,2009,45546,0.02674725412827712,Misc: Liberal Arts
+Misc,Liberal Arts,2010,45877,0.026114388272575083,Misc: Liberal Arts
+Misc,Liberal Arts,2011,45284,0.024777321998490948,Misc: Liberal Arts
+Misc,Liberal Arts,2012,45595,0.023877265774208362,Misc: Liberal Arts
+Misc,Liberal Arts,2013,45224,0.02306806722303297,Misc: Liberal Arts
+Misc,Liberal Arts,2014,43892,0.022063698801255298,Misc: Liberal Arts
+Misc,Liberal Arts,2015,42518,0.021100849135727722,Misc: Liberal Arts
+Misc,Liberal Arts,2016,42803,0.020967072736437387,Misc: Liberal Arts
+Misc,Liberal Arts,2017,43026,0.020687028993381266,Misc: Liberal Arts
+Misc,Public Administration,1999,15679,0.01281672951460898,Misc: Public Administration
+Misc,Public Administration,2e3,15336,0.01217886154327522,Misc: Public Administration
+Misc,Public Administration,2001,14589,0.01105869850132615,Misc: Public Administration
+Misc,Public Administration,2002,14305,0.010403439644050367,Misc: Public Administration
+Misc,Public Administration,2003,13782,0.009606008669245089,Misc: Public Administration
+Misc,Public Administration,2004,13545,0.00907729269494064,Misc: Public Administration
+Misc,Public Administration,2005,13970,0.009086592560311689,Misc: Public Administration
+Misc,Public Administration,2006,14321,0.009047666882102349,Misc: Public Administration
+Misc,Public Administration,2007,15154,0.009319877711199413,Misc: Public Administration
+Misc,Public Administration,2008,15243,0.009165827332721997,Misc: Public Administration
+Misc,Public Administration,2009,15505,0.009105435719029921,Misc: Public Administration
+Misc,Public Administration,2010,15425,0.008780313427304981,Misc: Public Administration
+Misc,Public Administration,2011,16047,0.008780180331017231,Misc: Public Administration
+Misc,Public Administration,2012,17634,0.009234602580598536,Misc: Public Administration
+Misc,Public Administration,2013,19199,0.009793114775672431,Misc: Public Administration
+Misc,Public Administration,2014,20522,0.010316030866658188,Misc: Public Administration
+Misc,Public Administration,2015,21346,0.010593600960798814,Misc: Public Administration
+Misc,Public Administration,2016,21822,0.010689518521004056,Misc: Public Administration
+Misc,Public Administration,2017,22535,0.010834895141678213,Misc: Public Administration
+Misc,Religion and Theology,1999,7163,0.005855362810966523,Misc: Religion and Theology
+Misc,Religion and Theology,2e3,7332,0.005822601254257559,Misc: Religion and Theology
+Misc,Religion and Theology,2001,8411,0.0063756743501716525,Misc: Religion and Theology
+Misc,Religion and Theology,2002,9388,0.00682750726168087,Misc: Religion and Theology
+Misc,Religion and Theology,2003,9719,0.006774111032970036,Misc: Religion and Theology
+Misc,Religion and Theology,2004,9750,0.006534042360699243,Misc: Religion and Theology
+Misc,Religion and Theology,2005,10793,0.007020157015278744,Misc: Religion and Theology
+Misc,Religion and Theology,2006,10132,0.006401156403146498,Misc: Religion and Theology
+Misc,Religion and Theology,2007,10287,0.006326618847506161,Misc: Religion and Theology
+Misc,Religion and Theology,2008,10366,0.006233219584792772,Misc: Religion and Theology
+Misc,Religion and Theology,2009,10385,0.00609867461735735,Misc: Religion and Theology
+Misc,Religion and Theology,2010,10134,0.005768537845854696,Misc: Religion and Theology
+Misc,Religion and Theology,2011,9992,0.005467162825919123,Misc: Religion and Theology
+Misc,Religion and Theology,2012,10422,0.00545781037172496,Misc: Religion and Theology
+Misc,Religion and Theology,2013,10433,0.005321712925391452,Misc: Religion and Theology
+Misc,Religion and Theology,2014,10856,0.005457110958407625,Misc: Religion and Theology
+Misc,Religion and Theology,2015,11060,0.005488860986903161,Misc: Religion and Theology
+Misc,Religion and Theology,2016,11356,0.005562742751559072,Misc: Religion and Theology
+Misc,Religion and Theology,2017,11086,0.0053301818300707645,Misc: Religion and Theology
+Misc,Technician,1999,15382,0.012573948172314262,Misc: Technician
+Misc,Technician,2e3,15788,0.012537810774988863,Misc: Technician
+Misc,Technician,2001,15978,0.01211158301831443,Misc: Technician
+Misc,Technician,2002,16193,0.011776504589731394,Misc: Technician
+Misc,Technician,2003,15134,0.010548348222344739,Misc: Technician
+Misc,Technician,2004,16225,0.010873316646394382,Misc: Technician
+Misc,Technician,2005,16532,0.010753009893133346,Misc: Technician
+Misc,Technician,2006,16753,0.010584146587239763,Misc: Technician
+Misc,Technician,2007,18187,0.011185206277786968,Misc: Technician
+Misc,Technician,2008,19370,0.011647449677545437,Misc: Technician
+Misc,Technician,2009,19833,0.011647088462787515,Misc: Technician
+Misc,Technician,2010,19818,0.011280923922355275,Misc: Technician
+Misc,Technician,2011,20361,0.011140602712023545,Misc: Technician
+Misc,Technician,2012,20822,0.010904099746695177,Misc: Technician
+Misc,Technician,2013,20833,0.010626593058054261,Misc: Technician
+Misc,Technician,2014,20407,0.010258222487861497,Misc: Technician
+Misc,Technician,2015,20977,0.010410473501109187,Misc: Technician
+Misc,Technician,2016,20313,0.009950334053576914,Misc: Technician
+Misc,Technician,2017,21206,0.010195907982002582,Misc: Technician
+Social & Behavioral Sciences,Anthropology,1999,6935,0.005668985214861488,Social & Behavioral Sciences: Anthropology
+Social & Behavioral Sciences,Anthropology,2e3,6935,0.005507329473305534,Social & Behavioral Sciences: Anthropology
+Social & Behavioral Sciences,Anthropology,2001,7221,0.0054736350591593754,Social & Behavioral Sciences: Anthropology
+Social & Behavioral Sciences,Anthropology,2002,7579,0.005511895775061708,Social & Behavioral Sciences: Anthropology
+Social & Behavioral Sciences,Anthropology,2003,7855,0.005474909163903655,Social & Behavioral Sciences: Anthropology
+Social & Behavioral Sciences,Anthropology,2004,8065,0.005404825809132246,Social & Behavioral Sciences: Anthropology
+Social & Behavioral Sciences,Anthropology,2005,8251,0.005366748404805422,Social & Behavioral Sciences: Anthropology
+Social & Behavioral Sciences,Anthropology,2006,8579,0.005420007973015575,Social & Behavioral Sciences: Anthropology
+Social & Behavioral Sciences,Anthropology,2007,8581,0.005277409966992356,Social & Behavioral Sciences: Anthropology
+Social & Behavioral Sciences,Anthropology,2008,9350,0.005622284692052134,Social & Behavioral Sciences: Anthropology
+Social & Behavioral Sciences,Anthropology,2009,9806,0.0057586522193361755,Social & Behavioral Sciences: Anthropology
+Social & Behavioral Sciences,Anthropology,2010,10247,0.005832860401270285,Social & Behavioral Sciences: Anthropology
+Social & Behavioral Sciences,Anthropology,2011,10754,0.005884094178336094,Social & Behavioral Sciences: Anthropology
+Social & Behavioral Sciences,Anthropology,2012,11886,0.006224480337586152,Social & Behavioral Sciences: Anthropology
+Social & Behavioral Sciences,Anthropology,2013,12369,0.006309236765471759,Social & Behavioral Sciences: Anthropology
+Social & Behavioral Sciences,Anthropology,2014,12136,0.006100543348492533,Social & Behavioral Sciences: Anthropology
+Social & Behavioral Sciences,Anthropology,2015,10989,0.005453625080025211,Social & Behavioral Sciences: Anthropology
+Social & Behavioral Sciences,Anthropology,2016,10035,0.0049156501859717585,Social & Behavioral Sciences: Anthropology
+Social & Behavioral Sciences,Anthropology,2017,9241,0.0044431003330041435,Social & Behavioral Sciences: Anthropology
+Social & Behavioral Sciences,Economics,1999,18814,0.015379421461053214,Social & Behavioral Sciences: Economics
+Social & Behavioral Sciences,Economics,2e3,19400,0.015406228086824418,Social & Behavioral Sciences: Economics
+Social & Behavioral Sciences,Economics,2001,22285,0.016892391260679502,Social & Behavioral Sciences: Economics
+Social & Behavioral Sciences,Economics,2002,24162,0.017572031365225095,Social & Behavioral Sciences: Economics
+Social & Behavioral Sciences,Economics,2003,26478,0.018455078910482623,Social & Behavioral Sciences: Economics
+Social & Behavioral Sciences,Economics,2004,27820,0.018643800869195173,Social & Behavioral Sciences: Economics
+Social & Behavioral Sciences,Economics,2005,28257,0.018379373369844482,Social & Behavioral Sciences: Economics
+Social & Behavioral Sciences,Economics,2006,27663,0.017476824869743543,Social & Behavioral Sciences: Economics
+Social & Behavioral Sciences,Economics,2007,27877,0.01714466351822001,Social & Behavioral Sciences: Economics
+Social & Behavioral Sciences,Economics,2008,29500,0.01773875918882759,Social & Behavioral Sciences: Economics
+Social & Behavioral Sciences,Economics,2009,31046,0.018232012727055977,Social & Behavioral Sciences: Economics
+Social & Behavioral Sciences,Economics,2010,32720,0.018625079762814845,Social & Behavioral Sciences: Economics
+Social & Behavioral Sciences,Economics,2011,34112,0.018664517445731898,Social & Behavioral Sciences: Economics
+Social & Behavioral Sciences,Economics,2012,33753,0.0176758274301317,Social & Behavioral Sciences: Economics
+Social & Behavioral Sciences,Economics,2013,34214,0.017452035467204363,Social & Behavioral Sciences: Economics
+Social & Behavioral Sciences,Economics,2014,36050,0.01812167004887573,Social & Behavioral Sciences: Economics
+Social & Behavioral Sciences,Economics,2015,39010,0.019359897567729864,Social & Behavioral Sciences: Economics
+Social & Behavioral Sciences,Economics,2016,39903,0.01954650616550384,Social & Behavioral Sciences: Economics
+Social & Behavioral Sciences,Economics,2017,40618,0.01952925541888998,Social & Behavioral Sciences: Economics
+Social & Behavioral Sciences,General,1999,10457,0.00854802860732611,Social & Behavioral Sciences: General
+Social & Behavioral Sciences,General,2e3,10598,0.008416247694029134,Social & Behavioral Sciences: General
+Social & Behavioral Sciences,General,2001,11366,0.008615612253483652,Social & Behavioral Sciences: General
+Social & Behavioral Sciences,General,2002,12020,0.008741652885109082,Social & Behavioral Sciences: General
+Social & Behavioral Sciences,General,2003,13285,0.009259601303941446,Social & Behavioral Sciences: General
+Social & Behavioral Sciences,General,2004,14378,0.00963553446791115,Social & Behavioral Sciences: General
+Social & Behavioral Sciences,General,2005,14351,0.009334408721047462,Social & Behavioral Sciences: General
+Social & Behavioral Sciences,General,2006,15007,0.00948106535156134,Social & Behavioral Sciences: General
+Social & Behavioral Sciences,General,2007,15649,0.009624308189425869,Social & Behavioral Sciences: General
+Social & Behavioral Sciences,General,2008,16901,0.010162805730521189,Social & Behavioral Sciences: General
+Social & Behavioral Sciences,General,2009,18315,0.010755630776783811,Social & Behavioral Sciences: General
+Social & Behavioral Sciences,General,2010,18625,0.010601837120489808,Social & Behavioral Sciences: General
+Social & Behavioral Sciences,General,2011,22697,0.012418754469564286,Social & Behavioral Sciences: General
+Social & Behavioral Sciences,General,2012,24340,0.012746411864112985,Social & Behavioral Sciences: General
+Social & Behavioral Sciences,General,2013,25214,0.01286127381393847,Social & Behavioral Sciences: General
+Social & Behavioral Sciences,General,2014,24205,0.01216740703281656,Social & Behavioral Sciences: General
+Social & Behavioral Sciences,General,2015,22492,0.011162338274631636,Social & Behavioral Sciences: General
+Social & Behavioral Sciences,General,2016,21371,0.010468595926696805,Social & Behavioral Sciences: General
+Social & Behavioral Sciences,General,2017,20827,0.01001368365279486,Social & Behavioral Sciences: General
+Social & Behavioral Sciences,International Relations,1999,5168,0.004224558845047465,Social & Behavioral Sciences: International Relations
+Social & Behavioral Sciences,International Relations,2e3,5209,0.004136651654859195,Social & Behavioral Sciences: International Relations
+Social & Behavioral Sciences,International Relations,2001,6049,0.004585240059943922,Social & Behavioral Sciences: International Relations
+Social & Behavioral Sciences,International Relations,2002,6283,0.004569368142856935,Social & Behavioral Sciences: International Relations
+Social & Behavioral Sciences,International Relations,2003,6996,0.004876188989264159,Social & Behavioral Sciences: International Relations
+Social & Behavioral Sciences,International Relations,2004,7309,0.004898186216856489,Social & Behavioral Sciences: International Relations
+Social & Behavioral Sciences,International Relations,2005,7822,0.005087711310433646,Social & Behavioral Sciences: International Relations
+Social & Behavioral Sciences,International Relations,2006,8763,0.005536254792812156,Social & Behavioral Sciences: International Relations
+Social & Behavioral Sciences,International Relations,2007,8924,0.005488358763015941,Social & Behavioral Sciences: International Relations
+Social & Behavioral Sciences,International Relations,2008,9622,0.005785842064911832,Social & Behavioral Sciences: International Relations
+Social & Behavioral Sciences,International Relations,2009,9828,0.005771571895944925,Social & Behavioral Sciences: International Relations
+Social & Behavioral Sciences,International Relations,2010,10596,0.006031520329058255,Social & Behavioral Sciences: International Relations
+Social & Behavioral Sciences,International Relations,2011,11233,0.006146180947112641,Social & Behavioral Sciences: International Relations
+Social & Behavioral Sciences,International Relations,2012,11170,0.00584952426138628,Social & Behavioral Sciences: International Relations
+Social & Behavioral Sciences,International Relations,2013,11044,0.005633374633185392,Social & Behavioral Sciences: International Relations
+Social & Behavioral Sciences,International Relations,2014,10675,0.005366125596997181,Social & Behavioral Sciences: International Relations
+Social & Behavioral Sciences,International Relations,2015,10262,0.005092829244810148,Social & Behavioral Sciences: International Relations
+Social & Behavioral Sciences,International Relations,2016,10119,0.0049567976314746605,Social & Behavioral Sciences: International Relations
+Social & Behavioral Sciences,International Relations,2017,9771,0.004697925912107292,Social & Behavioral Sciences: International Relations
+Social & Behavioral Sciences,Political Science,1999,27655,0.02260645798370504,Social & Behavioral Sciences: Political Science
+Social & Behavioral Sciences,Political Science,2e3,27864,0.022127790691302867,Social & Behavioral Sciences: Political Science
+Social & Behavioral Sciences,Political Science,2001,30643,0.023227890751671615,Social & Behavioral Sciences: Political Science
+Social & Behavioral Sciences,Political Science,2002,32635,0.023734096664353985,Social & Behavioral Sciences: Political Science
+Social & Behavioral Sciences,Political Science,2003,36758,0.025620205098252143,Social & Behavioral Sciences: Political Science
+Social & Behavioral Sciences,Political Science,2004,39704,0.026607960809149,Social & Behavioral Sciences: Political Science
+Social & Behavioral Sciences,Political Science,2005,42836,0.027862081525662958,Social & Behavioral Sciences: Political Science
+Social & Behavioral Sciences,Political Science,2006,44292,0.027982631208859524,Social & Behavioral Sciences: Political Science
+Social & Behavioral Sciences,Political Science,2007,44854,0.027585706404786754,Social & Behavioral Sciences: Political Science
+Social & Behavioral Sciences,Political Science,2008,44898,0.02699779017152478,Social & Behavioral Sciences: Political Science
+Social & Behavioral Sciences,Political Science,2009,43836,0.025743042900960696,Social & Behavioral Sciences: Political Science
+Social & Behavioral Sciences,Political Science,2010,44260,0.025193949581362625,Social & Behavioral Sciences: Political Science
+Social & Behavioral Sciences,Political Science,2011,45141,0.024699078975662044,Social & Behavioral Sciences: Political Science
+Social & Behavioral Sciences,Political Science,2012,44790,0.02345570202931884,Social & Behavioral Sciences: Political Science
+Social & Behavioral Sciences,Political Science,2013,43247,0.0220596299131989,Social & Behavioral Sciences: Political Science
+Social & Behavioral Sciences,Political Science,2014,42106,0.02116590954446495,Social & Behavioral Sciences: Political Science
+Social & Behavioral Sciences,Political Science,2015,40092,0.019896872937334678,Social & Behavioral Sciences: Political Science
+Social & Behavioral Sciences,Political Science,2016,38540,0.018878839877165078,Social & Behavioral Sciences: Political Science
+Social & Behavioral Sciences,Political Science,2017,38787,0.01864890516353552,Social & Behavioral Sciences: Political Science
+Social & Behavioral Sciences,Psychology,1999,74111,0.06058171063570292,Social & Behavioral Sciences: Psychology
+Social & Behavioral Sciences,Psychology,2e3,74704,0.05932509603083152,Social & Behavioral Sciences: Psychology
+Social & Behavioral Sciences,Psychology,2001,77954,0.05909039570720259,Social & Behavioral Sciences: Psychology
+Social & Behavioral Sciences,Psychology,2002,81302,0.05912760922338923,Social & Behavioral Sciences: Psychology
+Social & Behavioral Sciences,Psychology,2003,83212,0.05799849030512425,Social & Behavioral Sciences: Psychology
+Social & Behavioral Sciences,Psychology,2004,86924,0.05825283058065856,Social & Behavioral Sciences: Psychology
+Social & Behavioral Sciences,Psychology,2005,90902,0.0591259439454154,Social & Behavioral Sciences: Psychology
+Social & Behavioral Sciences,Psychology,2006,93611,0.05914120134770498,Social & Behavioral Sciences: Psychology
+Social & Behavioral Sciences,Psychology,2007,95405,0.05867513085897981,Social & Behavioral Sciences: Psychology
+Social & Behavioral Sciences,Psychology,2008,97889,0.0588620134994964,Social & Behavioral Sciences: Psychology
+Social & Behavioral Sciences,Psychology,2009,99794,0.058604827613342264,Social & Behavioral Sciences: Psychology
+Social & Behavioral Sciences,Psychology,2010,102786,0.058508479477404854,Social & Behavioral Sciences: Psychology
+Social & Behavioral Sciences,Psychology,2011,106942,0.0585137436878946,Social & Behavioral Sciences: Psychology
+Social & Behavioral Sciences,Psychology,2012,115874,0.06068108990724026,Social & Behavioral Sciences: Psychology
+Social & Behavioral Sciences,Psychology,2013,121806,0.0621313682153006,Social & Behavioral Sciences: Psychology
+Social & Behavioral Sciences,Psychology,2014,124931,0.06280050931695128,Social & Behavioral Sciences: Psychology
+Social & Behavioral Sciences,Psychology,2015,125035,0.06205241713358379,Social & Behavioral Sciences: Psychology
+Social & Behavioral Sciences,Psychology,2016,124939,0.06120143682960892,Social & Behavioral Sciences: Psychology
+Social & Behavioral Sciences,Psychology,2017,124308,0.05976765676821546,Social & Behavioral Sciences: Psychology
+Social & Behavioral Sciences,Sociology,1999,25734,0.021036144991960423,Social & Behavioral Sciences: Sociology
+Social & Behavioral Sciences,Sociology,2e3,26328,0.020907998611851202,Social & Behavioral Sciences: Sociology
+Social & Behavioral Sciences,Sociology,2001,28242,0.02140789382921743,Social & Behavioral Sciences: Sociology
+Social & Behavioral Sciences,Sociology,2002,28410,0.020661427493007405,Social & Behavioral Sciences: Sociology
+Social & Behavioral Sciences,Sociology,2003,29433,0.02051470419111092,Social & Behavioral Sciences: Sociology
+Social & Behavioral Sciences,Sociology,2004,30692,0.020568495193290376,Social & Behavioral Sciences: Sociology
+Social & Behavioral Sciences,Sociology,2005,32460,0.02111315637134699,Social & Behavioral Sciences: Sociology
+Social & Behavioral Sciences,Sociology,2006,32440,0.020494819751092814,Social & Behavioral Sciences: Sociology
+Social & Behavioral Sciences,Sociology,2007,33019,0.020307050425372404,Social & Behavioral Sciences: Sociology
+Social & Behavioral Sciences,Sociology,2008,32724,0.019677395108311662,Social & Behavioral Sciences: Sociology
+Social & Behavioral Sciences,Sociology,2009,32675,0.019188656054131097,Social & Behavioral Sciences: Sociology
+Social & Behavioral Sciences,Sociology,2010,33066,0.018822032012140454,Social & Behavioral Sciences: Sociology
+Social & Behavioral Sciences,Sociology,2011,34074,0.01864372559351163,Social & Behavioral Sciences: Sociology
+Social & Behavioral Sciences,Sociology,2012,35636,0.01866192001600371,Social & Behavioral Sciences: Sociology
+Social & Behavioral Sciences,Sociology,2013,36014,0.018370187797857544,Social & Behavioral Sciences: Sociology
+Social & Behavioral Sciences,Sociology,2014,35526,0.01785826491418472,Social & Behavioral Sciences: Sociology
+Social & Behavioral Sciences,Sociology,2015,34053,0.016899835731194697,Social & Behavioral Sciences: Sociology
+Social & Behavioral Sciences,Sociology,2016,32863,0.016097958351927243,Social & Behavioral Sciences: Sociology
+Social & Behavioral Sciences,Sociology,2017,32230,0.015496280027348073,Social & Behavioral Sciences: Sociology
