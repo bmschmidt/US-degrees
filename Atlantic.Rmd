@@ -8,7 +8,10 @@ output:
 ---
 
 > Note: This is a pre-print version of the Atlantic Article, with the final state of  the
-> code I sent to them. 
+> code I sent to them. You should read the text 
+> [there](https://www.theatlantic.com/education/archive/2018/08/the-humanities-face-a-crisisof-confidence/567565/),
+> but this gives a reproducible framework for working with the data and makes it possible to 
+> see some of the more difficult choices about this kind of work (eg, where "Liberal Studies" falls as a major).
 
 People have been proclaiming the imminent extinction of the humanities
 for decades. [A bestselling volume in
