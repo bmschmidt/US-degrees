@@ -1,0 +1,93 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r fig.width=12, fig.height=16}
+library(tidyverse)
+
+ilef = read_csv("~/Downloads/graduate_earnings_utsys.csv")
+
+
+ilef %>% filter(deglevel=="Baccalaureate", year_postgrad==5, institution_name=="UNIVERSITY OF TEXAS-EL PASO") %>% arrange(-p50_earnings) %>% filter(!is.na(p50_earnings)) %>% ggplot() + geom_point(aes(x=reorder(ciptitle,p50_earnings), y = p50_earnings, pch=institution_name)) + coord_flip()
+
+
+head
+
+mable = ilef %>% filter(
+  deglevel=="Baccalaureate", 
+  grepl("UNIVERSITY", institution_name) # Exclude the health schools from the model.
+  ) %>%
+  gather(percentile, earnings, p25_earnings, p50_earnings, p75_earnings) %>% filter(!is.na(earnings))
+  
+model =  lm(earnings ~ percentile + institution_name + factor(grad_cohort) + factor(year_postgrad), mable)
+summary(model)
+mable$pred = predict(model, newdata = mable)
+
+source("read_cips.R")
+
+characteristics = read_csv("hd2017.csv")
+cips = return_cips()
+
+ggplot(mable) + 
+  geom_boxplot(aes(x=reorder(ciptitle, earnings/pred, FUN = median), y = earnings/pred)) + 
+  coord_flip() + 
+  scale_y_continuous(trans="log", breaks = c(.5, .7, .9, 1, 1.1, 1.25, 1.5, 2, 4))
+
+
+mable = mable %>% mutate(CIPCODE = degcip_4dig %>% str_replace("(..)(..)", "\\1.\\2"))
+```
+
+```{r}
+data = return_data()
+
+cipChange = data %>% mutate(AWLEVEL= as.numeric(AWLEVEL)) %>% filter(AWLEVEL==5, !is.na(degrees)) %>% 
+  mutate(cip4 = str_sub(CIPCODE, 1, 5)) %>% 
+  group_by(year, cip4) %>%
+  summarize(degrees = sum(degrees, na.rm=T)) %>%
+  filter((year >= 2005 && year <= 2007) || year >= 2015) %>% 
+  ungroup %>%
+  mutate(year = ifelse(year > 2010, "new", "old")) %>%
+  group_by(year, cip4) %>% 
+  summarize(count=sum(degrees, na.rm=T)) %>%
+  ungroup %>% 
+  spread(year, count, fill = 0)
+cipChange = cipChange %>% mutate(news = new/sum(new, na.rm=T), olds = old/sum(old, na.rm=T)) %>%
+  mutate(shift= news/olds)
+```
+
+```{r, fig.width=12, fig.height=18}
+acad4 = amacad %>% mutate(CIPCODE = str_sub(CIPCODE, 1, 5)) %>% group_by(CIPCODE) %>% group_by(CIPCODE, Bachelors) %>% summarize(count=n()) %>% group_by(CIPCODE) %>%
+  arrange(-count) %>% slice(1)
+acad4 %>% inner_join(mable)
+
+{mable %>% inner_join(acad4) %>% mutate(Bachelors = factor(Bachelors) %>% recode(Education = "Other/Unknown")) %>%
+ggplot() + 
+  geom_boxplot(aes(x=reorder(ciptitle, earnings/pred, FUN = median), y = earnings/pred, color=Bachelors)) + 
+  coord_flip() + 
+  scale_y_continuous(trans="log", breaks = c(.5, .7, .9, 1, 1.1, 1.25, 1.5, 2, 4)) + scale_color_brewer(type='qual') + labs(
+    title="Earnings deviation by college major in the UT system",
+    subtitle="Based on a linear model regressing\nagainst campus, income percentile, years since graduation\nNot including gender, which is INCREDIBLY problematic when\nthe top majors are mostly male-dominated.",
+    caption = "Ben Schmidt"
+  )} %>% ggsave(filename="~/UT.png", plot= . , width=11, height=18)
+
+```
+
+```{r}
+mable %>% mutate(cipcode = degcip_4dig %>% str_replace("(..)(..)", "\\1.\\2")) %>%
+  group_by(cipcode, ciptitle) %>% summarize(residual = median(earnings/pred)) %>%
+  inner_join(cipChange, by = c("cipcode"="cip4")) %>%
+  ungroup %>%
+  left_join(acad4, by = c(cipcode = "CIPCODE")) %>%
+  filter(residual < 2) %>%
+  ggplot() + aes(x=residual, y = shift, label=cipcode, color=Bachelors) + geom_point() + 
+  scale_x_log10() + scale_y_log10() + facet_wrap(~Bachelors)
+
+```
+```{r}
+data %>% filter(year==2016) %>% group_by(CIPCODE) %>% summarize(degrees=sum(degrees)) %>% acadjoin() %>% group_by(Discipline) %>% summarize(degrees=sum(degrees)) %>% arrange(-degrees)
+```
