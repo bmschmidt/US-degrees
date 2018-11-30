@@ -329,9 +329,11 @@ otherchange = data %>% filter(AWLEVEL==5, MAJORNUM==1) %>% otherhumfilter() %>%
   group_by(UNITID, year) %>% summarise(degrees=sum(degrees))
 
 #ys = c(2004, 2007, 2014, 2017)
-ys = c(2003, 2007, 2013, 2017)
+ys = c(2003, 2007, 2013, 2017, 2008, 2012)
 
-groups = data_frame(year = c(ys[1]:ys[2], ys[3]:ys[4]), period = c(rep("early", ys[2] - ys[1] + 1), rep("late", ys[4] - ys[3] + 1)))
+groups = data_frame(year = c(ys[1]:ys[2], ys[3]:ys[4], ys[5]:ys[6]), period = 
+                      c(rep("early", ys[2] - ys[1] + 1), rep("late", ys[4] - ys[3] + 1), rep("middle", ys[6] - ys[5] + 1))
+                    )
 
 #Duke is missing several years of history degrees. God knows.
 #data %>% filter(UNITID == 198419, AWLEVEL==5, MAJORNUM==1) %>% histfilter %>% group_by(year) %>% summarize(degrees = sum(degrees)) %>% ggplot() + geom_point(aes(x=year, y =degrees))
@@ -340,16 +342,28 @@ groups = data_frame(year = c(ys[1]:ys[2], ys[3]:ys[4]), period = c(rep("early", 
 
 
 ```{r}
-
-changefunc = . %>% inner_join(groups) %>%
-  group_by(UNITID) %>%
-  filter(n() == 10) %>%
-  group_by(UNITID, period) %>% summarize(degrees = sum(degrees))  %>% 
+# I want to track the number of degrees in three periods, and how many years are recorded (multiple zeros may be a data quality issue, not actually no degrees)
+changefunc = function(x) {
+  base = x %>% inner_join(groups) %>%
+  group_by(UNITID, period)
+  
+  
+  counts = base %>% summarize(degrees = sum(degrees))  %>% 
   spread(period, degrees, fill=0) %>%
   mutate(change = late/early)
-
+  
+  n_years = base %>% ungroup %>%
+    mutate(period = paste("n",period,"years", sep="_")) %>%
+    group_by(UNITID, period) %>% summarize(n = n()) %>% 
+    spread(period, n, fill=0)
+  
+  inner_join(counts, n_years)
+}
+  
 diffs = change %>% changefunc
+```
 
+```{r}
 otherdiffs = otherchange %>% changefunc %>% mutate(other_hum_change = change) %>% select(other_hum_change, UNITID)
 
 control = data_frame(CONTROL = c(1,2,3), control = c("Public", "Private", "For-profit"))
@@ -421,7 +435,10 @@ classifiers = charelite %>%
   inner_join(overall_change) %>% left_join(otherdiffs) %>% 
   inner_join(race_breakdown) %>% inner_join(gender_breakdown)
 
-tuition = read_csv("ic2017_ay.csv") %>% mutate(costs = as.numeric(TUITION1) + as.numeric(FEE1)) %>% mutate(expensivo = costs > 20000) %>% select(UNITID, expensivo, costs)
+tuition = read_csv("ic2017_ay.csv") %>% 
+  mutate(costs = as.numeric(TUITION1) + as.numeric(FEE1)) %>% 
+  mutate(expensivo = costs > 20000) %>% 
+  select(UNITID, expensivo, costs)
 
 library(noncensus)
 data(states)
@@ -435,14 +452,14 @@ z = lm(log(change) ~ tuning + label +
      control + `Hispanic or Latino` + `Black or African American` + `Asian` + `Nonresident alien` + `Two or more races` + HBCU + women + log(overall_change) + LANDGRNT +
       HBCU + expensivo + presidential
 #     log(other_hum_change)
-   , data = modelable, weights = early + late) %>% summary
+   , data = modelable %>% filter(n_early_years == 5, n_late_years == 5 ), weights = early + late) %>% summary
 z
 modelable %>% select(change, overall_change, early, late, INSTNM) %>% filter(grepl("Northeastern", INSTNM))
 coeffs = z$coefficients %>% as.data.frame %>% rownames_to_column("state") %>% filter(grepl("ST", state)) %>% mutate(state = gsub("STABBR", "", state))
 coeffs$state = tolower(state.name[match(coeffs$state, state.abb)])
 
 goodmodel = lm(log(change) ~ label + region + control + HBCU + log(overall_change) + `Hispanic or Latino` + `Black or African American` + `Asian` + `Nonresident alien` , 
-               data = modelable, weights = early)
+               data = modelable %>% filter(n_early_years == 5, n_late_years == 5 ), weights = early)
 
 summary(goodmodel)
 ```
@@ -453,21 +470,22 @@ This means each department is facing its own constellation of factors that may m
 
 ```{r eval=FALSE, fig.height=8, fig.width=12, include=FALSE}
 
-minimodel = lm(log(change) ~ label + control + HBCU + log(overall_change), 
-               data = modelable, weights = early)
-
-
-modelable %>% bind_cols(exp(predict(goodmodel, newdata = modelable, interval='prediction')) %>% as_data_frame) %>% arrange()
 modelable$pred = exp(predict(goodmodel, newdata = modelable))
-modelable$minipred = exp(predict(minimodel, newdata = modelable))
 d = modelable %>% mutate(performance = change/pred) %>% arrange(-performance) %>% filter(late > 64)
 
 d %>% ggplot() + 
-  geom_point() + scale_x_log10() + scale_y_log10() + geom_text_repel(data = d %>% filter(tuning) %>% head(15), color='black', size=3) + aes(label = INSTNM, x=pred, y = change, color=tuning, size = early)
+  geom_point() + scale_x_log10() + scale_y_log10() + geom_text_repel(data = d %>% head(15), color='black', size=3) + aes(label = INSTNM, x=pred, y = change, color=tuning, size = early)
 
 
 d %>% mutate(r1 = rank(-change), r2 = rank(-change/minipred), r3 = rank(-change/pred)) %>% arrange(r3) %>% select(change, INSTNM, label, STABBR, r1, r2, r3)
 
+d %>%
+  select(UNITID, INSTNM, early, n_early_years, middle, n_middle_years, late, n_late_years, change, pred, performance, control, elite, label, STABBR, HBCU, presidential, PhD, `American Indian or Alaska Native`, `Asian`, `Native Hawaiian or Other Pacific Islander`, `Nonresident alien`, `Two or more races`, White, men, women, costs, region) %>% arrange(-n_early_years, -performance) %>% write_csv("history_changes.csv")
+names(d)
+
+d %>% filter(grepl("California.*Los Angeles", INSTNM)) %>% select(overall_change, change, INSTNM)
+y3
+names(d)
 #modelable %>% 
 #  select(INSTNM, pred, change, early, late) %>% filter(early > 50, late > 30) %>% arrange(pred/change) %>% 
 #  mutate(performance=change/pred, predicted = early * pred, actual = late, orig = early) %>% 
