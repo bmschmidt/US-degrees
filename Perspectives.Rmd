@@ -12,6 +12,17 @@ knitr::opts_chunk$set(echo=FALSE, message = FALSE, warning = FALSE, cache = TRUE
 ```
 
 
+```{r, cache = TRUE}
+
+grepstring = "Northeastern University"
+suny = characteristics %>% filter(grepl(grepstring, INSTNM)) %>% select(UNITID)
+
+data %>% filter(AWLEVEL==5, MAJORNUM==1) %>% inner_join(suny) %>% group_by(year) %>% mutate(total = sum(degrees)) %>%
+  histfilter %>% group_by(year) %>% summarize(degrees = sum(degrees), total = total[1]) %>% View
+  ggplot() + geom_line() + aes(x=year, y = degrees/total) + geom_point() + scale_y_continuous(labels=scales::percent) + labs(title=paste0("History share of degrees, schools with '", grepstring, "' in name"))
+
+```
+
 
 ```{r, cache = TRUE}
 # Preparatory functions to get data.
@@ -51,8 +62,8 @@ tot_degrees = ltotals %>% group_by(year) %>% summarize(total_degrees = max(year_
 
 
 Since the economic crisis of 2008, the pattern of undergraduate majors has been shifting across American higher education; of all the major disciplines, history has seen the steepest declines in the number of students. In 2008, the National Center for Education Statistics reported 34,642 majors in the field; in 2017, the most recent year for which data is available, the number was 24,266. Between 2016 and 2017, the number of history majors fell by over 1,500. Even as university enrollments have grown, history has seen its raw numbers erode heavily. The drops have been especially heavy since 2011-2012, the first years for which students who saw the financial crisis in action could easily change their majors; of all the fields I've looked at (image 1), history has fallen more than any other in the last 6 years. 
- 
-```{r, fig.height=8, fig.width=9}
+
+```{r Fig1, fig.height=6, fig.width=6, dpi=600}
 plottable = data %>% filter(AWLEVEL==5) %>% group_by(MAJORNUM) %>%
   into_major_nums %>% acadjoin
 
@@ -70,11 +81,11 @@ changes = plottable %>% filter(year %in% c(y1, y2)) %>% ungroup %>% mutate(year 
 #  coord_flip() + scale_y_log10(breaks = c(.5, .66, .8, 1, 1.25, 1.5, 2, 3), labels=scales::percent) + theme_bw() + scale_x_discrete("Major") + theme(legend.position = "top")
 
 
-changes %>% filter(!is.na(Discipline)) %>% group_by(MAJORNUM) %>% mutate(y1t = sum(y1), y2t = sum(y2)) %>% mutate(cutoff = ifelse(MAJORNUM == 1, .05, .1)/100) %>% ungroup %>% arrange(MAJORNUM) %>% filter(y1/y1t > cutoff, y2/y2t > cutoff)  %>% 
+changes %>% filter(!is.na(Discipline), MAJORNUM == 1) %>% group_by(MAJORNUM) %>% mutate(y1t = sum(y1), y2t = sum(y2)) %>% mutate(cutoff = ifelse(MAJORNUM == 1, .05, .1)/100) %>% ungroup %>% arrange(MAJORNUM) %>% filter(y1/y1t > cutoff, y2/y2t > cutoff)  %>% 
   mutate(change = `y2` / `y1`) %>% 
-  ggplot() + aes(pch = factor(MAJORNUM), y = change, x = reorder(Discipline, change, function(x) {x[1]}), color = factor(MAJORNUM)) + 
-  geom_point() + labs(title=paste0("Change in number of degrees awarded, ", y1, "-2017"), x = "Major", color = "Primary or secondary major", pch = "Primary or secondary major", caption = "Sources: NCES IPEDS data, taxonomy adapted from American Academy of Arts and Sciences.") + 
-  coord_flip() + scale_y_log10(breaks = c(.5, .67, .8, 1, 1.25, 1.5, 2, 3), labels=scales::percent(c(.5, .66, .8, 1, 1.25, 1.5, 2, 3) - 1)) + theme_bw() + scale_x_discrete("Major") + theme(legend.position = "top")
+  ggplot() + aes(pch = factor(MAJORNUM), y = change, x = reorder(Discipline, change, function(x) {x[1]})) + 
+  geom_point() + labs(title=paste0("Fig. 1: Change in degrees, ", y1, "-2017"), y = paste0("Change in number awarded ", y1, "-2017"), x = "Major", color = "Primary or secondary major", pch = "Primary or secondary major", caption = "Sources: NCES IPEDS data; taxonomy adapted from American Academy of Arts and Sciences.") + 
+  coord_flip() + scale_y_log10(breaks = c(.5, .66, .8, 1, 1.25, 1.5, 2, 3), labels=scales::percent(c(.5, .66, .8, 1, 1.25, 1.5, 2, 3) - 1)) + theme_bw() + scale_x_discrete("Major") + theme(legend.position = "none") + scale_color_brewer(type='qual')
 
 
 ```
@@ -137,11 +148,11 @@ joint_series = long_term2 %>% mutate(source = "old") %>% select(year, Discipline
 
 ```
 
-This represents a long-term low for the history major. National degree numbers generally start around 1966, but years ago while working for the American Academy of Arts and Science's Humanities Indicators project, I collected data on a number of humanities majors going back to the 1950s. While the 66% drop in history's share from 1969 to 1985 remains the most bruising period in the discipline's history, that drop followed a period of rapid expansion in share connected to the boom of higher education in the 1960s. The drop in the last decade has put us below the discipline's previous low point in the 1980s. 
+This represents a long-term low for the history major. National degree numbers generally start around 1966, but years ago, while working for the American Academy of Arts and Science's Humanities Indicators project, I collected data on a number of humanities majors going back to the 1950s. While the 66% drop in history's share from 1969 to 1985 remains the most bruising period in the discipline's history, that drop followed a period of rapid expansion in share connected to the boom of higher education in the 1960s. The drop in the last decade has put us below the discipline's previous low point in the 1980s. 
 
-Share can be a misleading metric; higher education as a whole has drawn in new groups of students in the past half century. But even considering history degrees as a percentage of *all* college-age adults in the United States, we are now--at around 5.3 degrees per 1,000 23-year-olds--well below the peaks in 1993 (7.6 per 1,000) and 1971 (11.8 per 1,000), though above the mid-80s trough. And since older students and international students have become more common--two trends that cannot continue indefinitely--this probably underestimates our slide in the core college-going demographics. The raw number of Bachelor's degrees in history in 2017 awarded was the lowest of any year since 1991.
+Share can be a misleading metric; higher education as a whole has drawn in new groups of students in the past half century. Historians sometimes assume that we must not be losing after taking these statistics into account. But even considering history degrees as a percentage of *all* college-age adults in the United States, the current level of 5.3 degrees per 1,000 23-year-olds sits well below the peaks in 1993 (7.6 per 1,000) and 1971 (11.8 per 1,000), though above the mid-80s trough. Since older students and international students have become more common this probably underestimates our slide in the core college-going demographics. Setting ratios aside altogether, the raw number of BAs in history awarded in 2017 was the smaller than any year since 1991, and lower than each year between 1965 and 1977.
 
-```{r}
+```{r Fig2, fig.height=4, fig.width=6, dpi=600}
 this_plot = joint_series %>% filter(Discipline %in% c("History")) %>% group_by(year, total_degrees, gender, collegepop) %>% summarize(humanities=sum(degrees)) %>% filter(year >= 1950) %>% inner_join(gender_totals %>% gather("gender", "total", men, women))
 
 labels = frame_data(
@@ -152,31 +163,42 @@ labels = frame_data(
 
 #this_plot %>% group_by(year, total_degrees, collegepop) %>% summarize(degrees = sum(humanities)) %>% mutate(share = degrees/collegepop)
 
-#fig2 = this_plot %>% group_by(gender) %>% mutate(percent = (humanities/collegepop), deg_percent = humanities/total/max(humanities/total)) %>% ggplot() + aes(x=year,  y = percent, color=gender) + geom_line(lwd=1.2) + theme_bw() + scale_y_continuous("History as percent of all degrees") + expand_limits(y=0) + theme(legend.position="none") + labs(title="Long-term History Degree share of all US Bachelor's degrees") + scale_color_brewer(palette = "Accent", type="qual") + geom_text(data = labels, size=5, aes(label = label))
+#fig2 = this_plot %>% group_by(gender) %>% mutate(percent = (humanities/collegepop), deg_percent = humanities/total/max(humanities/total)) %>% ggplot() + aes(x=year,  y = percent, color=gender) + geom_line(lwd=1.2) + theme_bw() + scale_y_continuous("History as percent of all degrees") + expand_limits(y=0) + theme(legend.position="none") + labs(title="Long-term History Degree share of all US bachelor's degrees") + scale_color_brewer(palette = "Accent", type="qual") + geom_text(data = labels, size=5, aes(label = label))
 #fig2
 
-fig2 = this_plot %>% mutate(percent = (humanities/total)) %>% ggplot() + aes(x=year,  y = percent, color=gender) + geom_line(lwd=1.2) + theme_bw() + scale_y_continuous("History as percent of all degrees", labels=scales::percent, breaks = seq(0, .06, by = .01)) + expand_limits(y=0) + theme(legend.position="none") + labs(title="Long-term History Degree share of all US Bachelor's degrees") + scale_color_brewer(palette = "Accent", type="qual") + geom_text(data = labels, size=5, aes(label = label))
+#this_plot %>% group_by(year) %>% summarize(count=sum(humanities)) %>% View
+
+fig2 = this_plot %>% mutate(percent = (humanities/total)) %>% ggplot() + aes(x=year,  y = percent, color=gender) + geom_line(lwd=1.2) + theme_bw() + scale_y_continuous("History as percent of all BAs", labels=scales::percent, breaks = seq(0, .06, by = .01)) + expand_limits(y=0, x = 2018) + theme(legend.position="none") + labs(title="Fig. 2: History's share of all US Bachelor's degrees since 1950", caption = "Sources: IPEDS & HEGIS datasets and printed Dept. of Ed. bulletins\nCollated by Benjamin M. Schmidt for the American Academy of Arts and Sciences, 2004.") + scale_color_brewer(palette = "Accent", type="qual") + geom_text(data = labels, size=5, aes(label = label)) + scale_x_continuous("", breaks = seq(1950, 2020, by=10))
 fig2
 ```
 
 ## Demographic trends
 
-Part of the long-term decline in history's standing came from the relatively steep decline in women's interest, specifically, in the liberal arts as pre-professional majors became more welcoming in the 1970s. (Heidi Tworek explored this [in the Atlantic in 2013](https://www.theatlantic.com/education/archive/2013/12/the-real-reason-the-humanities-are-in-crisis/282441/)). The recent decline in history has struck all demographic groups, but some patterns do emerge. White students--71% of history degrees, and 58% percent of all BAs--have dropped at about the general rate. Hispanic students, who are represented among history students at about their national rate, have dropped slightly less, while Asian-American students have fled the discipline in the largest numbers--fewer than half as many Asian-American women majored in history in 2017 as in 2011. African American and American Indian/Alaska Native students have seen the smallest declines. This may be an echo of a national trend in the humanities [I wrote about this summer](https://www.theatlantic.com/ideas/archive/2018/08/the-humanities-face-a-crisisof-confidence/567565/) in which cultural and ethnic studies disciplines have preserved their overall share while historically larger fields like English and and philosophy have seen steep slides. Except among white and multi-racial students, the rate of decline has been greater among women than among men; one result of this shift seems to be that women are now slightly more under-represented among history majors (40.5% vs 42.5% of all degrees, as opposed to about 57% of all BAs) than they were in the mid-2000s. (Unlike some other statistical series, the Department of Education considers gender to be strictly binary, 'Hispanic' to be a race of the same sort as 'Asian' or 'White', and foreign alien students to have no reported race at all.)
+Part of the long-term decline in history's standing came from the relatively steep decline in women's interest, specifically, in the liberal arts as pre-professional majors became more welcoming in the 1970s. (Heidi Tworek explored this [in the Atlantic in 2013](https://www.theatlantic.com/education/archive/2013/12/the-real-reason-the-humanities-are-in-crisis/282441/)). The recent decline in history has struck all demographic groups, but some patterns do emerge. White students--71% of history degrees, and 58% percent of all BAs--have dropped at about the general rate. Hispanic students, who are represented among history students at about their national rate, have dropped slightly less, while Asian-American students deserted the discipline in the largest numbers; there were less than half as many Asian-American women majoring in history in 2017 as in 2011. African American and American Indian/Alaska Native students have seen the smallest declines. This may be an echo of a national trend in the humanities [I wrote about this summer](https://www.theatlantic.com/ideas/archive/2018/08/the-humanities-face-a-crisisof-confidence/567565/) in which cultural and ethnic studies disciplines have preserved their overall share while historically larger fields like English and and philosophy have seen steep slides. Except among white and multi-racial students, the rate of decline has been notably greater among women than among men; one result of this shift seems to be that women are now slightly more under-represented among history majors (40.5% vs 42.5% of all degrees, as opposed to about 57% of BAs in all fields) than they were in the mid-2000s. (A note on categories: unlike some other statistical series, the Department of Education considers gender to be strictly binary, "Hispanic"" to be a race of the same sort as "Asian" or "White," and foreign alien status to remove race for reporting purposes.)
 
-```{r}
+```{r Fig 3, fig.height=4, fig.width=6, dpi=600}
+
+histfilter = . %>% inner_join(amadjusted %>% filter(Discipline=="History") %>% select(CIPCODE))
 
 hist_share = data %>% filter(year==2017, AWLEVEL==5, MAJORNUM==1) %>% group_by(race, CIPCODE) %>% summarize(degrees=sum(degrees)) %>% acadjoin %>% 
   group_by(race,Discipline) %>% summarize(degrees = sum(degrees)) %>%
   group_by(Discipline) %>% mutate(share = 100*degrees/sum(degrees)) %>% filter(Discipline=="History")
 
-#all_share = data %>% filter(year==2017, AWLEVEL==5, MAJORNUM==1) %>% group_by(race) %>% summarize(degrees=sum(degrees)) %>%
-#  group_by(race) %>% summarize(degrees = sum(degrees)) %>%
-#  mutate(share = 100*degrees/sum(degrees))
+all_share = data %>% filter(year==2017, AWLEVEL==5, MAJORNUM==1) %>% group_by(race) %>% summarize(degrees=sum(degrees)) %>%
+  group_by(race) %>% summarize(degrees = sum(degrees)) %>%
+  mutate(share = 100*degrees/sum(degrees))
+
+all_share
+
+hshare = data %>% filter(year==2017, AWLEVEL==5, MAJORNUM==1) %>% histfilter %>% group_by(race) %>% summarize(degrees=sum(degrees)) %>%
+  group_by(race) %>% summarize(degrees = sum(degrees)) %>%
+  mutate(hshare = 100*degrees/sum(degrees)) %>% select(race, hshare) %>% inner_join(all_share)
 
 #hist_share = data %>% filter(year>=1990, AWLEVEL==5, MAJORNUM==1) %>% group_by(gender, CIPCODE, year) %>% summarize(degrees=sum(degrees)) %>% acadjoin %>% 
 #  group_by(gender,Discipline, year) %>% summarize(degrees = sum(degrees)) %>%
 #  group_by(Discipline, year) %>% mutate(share = 100*degrees/sum(degrees)) %>% filter(Discipline=="History")
 
+#hist_share
 #hist_share %>% ggplot() + geom_line(aes(x=year, y = share, color=gender))
 
 
@@ -198,16 +220,20 @@ race_totals = data %>%
   group_by(year, race, gender) %>%
   summarize(rtotal = sum(degrees)) %>% filter(race!= "All")
 
-race %>% filter(year %in% c(2011, 2017)) %>% inner_join(race_totals) %>%
+p = race %>% filter(year %in% c(2011, 2017)) %>% inner_join(race_totals) %>%
+  mutate(gender = forcats::fct_recode(gender, c("Men"="men"), c("Women"="women"))) %>%
   mutate(rshare = degrees/rtotal) %>% select(-degrees, -rtotal) %>% 
-  spread(year, rshare, fill=0) %>% mutate(diff = `2017`/ `2011`) %>% filter(race !='Native Hawaiian or Other Pacific Islander') %>% ggplot()+ geom_bar(aes(x = reorder(race, -diff), y = diff - 1, fill=gender),stat='identity', position='dodge') + coord_flip() + scale_y_continuous("", labels=scales::percent) + scale_fill_brewer(type='qual') + scale_x_discrete("Reported Race") + labs(title="Drop in absolute number of history majors, 2011-2017", subtitle="By race and gender", caption = "Source: IPEDS survey, National Center for Education Statistics.")
+spread(year, rshare, fill=0) %>% mutate(diff = `2017`/ `2011`) %>% filter(race !='Native Hawaiian or Other Pacific Islander') %>% ggplot()+ geom_bar(aes(x = reorder(race, -diff), y = diff - 1, fill=gender),stat='identity', position='dodge') + coord_flip() + scale_y_continuous("Decline in BAs relative to overall share", labels=scales::percent) + scale_fill_brewer("Gender", type='qual') + scale_x_discrete("Reported Race") + labs(title="Fig. 3: Change in history majors, 2011-2017", subtitle="By race and gender", caption = "Source: NCES IPEDS data.") + theme_bw()
+
+p %>% ggsave(filename = "output.png", plot = ., width = 4, height=6, dpi=600)
+
 
 ```
 
 
-While these declines have taken place at all universities, the percentage declines have been particularly strong in percentages at schools where history was historically a popular major. In the broadest terms, as the chart below shows, history has decreased the most at research universities (RI and RII in the old Carnegie classification). Both private and public universities have seen drops, but the declines have been especially especially steep at private, non-for-profit institutions. (For-profits remain unimportant enough in the history universe that I haven't included them.)
+While these declines have taken place at all universities, the declines have been particularly strong in percentages at schools where history has been a popular major. In the broadest terms, as the chart below shows, history has decreased the most at research universities (RI and RII in the old Carnegie classification). Both private and public universities have seen drops, but the declines have been especially especially steep at private, non-for-profit institutions. (For-profits remain unimportant enough in the history universe that I haven't included them.)
 
-```{r}
+```{r Fig4, fig.height=4, fig.width=6, dpi=600}
 top30LA = characteristics %>% filter(grepl("^(Williams|Amherst|Bowdoin|Swarthmore|Wellesley|Middlebury|Pomona|Carleton|Claremont McKenna|Davidson|Washington and Lee|Colby|Colgate|Harvey Mudd|Smith|Vassar|Grinnell|Hamilton|Haverford|Wesleyan University|Bates|Colorado College|University of Richmond|Oberlin College|Scripps College|Bryn Mawr)", INSTNM), CARNEGIE==31) %>% mutate(elite = TRUE) %>% select(UNITID, elite)
 
 top30 = characteristics %>% 
@@ -227,13 +253,13 @@ charelite = charelite %>% mutate(
       ),
       HBCU == 1 ~ "HBCU",
       CARNEGIE %in% c(15, 16) ~ "Research Universities",
-      CARNEGIE %in% c(21, 22) ~ "Masters College/University",
+      CARNEGIE %in% c(21, 22) ~ "Master's Colleges/Universities",
       CARNEGIE %in% c(31, 32) ~ "Bachelor's Colleges",
       TRUE ~ "Other"
     ),
   type = case_when(
       CARNEGIE %in% c(15, 16) ~ "Research Universities",
-      CARNEGIE %in% c(21, 22) ~ "Masters College/University",
+      CARNEGIE %in% c(21, 22) ~ "Master's Colleges/Universities",
       CARNEGIE %in% c(31, 32) ~ "Bachelor's Colleges",
       TRUE ~ "Other"
   ),
@@ -269,15 +295,19 @@ elite_humanities = d4 %>%
   group_by(type, public) %>%
   mutate(percent = (degrees/year_total), relative = (degrees/year_total)/(degrees/year_total)[year==2007])  %>%  filter(public != "For-profit", type != "Other")
 
+oldmean = elite_humanities %>% filter(year >= 2005, year <= 2010) %>% group_by(type, public) %>% summarize(oldmean = sum(degrees/sum(year_total)))
+
+#elite_humanities %>% filter(year==2017) %>% inner_join(oldmean) %>% select(type, public, percent, oldmean) %>% mutate(share = percent/oldmean - 1) %>% arrange(share)
+
 fig4 = elite_humanities %>% # %>% group_by(label) %>% mutate(percent = percent/max(percent)) %>%
   ggplot() + aes(x=year, y = percent, lty=type, color= public) + geom_line() + 
-  labs(title = "Humanities degree share by institution class", 
-       caption = "Ben Schmidt, 2018. Data from IPEDS.\n2000 Carnegie classifications")
+  labs(title = "Fig. 4: History degree share by institution class, 1998-2017", 
+       caption = "Source: NCES IPEDS data.\nClasses adapted from the 2000 Carnegie Classification.")
 library(ggrepel)
 fig4+  
-  scale_y_continuous("Percent of degrees at institution type (log scale)", label = scales::percent, trans='log', breaks = seq(0.005, 0.055, by=.005 )) + 
-  geom_text_repel(data = elite_humanities %>% filter(year == 1998), adj=1,nudge_x = -.2, aes(label = paste(public, type)), direction = "y") + expand_limits(y=0.01, x = 1983)  +
-  theme_bw() +  theme(legend.position="none") + scale_color_brewer(type='qual')
+  scale_y_continuous("Percent of degrees at institution type (log scale)", label = scales::percent, trans='log', breaks = seq(0.005, 0.055, by=.005)) + 
+  geom_text_repel(data = elite_humanities %>% filter(year == 1998), adj=1,nudge_x = -.2, aes(label = paste(public, type)), direction = "y") + expand_limits(y=0.01, x = 1982)  +
+  theme_bw() +  theme(legend.position="none") + scale_color_brewer(type='qual') + scale_x_continuous("", breaks = seq(2000, 2016, by=4), minor_breaks = c(2002, 2017, by = 4 ))
 
 #fig4
 #fig4$data %>% write_csv("outputs/fig4.csv")
@@ -290,10 +320,18 @@ fig4+
 
 histfilter = . %>% inner_join(amadjusted %>% filter(Discipline=="History") %>% select(CIPCODE))
 
+otherhumfilter = . %>% inner_join(amadjusted %>% filter(Bachelors=="Humanities", Discipline!="History") %>% select(CIPCODE))
+
 change = data %>% filter(AWLEVEL==5, MAJORNUM==1) %>% histfilter %>%
   group_by(UNITID, year) %>% summarize(degrees=sum(degrees))
 
-groups = data_frame(year = c(2003:2007, 2013:2017), period = c(rep("early", 5), rep("late", 5)))
+otherchange = data %>% filter(AWLEVEL==5, MAJORNUM==1) %>% otherhumfilter() %>%
+  group_by(UNITID, year) %>% summarise(degrees=sum(degrees))
+
+#ys = c(2004, 2007, 2014, 2017)
+ys = c(2003, 2007, 2013, 2017)
+
+groups = data_frame(year = c(ys[1]:ys[2], ys[3]:ys[4]), period = c(rep("early", ys[2] - ys[1] + 1), rep("late", ys[4] - ys[3] + 1)))
 
 #Duke is missing several years of history degrees. God knows.
 #data %>% filter(UNITID == 198419, AWLEVEL==5, MAJORNUM==1) %>% histfilter %>% group_by(year) %>% summarize(degrees = sum(degrees)) %>% ggplot() + geom_point(aes(x=year, y =degrees))
@@ -302,17 +340,25 @@ groups = data_frame(year = c(2003:2007, 2013:2017), period = c(rep("early", 5), 
 
 
 ```{r}
-diffs = change %>% inner_join(groups) %>%
+
+changefunc = . %>% inner_join(groups) %>%
   group_by(UNITID) %>%
   filter(n() == 10) %>%
-  group_by(UNITID, period) %>% summarize(degrees = sum(degrees))  %>%spread(period, degrees, fill=0) %>%
+  group_by(UNITID, period) %>% summarize(degrees = sum(degrees))  %>% 
+  spread(period, degrees, fill=0) %>%
   mutate(change = late/early)
 
+diffs = change %>% changefunc
+
+otherdiffs = otherchange %>% changefunc %>% mutate(other_hum_change = change) %>% select(other_hum_change, UNITID)
+
 control = data_frame(CONTROL = c(1,2,3), control = c("Public", "Private", "For-profit"))
-PhDs = data %>% filter(year > 2013, AWLEVEL==17) %>% histfilter %>% group_by(UNITID) %>% summarize(deg = sum(degrees)) %>% filter(deg > 5) %>%
+PhDs = data %>% filter(year > ys[3], AWLEVEL==17) %>%
+  histfilter %>% group_by(UNITID) %>% summarize(deg = sum(degrees)) %>% 
+  filter(deg > 5) %>%
   mutate(PhD = TRUE) %>% select(UNITID, PhD)
 
-women = data %>% filter(year > 2013, AWLEVEL==5, MAJORNUM==1) %>% group_by(gender, UNITID) %>% summarize(degrees=sum(degrees)) %>%
+women = data %>% filter(year > ys[3], AWLEVEL==5, MAJORNUM==1) %>% group_by(gender, UNITID) %>% summarize(degrees=sum(degrees)) %>%
   spread(gender, degrees) %>% filter(women > men*9) %>% select(UNITID) %>% mutate(women = TRUE)
 
 crop2 = c("Agnes Scott College", "Arizona State University", "Auburn University", "Austin Community College", "Bakersfield College, Delano Campus", "Ball State University", "Bard College", "Bridgewater College", "Cleveland State University", "Dartmouth College", "Delta College", "East Stroudsburg University of Pennsylvania", "Elon University", "Fairleigh Dickinson University", "Florida Gulf Coast University", "Florida International University", "Georgia Regents University", "Governors State University", "Grand Valley State University", "Hampden-Sydney College", "Heritage University", "Knox College", "Lenoir-Rhyne University", "Lindenwood University", "Lone Star College System - CyFair", "Longwood University", "Lourdes University", "Middle Tennessee State University", "Millersville University", "Muskingum University", "New York City College of Technology", "Queens College, CUNY", "Sam Houston State University", "Siena College ", "Southern Connecticut State University", "St. Bonaventure University", "Stephen F. Austin State University", "SUNY Cortland", "SUNY Plattsburgh", "Three Rivers Community College", "Union County College", "University of Arizona", "University of Central Florida", "University of Kentucky", "University of Memphis", "University of Mount Union", "University of Nebraska-Lincoln", "University of New Orleans", "University of North Georgia", "University of Oklahoma", "University of Tennessee", "University of Tennessee at Chattanooga", "University of Wisconsin-La Crosse", "Valencia College", "Virginia Commonwealth University", "Washington and Lee University", "West Virginia University", "Western Governors University", "Western Illinois University", "Western Oregon University", "Westminster College")
@@ -322,7 +368,6 @@ crop1 = c("Alverno College", "American Public University System", "Augsburg Univ
 
 missing = data_frame(INSTNM = crop1) %>% mutate(INSTNM = gsub("SUNY, ", "SUNY at ", INSTNM)) %>% left_join(characteristics) %>% select(UNITID, INSTNM) %>% filter(is.na(UNITID)) 
 missing
-characteristics %>% filter(grepl("St.* John's", INSTNM)) %>% pull(INSTNM)
 
 tuning = data_frame(INSTNM = crop1) %>% inner_join(characteristics) %>% select(UNITID) %>% mutate(tuning = TRUE)
 
@@ -330,79 +375,113 @@ tuning = data_frame(INSTNM = crop1) %>% inner_join(characteristics) %>% select(U
 ```
 
 ```{r}
+
+
+race_breakdown = data %>%
+  filter(year > 2013, AWLEVEL==5, MAJORNUM==1) %>%
+  group_by(UNITID, race) %>%
+  summarize(degrees = sum(degrees))
+
+race_breakdown = race_breakdown %>% filter(race != "Unknown") %>% group_by(UNITID) %>% mutate(share = degrees/sum(degrees)) %>%
+  select(-degrees) %>% spread(race, share, fill = 0)
+
+gender_breakdown = data %>%
+  filter(year > 2013, AWLEVEL==5, MAJORNUM==1) %>%
+  group_by(UNITID, gender) %>%
+  summarize(degrees = sum(degrees))
+
+gender_breakdown = gender_breakdown %>% group_by(UNITID) %>% mutate(share = degrees/sum(degrees)) %>%
+  select(-degrees) %>% spread(gender, share, fill = 0)
+
+
+```
+
+```{r}
 overall_change = data %>% filter(AWLEVEL==5, MAJORNUM==1) %>%
   group_by(UNITID, year) %>% summarize(degrees=sum(degrees)) %>% inner_join(groups) %>%
-  group_by(UNITID, period) %>% summarize(degrees = sum(degrees))  %>%spread(period, degrees, fill=0) %>%
+  group_by(UNITID, period) %>% summarize(degrees = sum(degrees))  %>% spread(period, degrees, fill=0) %>%
   filter(early > 5, late > 5) %>%
   mutate(overall_change = late/early) %>%
   select(UNITID, overall_change)
 
-states = read_tsv("states.tsv", col_names = c("STABBR", "presidential"))
+states_election = read_tsv("states.tsv", col_names = c("STABBR", "presidential"))
 classifiers = charelite %>% 
     mutate( label = case_when(
       CARNEGIE %in% c(15, 16) ~ "Research Universities",
-      CARNEGIE %in% c(21, 22) ~ "Masters College/University",
+      CARNEGIE %in% c(21, 22) ~ "Master's Colleges/Universities",
       CARNEGIE %in% c(31, 32) ~ "Bachelor's Colleges",
       TRUE ~ "Other"
     ), elite = ifelse(is.na(elite),FALSE, elite)) %>%
   select(INSTNM, UNITID, CONTROL, elite, label, LANDGRNT, STABBR, HBCU) %>% left_join(PhDs) %>%
   mutate(PhD = ifelse(is.na(PhD), FALSE, PhD)) %>%
   mutate(LANDGRNT = LANDGRNT == 1) %>%
-  left_join(states) %>% inner_join(control) %>% filter(control != "For-profit") %>%
-  left_join(women) %>% mutate(women = ifelse(is.na(women), FALSE, TRUE)) %>%
+  left_join(states_election) %>% inner_join(control) %>% filter(control != "For-profit") %>%
+  #left_join(women) %>% mutate(women = ifelse(is.na(women), FALSE, TRUE)) %>%
   left_join(tuning) %>% mutate(tuning = ifelse(is.na(tuning), FALSE, TRUE)) %>% 
-  inner_join(overall_change)
+  inner_join(overall_change) %>% left_join(otherdiffs) %>% 
+  inner_join(race_breakdown) %>% inner_join(gender_breakdown)
 
-tuition = read_csv("ic2017_ay.csv") %>% mutate(costs = as.numeric(TUITION1) + as.numeric(FEE1)) %>% mutate(expensivo = costs > 20000) %>% select(UNITID, expensivo)
+tuition = read_csv("ic2017_ay.csv") %>% mutate(costs = as.numeric(TUITION1) + as.numeric(FEE1)) %>% mutate(expensivo = costs > 20000) %>% select(UNITID, expensivo, costs)
 
-modelable = classifiers %>% inner_join(diffs) %>% left_join(tuition)
+library(noncensus)
+data(states)
+mod = states %>% mutate(STABBR = state)
+modelable = classifiers %>% inner_join(diffs) %>% left_join(tuition) %>% left_join(mod)
+#modelable %>% ggplot() + geom_boxplot(aes(x=tuning, y = change)) + scale_y_log10()
 
 #modelable
-lm(log(change) ~ label + presidential + elite + 0 + control + tuning + LANDGRNT + HBCU + expensivo + women + log(overall_change) + 0 , data = modelable %>% filter(early > 50 ||late > 50) ) %>% summary
+z = lm(log(change) ~ tuning + label + 
+    region + 
+     control + `Hispanic or Latino` + `Black or African American` + `Asian` + `Nonresident alien` + `Two or more races` + HBCU + women + log(overall_change) + LANDGRNT +
+      HBCU + expensivo + presidential
+#     log(other_hum_change)
+   , data = modelable, weights = early + late) %>% summary
+z
+modelable %>% select(change, overall_change, early, late, INSTNM) %>% filter(grepl("Northeastern", INSTNM))
+coeffs = z$coefficients %>% as.data.frame %>% rownames_to_column("state") %>% filter(grepl("ST", state)) %>% mutate(state = gsub("STABBR", "", state))
+coeffs$state = tolower(state.name[match(coeffs$state, state.abb)])
 
-goodmodel = lm(log(change) ~ label + elite + control + HBCU + log(overall_change)+ 0 , 
-               data = modelable, weights = early )
+goodmodel = lm(log(change) ~ label + region + control + HBCU + log(overall_change) + `Hispanic or Latino` + `Black or African American` + `Asian` + `Nonresident alien` , 
+               data = modelable, weights = early)
+
 summary(goodmodel)
 ```
 
 
-```{r}
+This means each department is facing its own constellation of factors that may makes the decline more or less severe. To try to disentangle the role of various factors, I ran a linear regression to predict the decline in history degrees between two five-year periods: 2003-2007 and 2013-2017. Among the factors that best predict heavier declines are a school being a research university; having a large number of Asian-American or foreign students; and being privately controlled/having high tuition. Lighter declines, conversely, are associated with having more African American, multi-racial, or Hispanic students; being a historically black college or university, even accounting for the higher share of African American students at those schools; and (as a control) having an overall growth in the student body. Schools in the midwest seem to have experienced the greatest declines, accounting for demographics; those in New England and throughout the South the least.
 
-predict(goodmodel, newdata = modelable, interval='prediction')
+
+```{r eval=FALSE, fig.height=8, fig.width=12, include=FALSE}
+
+minimodel = lm(log(change) ~ label + control + HBCU + log(overall_change), 
+               data = modelable, weights = early)
+
 
 modelable %>% bind_cols(exp(predict(goodmodel, newdata = modelable, interval='prediction')) %>% as_data_frame) %>% arrange()
 modelable$pred = exp(predict(goodmodel, newdata = modelable))
+modelable$minipred = exp(predict(minimodel, newdata = modelable))
+d = modelable %>% mutate(performance = change/pred) %>% arrange(-performance) %>% filter(late > 64)
 
-modelable %>% filter(tuning) %>% mutate(performance = change/pred) %>% arrange(-performance) %>% 
-sd(log(modelable$pred))
-sd(log(modelable$change))
-hist(log(modelable$pred))
-
-log(3.5)
+d %>% ggplot() + 
+  geom_point() + scale_x_log10() + scale_y_log10() + geom_text_repel(data = d %>% filter(tuning) %>% head(15), color='black', size=3) + aes(label = INSTNM, x=pred, y = change, color=tuning, size = early)
 
 
-log(modelable$pred)
-hist(log(modelable$change))
-modelable %>% 
-  select(INSTNM, pred, change, early, late) %>% filter(early > 50, late > 30) %>% arrange(pred/change) %>% 
-  mutate(performance=change/pred, predicted = early * pred, actual = late, orig = early) %>% 
-  transmute(school=INSTNM, `2003-2007` = early, `modeled 2013-2017` = predicted,   `actual 2013-2017` = actual, `relative difference` = performance)
+d %>% mutate(r1 = rank(-change), r2 = rank(-change/minipred), r3 = rank(-change/pred)) %>% arrange(r3) %>% select(change, INSTNM, label, STABBR, r1, r2, r3)
+
+#modelable %>% 
+#  select(INSTNM, pred, change, early, late) %>% filter(early > 50, late > 30) %>% arrange(pred/change) %>% 
+#  mutate(performance=change/pred, predicted = early * pred, actual = late, orig = early) %>% 
+#  transmute(school=INSTNM, `2003-2007` = early, `modeled 2013-2017` = predicted,   `actual 2013-2017` = actual, `relative difference` = performance)
 
 ```
 
-To know how well a university is doing compared to expectations, we need to take many different factors into account. 
-I ran a linear regression to untangle various causal forces driving declines in history degrees from the five years up to 2017 to the five years up to 2007. 
-Among the factors that best predict heavier declines are a school being a research university or bachelor's college; being located in a state 
-that voted Democratic in at least one of the last 3 presidential elections; being private, rather than public; and being listed in the top 30 of US news. Historically black colleges and universities have seen milder declines than otherwise comparable institutions; while women's colleges do not appear to be significantly different.
+Why have degrees fallen so rapidly? The timing of the trend strongly suggests that students have changed their expectations of college majors in the aftermath of the economic shifts of 2008. That the declines have continued among students who entered college well into the economic recovery shows that the shifts are not just a temporary response to a missing job market--instead, there seems to have been a longer-term rethinking about what majors can do for students. The fields that have fallen almost as much as history since 2008 tend to share methodologies or subject areas with our discipline; they include most of the other humanities and many of the more qualitatively-inclined social sciences including political science, anthropology, and sociology.
 
-I've put online [CAN THE AHA host this in the online version?] a list of all schools reporting more than 10 history BAs per year, with the factor by which they exceed or miss their expectations. While in many cases these changes are probably due to internal reorganizations, this may be useful in trying to identify schools that have done the best at keeping the history major attractive for their university's students.
+In many cases, this anxiety over career prospects for history majors is probably misguided, since we know that students with history BAs disperse into a wide variety of careers. The increasingly common practice of lumping a wide variety of disparate fields together as "STEM" is probably giving students and their parents excessive expectations about the earning potential conferred by many science and technology degrees. While engineers in their twenties can indeed make salaries that would make most full professors of history jealous, science, technology, and math majors are much more of a mixed bag. Extensive data [recently released out of the University of Texas system](http://sappingattention.blogspot.com/2018/08/some-preliminary-analysis-of-texas.html) do show history majors making less than most science fields after controlling for the university they attended. But they appear to make more than many other fields, including English, psychology, sociology, and even a number of biology-adjacent majors (such as zoology, ecology, and neurobiology, though traditional biology majors do make somewhat more). Over the next few years, "accountability" measures like this, largely put into motion shortly after the recession, will become more widespread. While humanists are often skeptical of measuring a major through debt, salaries, or employment after graduation, other fields that have *not* already seen extensive declines probably have more to fear from an honest accounting of salaries than we do.
 
-Why have degrees fallen so rapidly? The timing of the trend strongly suggests that students have changed their expectations of college majors in the aftermath of the economic shifts of 2008. That the declines have continued among students who entered college well into the economic recovery shows that the shifts are not just a temporary response to a missing job market--instead, there seems to have been a longer-term rethinking about what majors can do for students. The fields that have fallen almost as much as history since 2008 tend to share methodologies or subject areas with us: it includes both the other humanities and many of the more qualitatively-inclined social sciences like political science, anthropology, and sociology.
+Still, there are real economic reasons that can help explain the history major's decline. According to the American Community Survey, the four most common individual occupations for history degree holders are as primary teachers, secondary teachers, college teachers, and lawyers. Each of these fields has seen its own difficulties since 2008. But it is hard to blame the legal profession for our problems when most indicators of law's popularity (such as LSAT administration rates) have rebounded.
 
-In many cases, this anxiety over career prospects for history majors is probably misguided. Some majors, especially those that can weed out students in introductory courses, certainly provide substantially better career prospects. But the increasingly common practice of lumping a wide variety of disparate fields together as "STEM" is probably making undergraduates dramatically overestimate the worth of many science and technology degrees. In extensive data [recently released out of the University of Texas system](http://sappingattention.blogspot.com/2018/08/some-preliminary-analysis-of-texas.html), history majors make far less money than any engineering field after controlling for which university they attended. But they appear to make more than fields including English, psychology, sociology, and even a number of biology-adjacent majors (like zoology, ecology, and neurobiology).
-
-But in other ways, the decline may represent a longer-term reflection of changing employment opportunities. According to the American Community survey, the four most common individual occupations for history degree holders are as primary teachers, secondary teachers, college teachers, and lawyers. Each of these fields have seen its own difficulties since 2008, although most indicators of law's popularity (such as LSAT administration rates) have rebounded. 
-
+I focus on economic factors because the timing of the decline in history numbers so strongly correlates with student decision making around the economic crisis, but students obviously think about more than potential earnings when they choose a major. It's understandable that many, both inside and outside the profession, want to explore more complex reasons for the declines, or to use it as an occasion to argue for some particular vision of what undergraduate history study should be. But it is worth reemphasizing that history's share of majors was rising just a decade ago; an explanation for trends since then should focus on things that have actually changed.
 
 ```{r}
 if (FALSE) {
@@ -426,8 +505,9 @@ BAs %>%
 
 ## Future trends
 
-Optimists can look at the last year's line in these charts and note that the rate of decline appears to have slowed. It is reasonable to hope that the trends of the last decade will eventually bottom out, perhaps even in the next year or two. At this point, though, it would take several unprecedented years of growth in history majors to return to mid-2000s numbers; so departments should not expect a rapid rebound. While there are anecdotal accounts of students seeking out history in the current political climate, leading indicators of student interest are at best mixed; most notably, the AHA's [survey of course enrollments in a number of departments](https://www.historians.org/publications-and-directories/perspectives-on-history/february-2018/enrollment-declines-continue-aha-survey-again-shows-fewer-undergraduates-in-history-courses) for the 2016-2017 academic year found continued declines in credit hours.
+Optimists may look at the last year's line in these charts and note that the rate of decline appears to have slowed. It is reasonable to hope that the trends of the last decade will eventually bottom out, perhaps even in the next year or two. At this point, though, it would take several unprecedented years of growth in history majors to return to mid-2000s numbers; departments should not expect a rapid rebound. While there are anecdotal accounts of students seeking out history in the current political climate, leading indicators of student interest are at best mixed; most notably, the AHA's [survey of course enrollments in a number of departments](https://www.historians.org/publications-and-directories/perspectives-on-history/february-2018/enrollment-declines-continue-aha-survey-again-shows-fewer-undergraduates-in-history-courses) for the 2016-2017 academic year found continued declines in credit hours.
 
-Those enrollment numbers suggest one possible long-term trend: that history will become more oriented towards introductory-level courses taken as electives, through other majors, or as general education requirements. These trends are hard to track, but probably increasingly important. One common plan--for joint or hybrid majors--is peripherally tracked in the IPEDS data through reporting of second majors. These numbers capture students who major in "Political science and history," with any field in the first position. 
+Those enrollment numbers do suggest one possible long-term trend: that history departments will become more oriented towards introductory-level courses. Although I am not aware of good data on credit hours for the critical period in 2010-2012, it seems that the declines in enrollments since then may have been gentler than the drops in majors. Students still take history courses--but more often, apparently, as electives, as requirements for other majors, or as general education requirements. If mjaor numbers do not recover, each of these areas will become more important.
+One common plan, for joint or hybrid majors, is peripherally tracked in the IPEDS data through reporting of second majors. These numbers capture students who major in fields like--for example--"Political science and history," where any other field might occupy the first position. They do not seem to offer great consolation; history's share of second majors mirrors its overall trend in the last decade.
 
-If numbers do stabilize over the next few years, there are a few things worth keeping in mind. First, departments should be careful to consider the national trends in their local planning. A curriculum that held declines to 'just' 20% in the 2010s may have been doing an excellent job; and one that appears to succeed during a recovery might merely be benefitting from a tailwind. Second, PhD numbers have remained relatively constant in the last decade; the teaching opportunities for PhDs, especially in non-introductory areas, will be more circumscribed than a decade ago. Finally, the steep drop in majors has probably dampened larger-scale trends towards 'adjunctification' in the historical profession, because history departments have been comparatively overstaffed. If there is a recovery or stabilization in history degrees, it will be an especially important period for departments to consider what steps they can take to ensure that new teaching or advising opportunities are not passed off to new, casualized positions.
+Ultimately, whether through majors or course enrollments, the long-term state of the discipline will rest on how it adapts to a cohort of students--and their parents--who are much less receptive to arguments for the liberal arts than previous generations have been. Many departments and organizations have worked out useful ways to articulate the purpose of the major. These are undoubtedly helping attract and retain students today. (I looked to see if departments participating in the AHA's initiative to this end, the tuning project, saw better results than other schools; the first set of Tuning Projection departments do appear to see marginally better enrollments from 2014 to 2017, though not so strongly that I'm confident in their statistical significance.) As the 2008 crisis moves farther into the past, we will hopefully be able to identifying departments that have made the most notable successes.
