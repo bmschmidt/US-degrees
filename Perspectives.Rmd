@@ -12,16 +12,6 @@ knitr::opts_chunk$set(echo=FALSE, message = FALSE, warning = FALSE, cache = TRUE
 ```
 
 
-```{r, cache = TRUE}
-
-grepstring = "Northeastern University"
-suny = characteristics %>% filter(grepl(grepstring, INSTNM)) %>% select(UNITID)
-
-data %>% filter(AWLEVEL==5, MAJORNUM==1) %>% inner_join(suny) %>% group_by(year) %>% mutate(total = sum(degrees)) %>%
-  histfilter %>% group_by(year) %>% summarize(degrees = sum(degrees), total = total[1]) %>% View
-  ggplot() + geom_line() + aes(x=year, y = degrees/total) + geom_point() + scale_y_continuous(labels=scales::percent) + labs(title=paste0("History share of degrees, schools with '", grepstring, "' in name"))
-
-```
 
 
 ```{r, cache = TRUE}
@@ -60,6 +50,17 @@ tot_degrees = ltotals %>% group_by(year) %>% summarize(total_degrees = max(year_
 ```
 
 
+```{r, cache = TRUE}
+
+grepstring = "Northeastern University"
+suny = characteristics %>% filter(grepl(grepstring, INSTNM)) %>% select(UNITID)
+
+#data %>% filter(AWLEVEL==5, MAJORNUM==1) %>% inner_join(suny) %>% group_by(year) %>% mutate(total = sum(degrees)) %>%
+#  histfilter %>% group_by(year) %>% summarize(degrees = sum(degrees), total = total[1]) %>% View
+#  ggplot() + geom_line() + aes(x=year, y = degrees/total) + geom_point() + scale_y_continuous(labels=scales::percent) + labs(title=paste0("History share of degrees, schools with '", grepstring, "' in name"))
+
+```
+
 
 Since the economic crisis of 2008, the pattern of undergraduate majors has been shifting across American higher education; of all the major disciplines, history has seen the steepest declines in the number of students. In 2008, the National Center for Education Statistics reported 34,642 majors in the field; in 2017, the most recent year for which data is available, the number was 24,266. Between 2016 and 2017, the number of history majors fell by over 1,500. Even as university enrollments have grown, history has seen its raw numbers erode heavily. The drops have been especially heavy since 2011-2012, the first years for which students who saw the financial crisis in action could easily change their majors; of all the fields I've looked at (image 1), history has fallen more than any other in the last 6 years. 
 
@@ -81,11 +82,17 @@ changes = plottable %>% filter(year %in% c(y1, y2)) %>% ungroup %>% mutate(year 
 #  coord_flip() + scale_y_log10(breaks = c(.5, .66, .8, 1, 1.25, 1.5, 2, 3), labels=scales::percent) + theme_bw() + scale_x_discrete("Major") + theme(legend.position = "top")
 
 
-changes %>% filter(!is.na(Discipline), MAJORNUM == 1) %>% group_by(MAJORNUM) %>% mutate(y1t = sum(y1), y2t = sum(y2)) %>% mutate(cutoff = ifelse(MAJORNUM == 1, .05, .1)/100) %>% ungroup %>% arrange(MAJORNUM) %>% filter(y1/y1t > cutoff, y2/y2t > cutoff)  %>% 
+p1 = changes %>% filter(!is.na(Discipline), MAJORNUM == 1) %>% group_by(MAJORNUM) %>% mutate(y1t = sum(y1), y2t = sum(y2)) %>% mutate(cutoff = ifelse(MAJORNUM == 1, .05, .1)/100) %>% ungroup %>% arrange(MAJORNUM) %>% filter(y1/y1t > cutoff, y2/y2t > cutoff)  %>% 
   mutate(change = `y2` / `y1`) %>% 
   ggplot() + aes(pch = factor(MAJORNUM), y = change, x = reorder(Discipline, change, function(x) {x[1]})) + 
   geom_point() + labs(title=paste0("Fig. 1: Change in degrees, ", y1, "-2017"), y = paste0("Change in number awarded ", y1, "-2017"), x = "Major", color = "Primary or secondary major", pch = "Primary or secondary major", caption = "Sources: NCES IPEDS data; taxonomy adapted from American Academy of Arts and Sciences.") + 
   coord_flip() + scale_y_log10(breaks = c(.5, .66, .8, 1, 1.25, 1.5, 2, 3), labels=scales::percent(c(.5, .66, .8, 1, 1.25, 1.5, 2, 3) - 1)) + theme_bw() + scale_x_discrete("Major") + theme(legend.position = "none") + scale_color_brewer(type='qual')
+
+changes
+p1$data %>% write_csv("change_in_degrees_2011-2017.csv")
+
+p1
+
 
 
 ```
